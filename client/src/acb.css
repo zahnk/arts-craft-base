@@ -1,0 +1,17 @@
+.fa-a:after{
+  content: "";
+  margin-right: 20px;
+}
+
+.fa-b:before{
+  margin-left: 20px;
+}
+
+.fa-m-a:after{
+  content: "";
+  margin-right: 5px;
+}
+
+.fa-m-b:before{
+  margin-left: 5px;
+}
