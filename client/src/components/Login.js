@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { login } from "../services/auth";
-import { Alert, Form, Button } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import '@fortawesome/fontawesome-free/css/all.css';
+import '../acb.css';
 
 class Login extends Component {
   state = {
@@ -11,7 +13,8 @@ class Login extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      error: undefined 
     });
   };
 
@@ -36,35 +39,45 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Login</h2>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              id="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="password">Password: </Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          {this.state.error && (
-            <Alert variant="danger">{this.state.error}</Alert>
-          )}
-          <Button type="submit">Log in</Button>
-        </Form>
-      </div>
+      <Container>
+        <Row>
+          <Col xs={12} sm={{span:4, offset: 4}}>
+            <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
+              <Card.Header as="h2"><i className="fas fa-sign-in-alt fa-a"></i>Login</Card.Header>
+            </Card>
+            <Card style={{marginBottom: "10px"}}>
+              <Card.Body>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Label htmlFor="username">Username: </Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="username"
+                      id="username"
+                      value={this.state.username}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label htmlFor="password">Password: </Form.Label>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      id="password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                  <Button type="submit">Log in</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+            {this.state.error && (
+              <Card body bg="danger" text="white">{this.state.error}</Card>                
+            )}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

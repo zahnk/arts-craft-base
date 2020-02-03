@@ -1,7 +1,10 @@
 import React from "react";
 import "./App.css";
 import {Switch, Route, Redirect } from "react-router-dom";
-import Navbar from "./components/Navbar";
+
+import AppMenue from "./components/AppMenu";
+import AppFooter from "./components/AppFooter";
+
 import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
 import Components from "./components/Components";
@@ -39,7 +42,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        <AppMenue user={this.state.user} setUser={this.setUser} />
+        <div className="AppMenuSpace"></div>
         <Switch>
           <Route exact path="/" component={Startpage} />
           <Route exact path="/signup" render={
@@ -53,6 +57,7 @@ class App extends React.Component {
           }/>
          
         </Switch>
+        <AppFooter user={this.state.user} />
       </div>
     );
   }
