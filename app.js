@@ -92,7 +92,7 @@ const projectRoutes = require("./routes/project");
 app.use("/api/projects", projectRoutes);
 
 const componentRoutes = require("./routes/component");
-app.use("/api/component", taskRoutes);
+app.use("/api/component", componentRoutes);
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
