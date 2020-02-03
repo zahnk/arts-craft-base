@@ -8,7 +8,7 @@ const ProjectList = props => {
         return (
           <div key={project._id}>
             <h3>
-              <Link to={`/projects/${project._id}`}>{project.title}</Link>
+              <Link to={`/projects/${project._id}`}>{project.name}</Link>
             </h3>
           </div>
         );
