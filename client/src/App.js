@@ -4,6 +4,7 @@ import {Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
+import Components from "./components/Components";
 
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -27,6 +28,14 @@ class App extends React.Component {
     }
   }
 
+  componentsRoute = props => {
+    if (this.state.user) {
+      return <Components {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -40,7 +49,7 @@ class App extends React.Component {
             props => <Login {...props} setUser={this.setUser} />
           }/>
           <Route exact path="/projects" render={this.projectsRoute}/>
-          
+          <Route exact path="/components" render={this.componentsRoute}/>
           }/>
          
         </Switch>
