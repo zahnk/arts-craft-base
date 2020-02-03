@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
-const Task = require("../models/Task");
+//const Task = require("../models/Task");
 
 // GET /api/projects
 router.get("/", (req, res) => {
   // return all projects
+ 
   Project.find({})
-    .populate("tasks")
+ //   .populate("tasks")
     .then(projects => {
       res.json(projects);
     })
@@ -17,6 +18,7 @@ router.get("/", (req, res) => {
 });
 
 const mongoose = require("mongoose");
+/*
 // GET /api/projects/:id
 router.get("/:id", (req, res) => {
   // return 1 project w/ a given id
@@ -87,5 +89,5 @@ router.delete("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
+*/
 module.exports = router;
