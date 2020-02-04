@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { login } from "../services/auth";
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+
 import '@fortawesome/fontawesome-free/css/all.css';
 import '../acb.css';
 
@@ -68,7 +69,7 @@ class Login extends Component {
                       onChange={this.handleChange}
                     />
                   </Form.Group>
-                  <Button type="submit">Log in</Button>
+                  <Button size="lg" variant="dark" type="submit">Log in</Button>
                 </Form>
               </Card.Body>
             </Card>
