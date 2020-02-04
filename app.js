@@ -20,7 +20,7 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/arts-craft-base", {
+  .connect("mongodb://localhost/arts-craft-base", {useNewUrlParser: true, useUnifiedTopology: true}, {
     useNewUrlParser: true
   })
   .then(x => {
