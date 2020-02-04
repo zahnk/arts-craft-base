@@ -39,7 +39,7 @@ while( id < max )
   components.push( {
     name: `Component No.${id}`,
     description: desc[Math.floor(Math.random()*4)],
-    imageUrl: imgName = "img_" + Math.floor(Math.random()*4) + ".png",
+    imageUrl: imgName = "def-c-" + Math.floor(Math.random()*4) + ".png",
   
   });
   id++;

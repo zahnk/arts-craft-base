@@ -1,20 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { CardColumns } from "react-bootstrap";
+import ComponentCard from "./ComponentCard";
 
-const ComponentList = props => {
-  return (
-    <div>
-      {props.components.map(component => {
-        return (
-          <div key={component._id}>
-            <h3>
-              <Link to={`/components/${component._id}`}>{component.name}</Link>
-            </h3>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+export default class ComponentList extends Component {
+  constructor(){
+    super()
+    this.state = {
+    }
+  };
 
-export default ComponentList;
+  render() {
+    return (
+      <CardColumns>
+        {this.props.components.map( (component) => {
+          return (
+            <ComponentCard key={component._id} component={component} />
+          );
+        })}
+      </CardColumns>
+    )
+  }
+}
