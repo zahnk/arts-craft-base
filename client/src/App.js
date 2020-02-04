@@ -7,12 +7,9 @@ import AppFooter from "./components/AppFooter";
 
 import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
-<<<<<<< HEAD
 import Components from "./components/Components";
-
-=======
 import ProjectDetail from "./components/ProjectDetail";
->>>>>>> master
+
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 
