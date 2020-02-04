@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Component = require("../models/Component");
-
+const mongoose = require("mongoose");
 
 // GET /api/projects
 router.get("/", (req, res) => {
   // return all projects
- 
+ console.log ("bis hierhin")
   Component.find({})
  //   .populate("tasks")
     .then(components => {
@@ -17,6 +17,6 @@ router.get("/", (req, res) => {
     });
 });
 
-const mongoose = require("mongoose");
+
 
 module.exports = router;
