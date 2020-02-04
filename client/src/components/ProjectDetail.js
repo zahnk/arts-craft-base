@@ -9,10 +9,10 @@ class ProjectDetail extends Component {
   };
 
   getData = () => {
-    const id = this.props.match.params.id;
+    const projectId = this.props.match.params.id;
  
     axios
-      .get(`/api/projects/${id}`)
+      .get(`/api/projects/${projectId}`)
       .then(response => {
         this.setState({
           project: response.data,
@@ -45,9 +45,12 @@ class ProjectDetail extends Component {
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
         </Card>
 
-        <h1>{this.state.project.title}</h1>
+        <h1>{this.state.project.name}</h1>
+        <p>{this.state.project.description}</p>
+        <p>{this.state.project.owner}</p>
         <p>{this.state.project.description}</p>
         <p>{this.state.project.notes}</p>
+        <p>{this.state.project.status}</p>
 
       </div>
     );

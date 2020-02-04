@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
-//const Task = require("../models/Task");
 
 // GET /api/projects
 router.get("/", (req, res) => {
+  console.log("PJ GET", req)
   // return all projects
  
   Project.find({})
- //   .populate("tasks")
     .then(projects => {
       res.json(projects);
     })

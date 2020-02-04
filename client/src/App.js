@@ -8,7 +8,10 @@ import AppFooter from "./components/AppFooter";
 import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
 import ProjectDetail from "./components/ProjectDetail";
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 
