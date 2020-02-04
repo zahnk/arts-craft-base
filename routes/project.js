@@ -5,6 +5,7 @@ const Project = require("../models/Project");
 
 // GET /api/projects
 router.get("/", (req, res) => {
+  console.log("PJ GET", req)
   // return all projects
  
   Project.find({})
@@ -18,7 +19,7 @@ router.get("/", (req, res) => {
 });
 
 const mongoose = require("mongoose");
-/*
+
 // GET /api/projects/:id
 router.get("/:id", (req, res) => {
   // return 1 project w/ a given id
@@ -30,7 +31,6 @@ router.get("/:id", (req, res) => {
   }
 
   Project.findById(projectId)
-    .populate("tasks")
     .then(project => {
       if (!project) {
         res.status(404).json({ message: "Project not found" });
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
+/*
 // POST /api/projects
 router.post("/", (req, res) => {
   // create 1 project
