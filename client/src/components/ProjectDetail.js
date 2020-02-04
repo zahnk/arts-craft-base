@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form } from "react-bootstrap";
+// import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 
 
@@ -11,6 +11,7 @@ class ProjectDetail extends Component {
 
   getData = () => {
     const projectId = this.props.match.params.id;
+    console.log("ProjectId: ", projectId);
     axios
       .get(`/api/projects/${projectId}`)
       .then(response => {
@@ -20,6 +21,7 @@ class ProjectDetail extends Component {
         });
       })
       .catch(err => {
+        console.log("Error 404", err)
         if (err.response.status === 404) {
           this.setState({
             error: err.response.data.message
@@ -29,11 +31,12 @@ class ProjectDetail extends Component {
   };
 
   componentDidMount() {
+    console.log("componentDidMount")
     this.getData();
   }
 
   render() {
-    console.log("projectDetails.render");
+    console.log("projectDetails.render", this.state.project);
     return (
       <div>
         <h1>{this.state.project.name}</h1>
