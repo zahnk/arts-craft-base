@@ -7,7 +7,9 @@ import AppFooter from "./components/AppFooter";
 
 import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
+import Components from "./components/Components";
 import ProjectDetail from "./components/ProjectDetail";
+
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 
@@ -25,6 +27,14 @@ class App extends React.Component {
   projectsRoute = props => {
     if (this.state.user) {
       return <Projects {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+  componentsRoute = props => {
+    if (this.state.user) {
+      return <Components {...props} />;
     } else {
       return <Redirect to="/" />;
     }
@@ -48,9 +58,7 @@ class App extends React.Component {
             <Route exact path="/projects/:id" render={
               props => <ProjectDetail user={this.state.user} {...props} />
             }/>
-            
-            }/>
-          
+            <Route exact path="/components" render={this.componentsRoute}/>
           </Switch>
         </div>
         <div className="AppFooterSpace"></div>

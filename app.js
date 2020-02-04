@@ -91,8 +91,8 @@ app.use("/", index);
 const projectRoutes = require("./routes/project");
 app.use("/api/projects", projectRoutes);
 
-const taskRoutes = require("./routes/task");
-app.use("/api/tasks", taskRoutes);
+const componentRoutes = require("./routes/component");
+app.use("/api/components", componentRoutes);
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
