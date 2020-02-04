@@ -18,7 +18,7 @@ export default class AppFooter extends Component {
           <img alt="s logo" src="../s-logo_w_s.png" className="d-inline-block align-top" />{' '}
           <img alt="a logo" src="../a-logo_w_s.png" className="d-inline-block align-top" />{'  '}
           <img alt="p logo" src="../p-logo_w_s.png" className="d-inline-block align-top" />{' '}
-          <span className="span">(c) 2020 by <em>J.T.</em> &amp; <em>S.V.</em> &amp; <em>K.Z</em> &amp; <em>D.B</em></span>
+          <span className="span">(c) 2020 by <em>Juliane</em> &amp; <em>Susanne</em> &amp; <em>Kai</em> &amp; <em>Dirk</em></span>
         </Navbar.Brand>
       </Navbar>
     )

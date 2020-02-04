@@ -15,3 +15,64 @@
 .fa-m-b:before{
   margin-left: 5px;
 }
+
+.card-img-overlay, .card-footer { padding: 0px; }
+
+.transparentCardHeader.card-header {
+  background-color: rgba(128,128,128,0.25);
+  color: black;
+  white-space: nowrap;
+  width: 100%;                   
+  overflow: hidden;              /* "overflow"-Wert darf nicht "visible" sein */ 
+  text-overflow: ellipsis;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.50);
+  color: black;
+}
+
+@media (max-width: 500px) {
+  .card-columns { column-count: 1; }
+  .projectImage {
+    min-height:150px;
+    max-height:150px;
+    object-fit: cover;
+  }
+}
+@media (min-width: 501px) and (max-width: 800px) {
+  .card-columns { column-count: 2; }
+  .projectImage {
+    min-height:175px;
+    max-height:175px;
+    object-fit: cover;
+  }
+}
+@media (min-width: 801px) and (max-width: 1200px) {
+  .card-columns { column-count: 3; }
+  .projectImage {
+    min-height:200px;
+    max-height:200px;
+    object-fit: cover;
+  }
+}
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .card-columns { column-count: 4; }
+  .projectImage {
+    min-height:225px;
+    max-height:225px;
+    object-fit: cover;
+  }
+}
+@media (min-width: 1601px) {
+  .card-columns { column-count: 5; }
+  .projectImage {
+    min-height:250px;
+    max-height:250px;
+    object-fit: cover;
+  }
+}
+
