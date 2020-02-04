@@ -20,9 +20,7 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/arts-craft-base", {useNewUrlParser: true, useUnifiedTopology: true}, {
-    useNewUrlParser: true
-  })
+  .connect("mongodb://localhost/arts-craft-base", {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`

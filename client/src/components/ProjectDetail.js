@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button, ButtonToolbar } from "react-bootstrap";
 import axios from "axios";
-import { deleteProject } from "../services/delete";
+
 
 class ProjectDetail extends Component {
   state = {
@@ -12,8 +12,20 @@ class ProjectDetail extends Component {
   handleDelete = () => {
     const projectId = this.state.project._id;
     console.log ("delete project", projectId);
-    deleteProject(projectId);
+    this.deleteProject(projectId);
   }
+
+  deleteProject = (projectId) => {
+    console.log("im delete.js gelandet", projectId);
+    const deletePath=`/api/projects/${projectId}`;
+    axios.delete(deletePath)
+            .then(()=> {
+              this.props.history.push("/projects")
+            })
+            .catch(err=>{
+              console.log (err);
+            })
+  };
 
   getData = () => {
     const projectId = this.props.match.params.id;

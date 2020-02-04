@@ -56,6 +56,7 @@ class App extends React.Component {
               props => <Login {...props} setUser={this.setUser} />
             }/>
             <Route exact path="/projects" render={this.projectsRoute}/>
+            
             <Route exact path="/projects/:id" render={
               props => <ProjectDetail user={this.state.user} {...props} />
             }/>
