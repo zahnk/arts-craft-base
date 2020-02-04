@@ -9,6 +9,7 @@ import Startpage from "./components/Startpage";
 import Projects from "./components/Projects";
 import Components from "./components/Components";
 import ProjectDetail from "./components/ProjectDetail";
+import ComponentDetail from "./components/ComponentDetail";
 
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -59,6 +60,9 @@ class App extends React.Component {
               props => <ProjectDetail user={this.state.user} {...props} />
             }/>
             <Route exact path="/components" render={this.componentsRoute}/>
+            <Route exact path="/components/:id" render={
+              props => <ComponentDetail user={this.state.user} {...props} />
+            }/>
           </Switch>
         </div>
         <div className="AppFooterSpace"></div>
