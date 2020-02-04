@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProjectList from "./ProjectList";
+import { Card } from "react-bootstrap";
 
 
 class Projects extends Component {
@@ -29,8 +30,11 @@ class Projects extends Component {
     console.log("Projects.render"+this.props.location.pathname);
     return (
       <div>
-       <h1>Projects</h1>
-         <ProjectList projects={this.state.projects}/>
+        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
+          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Projects</Card.Header>
+        </Card>
+
+        <ProjectList projects={this.state.projects}/>
       </div>
     );
   }

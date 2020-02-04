@@ -1,20 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { CardColumns } from "react-bootstrap";
+import ProjectCard from "./ProjectCard";
 
-const ProjectList = props => {
-  return (
-    <div>
-      {props.projects.map(project => {
-        return (
-          <div key={project._id}>
-            <h3>
-              <Link to={`/projects/${project._id}`}>{project.name}</Link>
-            </h3>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+export default class ProjectList extends Component {
+  constructor(){
+    super()
+    this.state = {
+    }
+  };
 
-export default ProjectList;
+  render() {
+    return (
+      <CardColumns>
+        {this.props.projects.map( (project,i) => {
+          project.img = project.img || `def-p-${Math.floor(Math.random()*6)}.png`;
+          return (
+            <ProjectCard key={project._id} project={project} />
+          );
+        })}
+      </CardColumns>
+    )
+  }
+}

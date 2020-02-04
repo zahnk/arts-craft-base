@@ -34,7 +34,7 @@ export default class AppMenu extends Component {
 
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" style={{textAlign: "left"}}>
+        <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" fixed="top" style={{textAlign: "left"}}>
           <Navbar.Brand>
           <img
             alt="arts-craft-base logo" src="../arts_craft_base_logo.svg"
@@ -66,22 +66,25 @@ export default class AppMenu extends Component {
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/templates"><i className="far fa-plus-square fa-a"></i>Create new Template</NavDropdown.Item>
                 </NavDropdown>
+                <Navbar.Text style={{ padding: "5px 0px"}}></Navbar.Text>
               </Nav>
               <Nav>
-                <Navbar.Text><span className="span">[Signed in as: <em>{this.props.user.username}</em>]</span></Navbar.Text>
+                <Navbar.Text><span className="abtSignedIn">[Signed in as: <em>{this.props.user.username}</em>]</span></Navbar.Text>
                 <Navbar.Text style={{ padding: "0px 10px"}}></Navbar.Text>
                 <Nav.Link onClick={this.handleLogout}><i className="fas fa-sign-out-alt fa-lg fa-m-a"></i>Logout</Nav.Link>
-                <Nav.Link onClick={this.showAbout}><i className="fas fa-info fa-lg fa-m-a"></i>About</Nav.Link>
+                <Nav.Link onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-m-a"></i>About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           ) : (
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a"></i>Home</Nav.Link>
+                <Navbar.Text style={{ padding: "0px"}}></Navbar.Text>
               </Nav>
               <Nav>
                 <Nav.Link href="/signup"><i className="fas fa-user-plus fa-lg fa-m-a"></i>Signup</Nav.Link>
                 <Nav.Link href="/login"><i className="fas fa-sign-in-alt fa-lg fa-m-a"></i>Login</Nav.Link>
+                <Nav.Link onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-m-a"></i>About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           )}
