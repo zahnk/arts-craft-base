@@ -9,6 +9,24 @@ class ComponentDetail extends Component {
     error: "",
   };
 
+  handleDelete = () => {
+    const componentId = this.state.component._id;
+    console.log ("delete component", componentId);
+    this.deleteComponent(componentId);
+  }
+
+  deleteComponent = (componentId) => {
+    console.log("im delete.js gelandet", componentId);
+    const deletePath=`/api/components/${componentId}`;
+    axios.delete(deletePath)
+            .then(()=> {
+              this.props.history.push("/components")
+            })
+            .catch(err=>{
+              console.log (err);
+            })
+  };
+
   getData = () => {
     const componentId = this.props.match.params.id;
  
@@ -51,7 +69,7 @@ class ComponentDetail extends Component {
 
         <ButtonToolbar className="justify-content-center">
           <Button className="mr-5" size="lg"><i class="far fa-edit fa-a"></i>Edit</Button>
-          <Button className="ml-5" size="lg"><i class="far fa-trash-alt fa-a"></i>Delete </Button>
+          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
       </div>
