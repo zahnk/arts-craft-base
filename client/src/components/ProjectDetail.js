@@ -62,7 +62,7 @@ class ProjectDetail extends Component {
 
     return (
       <div>
-        <Card bg="primary" text="white" style={{ marginBottom: "10px" }}>
+        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
         </Card>
 
@@ -75,8 +75,8 @@ class ProjectDetail extends Component {
         <br />
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg"><i class="far fa-edit fa-a"></i>Edit</Button>
-          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-a"></i>Delete</Button>
+          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
         </ButtonToolbar>
       </div>
     );

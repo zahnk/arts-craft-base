@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 // GET /api/projects
 router.get("/", (req, res) => {
-  console.log("PJ GET", req)
+  // console.log("PJ GET", req)
   // return all projects
  
   Project.find()

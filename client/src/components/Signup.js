@@ -66,7 +66,7 @@ class Signup extends Component {
                       onChange={this.handleChange}
                     />
                   </Form.Group>
-                  <Button size="lg" variant="dark" type="submit">Sign up</Button>
+                  <Button size="lg" variant="primary" type="submit">Sign up</Button>
                 </Form>
               </Card.Body>
             </Card>

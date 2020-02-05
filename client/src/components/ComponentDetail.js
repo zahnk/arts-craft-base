@@ -42,7 +42,7 @@ class ComponentDetail extends Component {
 
     return (
       <div>
-        <Card bg="primary" text="white" style={{marginBottom: "10px"}}>
+        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Component Detail</Card.Header>
         </Card>
 
@@ -50,8 +50,8 @@ class ComponentDetail extends Component {
         <p>{this.state.component.description}</p>
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg"><i class="far fa-edit fa-a"></i>Edit</Button>
-          <Button className="ml-5" size="lg"><i class="far fa-trash-alt fa-a"></i>Delete </Button>
+          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button className="ml-5" size="lg"><i class="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
       </div>

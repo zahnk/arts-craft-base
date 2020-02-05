@@ -92,6 +92,9 @@ app.use("/api/projects", projectRoutes);
 const componentRoutes = require("./routes/component");
 app.use("/api/components", componentRoutes);
 
+const templateRoutes = require("./routes/template");
+app.use("/api/templates", templateRoutes);
+
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
