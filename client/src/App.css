@@ -14,13 +14,13 @@
 
 @keyframes App-logo-spin {
   from { transform: rotate3d(0,0,0,0deg);}
-  40% { transform: rotate3d(1.0,1.0,1.0,360deg);}
+  /* 40% { transform: rotate3d(1.0,1.0,1.0,360deg);} */
   50% { transform: rotate3d(1.0,1.0,1.0,360deg);}
-  90% { transform: rotate3d(0.0,0.0,0.0,0deg);}
+  /* 90% { transform: rotate3d(0.0,0.0,0.0,0deg);} */
   to { transform: rotate3d(0.0,0.0,0.0,0deg);}
 }
 
-.AppMenuSpace { margin-top: 60px; }
+.AppMenuSpace { margin-top: 80px; }
 .AppFooterSpace { margin-bottom: 60px; }
 
 h1, h2, h3, h4, h5, h6 { margin: 0 !important; }

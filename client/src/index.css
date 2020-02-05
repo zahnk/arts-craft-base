@@ -33,8 +33,14 @@ code {
     monospace;
 }
 
+.xxx a::after{ border: none; }
+.xxx .dropdown-menu { transform: translate3d(-100px, 0px, 0px); }
+.show .xxx .dropdown-menu { transform: translate3d(0px, 0px, 0px); }
+.xxx .fa-stack { margin-left: -10px; }
+
+.login-menue { background-color: rgba(255,255,255,0.20) !important; }
 .span { font-size: 1.0rem; }
-.span em, .abtSignedIn em { color: rgba(255,255,255,0.75); }
+.span em, .abtSignedIn em { color: rgba(255,255,255,1) !important; }
 .icons img { 
   display: block;
   max-width:50px;
@@ -44,6 +50,6 @@ code {
   margin: auto 5px;
 }
 
-.abtSignedIn {}
+.abtSignedIn { }
 
-a, a:hover, a:active, a:focus, a:visited { text-decoration: none !important; color: inherit;}
+a.card-link, a.card-link:hover, a.card-link:active, a.card-link:focus, a.card-link:visited { text-decoration: none !important; color: inherit;}
