@@ -39,5 +39,18 @@ Component.findById(componentId)
     });
 });
 
+// DELETE /api/components/:id
+router.delete("/:id", (req, res) => {
+  //console.log("express delete component",req.params.id)
+  const componentId = req.params.id;
+ Component.findByIdAndDelete(componentId)
+    .then( response => {
+      res.json("ok");
+      return;       
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
