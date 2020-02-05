@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button, ButtonToolbar } from "react-bootstrap";
 import axios from "axios";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 class ComponentDetail extends Component {
   state = {
@@ -49,8 +50,8 @@ class ComponentDetail extends Component {
         <p>{this.state.component.description}</p>
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg">Edit</Button>
-          <Button className="ml-5" size="lg"> Delete </Button>
+          <Button className="mr-5" size="lg"><i class="far fa-edit fa-a"></i>Edit</Button>
+          <Button className="ml-5" size="lg"><i class="far fa-trash-alt fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
       </div>
