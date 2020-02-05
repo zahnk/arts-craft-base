@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button, ButtonToolbar } from "react-bootstrap";
 import axios from "axios";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 class ComponentDetail extends Component {
   state = {
