@@ -41,7 +41,7 @@ class ComponentDetail extends Component {
 
     return (
       <div>
-        <Card bg="primary" text="white" style={{marginBottom: "10px"}}>
+        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Component Detail</Card.Header>
         </Card>
 

@@ -1,22 +1,34 @@
 const express = require("express");
 const router = express.Router();
-const Project = require("../models/Project");
+const Template = require("../models/Template");
+const Element = require("../models/Element");
+const mongoose = require("mongoose");
 
-// GET /api/projects
-router.get("/", (req, res) => {
-  // console.log("PJ GET", req)
-  // return all projects
- 
-  Project.find({})
-    .then(projects => {
-      res.json(projects);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
+// GET /api/templates
+router.get("/", async (req, res, next) => {
+  try {
+    // return all templates and elements
+    const allTemplates = await Template.find({});
+    
+    res.json( allTemplates );
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-const mongoose = require("mongoose");
+router.get("/elements", async (req, res, next) => {
+  try {
+    // return all templates and elements
+    const allElements = await Element.find({});
+    
+    res.json( allElements );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+/*
 // GET /api/projects/:id
 router.get("/:id", (req, res) => {
   // return 1 project w/ a given id

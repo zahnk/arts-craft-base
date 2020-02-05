@@ -2,20 +2,20 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 
-class ProjectDetail extends Component {
+class TemplateDetail extends Component {
   state = {
-    project: null,
+    template: null,
     error: "",
   };
 
   getData = () => {
-    const projectId = this.props.match.params.id;
+    const templateId = this.props.match.params.id;
  
     axios
-      .get(`/api/projects/${projectId}`)
+      .get(`/api/templates/${templateId}`)
       .then(response => {
         this.setState({
-          project: response.data,
+          template: response.data,
         });
       })
       .catch(err => {
@@ -32,18 +32,14 @@ class ProjectDetail extends Component {
   }
 
   render() {
-    console.log("ProjectDetails State:", this.state);
-    console.log("ProjectDetails Props:", this.props);
     if (this.state.error) { 
       return <p>{this.state.error}</p>;
-    } else if (this.state.project === null) {
-      return <div></div>;
     }
 
     return (
       <div>
         <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
-          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
+          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Template Detail</Card.Header>
         </Card>
 
         <h1>{this.state.project.name}</h1>
@@ -58,4 +54,4 @@ class ProjectDetail extends Component {
   }
 }
 
-export default ProjectDetail;
+export default TemplateDetail;

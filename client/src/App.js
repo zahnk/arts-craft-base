@@ -6,10 +6,16 @@ import AppMenue from "./components/AppMenu";
 import AppFooter from "./components/AppFooter";
 
 import Startpage from "./components/Startpage";
+
 import Projects from "./components/Projects";
 import Components from "./components/Components";
+import Templates from "./components/Templates";
+
 import ProjectDetail from "./components/ProjectDetail";
 import ComponentDetail from "./components/ComponentDetail";
+// import TemplateDetail from "./components/TemplateDetail";
+
+import TemplateCreate from "./components/TemplateCreate";
 
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -26,6 +32,7 @@ class App extends React.Component {
   };
 
   projectsRoute = props => {
+    console.log( "projectsRoute", props );
     if (this.state.user) {
       return <Projects {...props} />;
     } else {
@@ -33,9 +40,46 @@ class App extends React.Component {
     }
   }
 
+  projectsDetailRoute = props => {
+    console.log( "projectsDetailRoute", props );
+    if (this.state.user) {
+      return <ProjectDetail user={this.state.user} {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
   componentsRoute = props => {
+    console.log( "componentsRoute", props );
     if (this.state.user) {
       return <Components {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+  componentsDetailRoute = props => {
+    console.log( "componentsDetailRoute", props );
+    if (this.state.user) {
+      return <ComponentDetail user={this.state.user} {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+  templatesRoute = props => {
+    console.log( "templatesRoute", props );
+    if (this.state.user) {
+      return <Templates {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+  templatesCreateRoute = props => {
+    console.log( "templatesCreateRoute", props );
+    if (this.state.user) {
+      return <TemplateCreate {...props} />;
     } else {
       return <Redirect to="/" />;
     }
@@ -55,14 +99,21 @@ class App extends React.Component {
             <Route exact path="/login" render={
               props => <Login {...props} setUser={this.setUser} />
             }/>
+
             <Route exact path="/projects" render={this.projectsRoute}/>
-            <Route exact path="/projects/:id" render={
-              props => <ProjectDetail user={this.state.user} {...props} />
-            }/>
+            <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
+
             <Route exact path="/components" render={this.componentsRoute}/>
-            <Route exact path="/components/:id" render={
-              props => <ComponentDetail user={this.state.user} {...props} />
-            }/>
+            <Route exact path="/components/:id" render={this.componentsDetailRoute}/>
+
+            <Route exact path="/templates" render={this.templatesRoute}/>
+            <Route exact path="/templates/create" render={this.templatesCreateRoute}/>
+
+{/*
+            <Route exact path="/templates/:id" render={props => { this.templatesRoute( "detail", props )}}/>
+            <Route exact path="/templates/create" render={props => { this.templatesRoute( "create", props )}}/>
+*/}
+
           </Switch>
         </div>
         <div className="AppFooterSpace"></div>

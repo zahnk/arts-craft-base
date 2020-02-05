@@ -37,7 +37,7 @@ export default class AppAbout extends Component {
             </Col>
           </Row>
           <hr />
-          <p>(c) 2020 by <em>Juliane Trapp</em> &amp; <em>Susanne Vogl</em> &amp; <em>Kai Zahn</em> &amp; <em>Dirk Biermann</em></p> 
+          <p>(c) 2020 by <em>Juliane Trapp</em> &amp; <em>Susanne Vogl</em> &amp; <em>Kai Zahn</em> &amp; <em>Dirk Biermann</em></p>
         </Modal.Body>
         <Modal.Footer>
           <Button size="lg" variant="dark" onClick={this.closeAbout}><i className="fas fa-times fa-m-a"></i>Close</Button>
