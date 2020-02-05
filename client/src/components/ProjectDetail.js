@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button, ButtonToolbar } from "react-bootstrap";
 import axios from "axios";
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 class ProjectDetail extends Component {
   state = {
@@ -8,9 +10,27 @@ class ProjectDetail extends Component {
     error: "",
   };
 
+  handleDelete = () => {
+    const projectId = this.state.project._id;
+    console.log ("delete project", projectId);
+    this.deleteProject(projectId);
+  }
+
+  deleteProject = (projectId) => {
+    console.log("im delete.js gelandet", projectId);
+    const deletePath=`/api/projects/${projectId}`;
+    axios.delete(deletePath)
+            .then(()=> {
+              this.props.history.push("/projects")
+            })
+            .catch(err=>{
+              console.log (err);
+            })
+  };
+
   getData = () => {
     const projectId = this.props.match.params.id;
- 
+  
     axios
       .get(`/api/projects/${projectId}`)
       .then(response => {
@@ -31,10 +51,10 @@ class ProjectDetail extends Component {
     this.getData();
   }
 
+
   render() {
-    console.log("ProjectDetails State:", this.state);
-    console.log("ProjectDetails Props:", this.props);
-    if (this.state.error) { 
+    console.log(this.state, this.props);
+    if (this.state.error) {
       return <p>{this.state.error}</p>;
     } else if (this.state.project === null) {
       return <div></div>;
@@ -52,7 +72,12 @@ class ProjectDetail extends Component {
         <p>{this.state.project.description}</p>
         <p>{this.state.project.notes}</p>
         <p>{this.state.project.status}</p>
+        <br />
 
+        <ButtonToolbar className="justify-content-center">
+          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+        </ButtonToolbar>
       </div>
     );
   }

@@ -69,7 +69,7 @@ class Login extends Component {
                       onChange={this.handleChange}
                     />
                   </Form.Group>
-                  <Button size="lg" variant="dark" type="submit">Log in</Button>
+                  <Button size="lg" variant="primary" type="submit">Log in</Button>
                 </Form>
               </Card.Body>
             </Card>

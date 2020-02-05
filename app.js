@@ -20,7 +20,7 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/arts-craft-base", {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/arts-craft-base", {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -55,7 +55,7 @@ app.use(
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // ADD SESSION SETTINGS HERE:
@@ -97,5 +97,9 @@ app.use("/api/templates", templateRoutes);
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+
+app.use((req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;

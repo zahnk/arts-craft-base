@@ -97,8 +97,8 @@ export default class TemplateCreate extends Component {
                   />
                 </Form.Group>
               </Form.Row>
-              <Button className="mr-2" size="lg" variant="dark" type="">ADD ELEMENT</Button>
-              <Button className="mr-2" size="lg" variant="dark" type="submit">SUBMITT TEMPLATE</Button>
+              <Button className="mr-2" size="lg" variant="primary" type=""><i className="far fa-plus-square fa-lg fa-a"></i>Add new Element</Button>
+              <Button className="mr-2" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Template</Button>
             </Form>
           </Card.Body>
         </Card>

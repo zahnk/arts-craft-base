@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
+const mongoose = require("mongoose");
 
 // GET /api/projects
 router.get("/", (req, res) => {
   // console.log("PJ GET", req)
   // return all projects
  
-  Project.find({})
+  Project.find()
     .then(projects => {
       res.json(projects);
     })
@@ -16,7 +17,8 @@ router.get("/", (req, res) => {
     });
 });
 
-const mongoose = require("mongoose");
+
+
 // GET /api/projects/:id
 router.get("/:id", (req, res) => {
   // return 1 project w/ a given id
@@ -38,54 +40,19 @@ router.get("/:id", (req, res) => {
     });
 });
 
-/*
-// POST /api/projects
-router.post("/", (req, res) => {
-  // create 1 project
-
-  Project.create({
-    title: req.body.title,
-    description: req.body.description,
-    owner: req.user._id
-  })
-    .then(project => {
-      res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-
-// PUT /api/projects/:id
-router.put("/:id", (req, res) => {
-  Project.findByIdAndUpdate(
-    req.params.id,
-    {
-      title: req.body.title,
-      description: req.body.description
-    },
-    { new: true }
-  )
-    .then(project => {
-      res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
 
 // DELETE /api/projects/:id
 router.delete("/:id", (req, res) => {
-  Project.findByIdAndDelete(req.params.id)
-    .then(project => {
-      // Deletes all the documents in the Task collection where the value for the `_id` field is present in the `project.tasks` array
-      return Task.deleteMany({ _id: { $in: project.tasks } }).then(() =>
-        res.json({ message: "ok" })
-      );
+  //console.log("express delete project",req.params.id)
+  const projectId = req.params.id;
+ Project.findByIdAndDelete(projectId)
+    .then( response => {
+      res.json("ok");
+      return;       
     })
     .catch(err => {
       res.status(500).json(err);
     });
 });
-*/
+
 module.exports = router;

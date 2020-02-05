@@ -41,7 +41,7 @@ export default class Templates extends Component {
               
         <Card className="text-left" style={{marginBottom: "10px", backgroundColor: "transparent"}}>
           <Card.Header>
-            <Button className="mr-2" size="lg" variant="dark" href={'/templates/create'}><i className="fas fa-plus fa-a"></i>CREATE TEMPLATE</Button>
+            <Button className="mr-2" size="lg" variant="primary" href={'/templates/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Template</Button>
           </Card.Header>
         </Card>
       </div>
