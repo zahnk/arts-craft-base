@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Button, ButtonToolbar } from "react-bootstrap";
+import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -8,7 +9,20 @@ class ProjectDetail extends Component {
   state = {
     project: null,
     error: "",
+    showConfirm: false
   };
+
+  showConfirmDelete = () => {
+    this.setState({ showConfirm: true }); 
+  }
+
+  deleteProjectConfirmed = (confirmState) => {
+    console.log( "Delete Project Confirmed:", confirmState );
+    if( confirmState === true ){
+      this.handleDelete();
+    }
+    this.setState({ showConfirm: false }); 
+  }
 
   handleDelete = () => {
     const projectId = this.state.project._id;
@@ -75,9 +89,12 @@ class ProjectDetail extends Component {
         <br />
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
-          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+          <Button className="mr-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
         </ButtonToolbar>
+
+        <ConfirmDelete show={this.state.showConfirm} close={this.deleteProjectConfirmed} title={this.state.project.name} />
+
       </div>
     );
   }
