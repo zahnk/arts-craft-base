@@ -68,8 +68,8 @@ class ComponentDetail extends Component {
         <p>{this.state.component.description}</p>
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
-          <Button className="ml-5" size="lg" onClick={this.handleDelete}><i class="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
+          <Button className="mr-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button className="ml-5" size="lg" onClick={this.handleDelete}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
       </div>

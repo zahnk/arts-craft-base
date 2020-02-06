@@ -75,8 +75,8 @@ class ProjectDetail extends Component {
         <br />
 
         <ButtonToolbar className="justify-content-center">
-          <Button className="mr-5" size="lg"><i class="far fa-edit fa-lg fa-a"></i>Edit</Button>
-          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i class="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+          <Button className="mr-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+          <Button onClick={this.handleDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
         </ButtonToolbar>
       </div>
     );
