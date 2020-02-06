@@ -12,7 +12,7 @@ export default class ComponentCard extends Component {
   render() {
     return (
       <Card border="secondary">
-        <Card.Img className="componentImage" src={this.props.component.imageUrl} alt="Component Image" />
+        <Card.Img className="componentImage" src={this.props.component.img} alt="Component Image" />
         <Card.ImgOverlay>
           <Card.Header className="transparentCardHeader" as="h4">{this.props.component.name}</Card.Header>
           <Card.Footer as="h5">
