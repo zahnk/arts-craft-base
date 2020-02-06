@@ -17,6 +17,8 @@ import ComponentDetail from "./components/ComponentDetail";
 
 import ComponentCreate from "./components/ComponentCreate";
 import TemplateCreate from "./components/TemplateCreate";
+import ProjectCreate from "./components/ProjectCreate";
+
 
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -45,6 +47,15 @@ class App extends React.Component {
     console.log( "projectsDetailRoute", props );
     if (this.state.user) {
       return <ProjectDetail user={this.state.user} {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+  projectsCreateRoute = props => {
+    console.log( "projectsCreateRoute", props );
+    if (this.state.user) {
+      return <ProjectCreate user={this.state.user} {...props} />;
     } else {
       return <Redirect to="/" />;
     }
@@ -111,7 +122,9 @@ class App extends React.Component {
             }/>
 
             <Route exact path="/projects" render={this.projectsRoute}/>
+            <Route exact path="/projects/create" render={this.projectsCreateRoute}/>
             <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
+            
 
             <Route exact path="/components" render={this.componentsRoute}/>
             <Route exact path="/components/create" render={this.componentsCreateRoute}/>

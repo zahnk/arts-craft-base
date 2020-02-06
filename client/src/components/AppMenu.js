@@ -55,7 +55,7 @@ export default class AppMenu extends Component {
                 <NavDropdown title={<span><i className="fas fa-sitemap fa-lg fa-m-a"></i>Project</span>} id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/projects"><i className="fas fa-list fa-lg fa-a"></i>All Projects</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/project/create"><i className="far fa-plus-square fa-lg fa-a"></i>Create new Project</NavDropdown.Item>
+                  <NavDropdown.Item href="/projects/create"><i className="far fa-plus-square fa-lg fa-a"></i>Create new Project</NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title={<span><i className="fas fa-square fa-lg fa-m-a"></i>Component</span>} id="collasible-nav-dropdown">
