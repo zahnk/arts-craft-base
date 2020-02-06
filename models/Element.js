@@ -6,8 +6,8 @@ const elementSchema = new Schema({
   description:    { type: String },
   eltype:         { type: String },
 
-  fixedProps:  {},
-  variableProps:  {},
+  fixedProps:  [],
+  variableProps:  [],
   status:         { type: Boolean}
 },{
   timestamps: {

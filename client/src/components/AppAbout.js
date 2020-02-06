@@ -40,7 +40,7 @@ export default class AppAbout extends Component {
           <p>(c) 2020 by <em>Juliane Trapp</em> &amp; <em>Susanne Vogl</em> &amp; <em>Kai Zahn</em> &amp; <em>Dirk Biermann</em></p>
         </Modal.Body>
         <Modal.Footer>
-          <Button size="lg" variant="dark" onClick={this.closeAbout}><i className="fas fa-times fa-m-a"></i>Close</Button>
+          <Button size="lg" variant="primary" onClick={this.closeAbout}><i className="fas fa-times fa-m-a"></i>Close</Button>
         </Modal.Footer>
       </Modal>
     )

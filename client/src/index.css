@@ -38,6 +38,14 @@ code {
 .show .xxx .dropdown-menu { transform: translate3d(0px, 0px, 0px); }
 .xxx .fa-stack { margin-left: -10px; }
 
+.col-form-label, .form-label { text-align: right; }
+.ControlRow { display: flex; padding: 0px; margin-bottom: 0px;}
+.Control{ margin: 0px 10px; }
+.Control:first-child { margin-left: 0px; }
+.Control:last-child{ margin-right: 0px; }
+
+.ElementRow .form-group { margin-bottom: 0px; }
+.ElementRow .card-body { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .login-menue { background-color: rgba(255,255,255,0.20) !important; }
 .span { font-size: 1.0rem; }
 .span em, .abtSignedIn em { color: rgba(255,255,255,1) !important; }
