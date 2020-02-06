@@ -53,4 +53,25 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+// POST /api/templates
+router.post("/create", (req, res) => {
+  // create 1 component
+  console.log("cmp create" , JSON.stringify(req.body));
+  Component.create({
+    name: req.body.name,
+    owner: req.user._id,
+    description: req.body.description,
+    imageUrl: req.body.imageUrl,
+    //to be inserted-->> components: []
+    projects: []
+    //template: req.body.template
+  })
+    .then(component => {
+      res.json(component);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
