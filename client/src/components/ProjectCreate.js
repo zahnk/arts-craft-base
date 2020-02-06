@@ -6,38 +6,64 @@ export default class ProjectCreate extends Component {
   constructor(props){
     super(props)
     this.state = {
-     
+      name:         "",
+      owner:        this.props.user,
+      description:  "",
+      notes:     "",
+      //components: false,
+      status: 'New'
     }
   }
 
-  handleChangeElement = (event) => {
-    console.log( "OPT:", event.target.value );
+  handleChange = event => {
+    this.setState({ 
+      [event.target.name]: event.target.value 
+    });
   }
 
-  handleChange = (event) => {
-    console.log( "CHG:", event.target );
-  }
-
-  /*
-  getData = () => {
-    axios
-      .get("/api/project")
-      .then(response => {
-        this.setState({
-          elements: response.data
+  handleSubmit = event => {
+    if (event) {
+      event.preventDefault();
+    }
+    console.log("SUBMIT", this.state);
+    // check if the image is already uploaded to the cloud or no image was selected
+    
+      // axios.post('http://localhost:5555/api/projects')
+      axios
+        .post("/api/projects/create", {
+          name: this.state.name,
+          owner: this.state.owner,
+          description: this.state.description,
+          notes: this.state.notes,
+          status: this.state.status
+        })
+        .then(response => {
+          console.log("then after post");
+          //this.props.refreshData();
+          this.setState({
+            name:         "",
+            description:  "",
+            notes:     "",
+            //components: false,
+            status: false
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
+       // set a flag that the project got submitted
+      this.setState({
+        submitted: true
       })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-*/
+    };
+
+
   componentDidMount() {
   //  this.getData();
   }
 
   render() {
-    console.log("this.props.user",this.props.user);
+    console.log(this.state);
     
     return (
       <div>
@@ -50,7 +76,7 @@ export default class ProjectCreate extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="4">
-                  <Form.Label htmlFor="projectName">Project Name: </Form.Label>
+                  <Form.Label htmlFor="name">Project Name: </Form.Label>
                   <Form.Control
                     as="input"
                     type="text"
@@ -67,41 +93,14 @@ export default class ProjectCreate extends Component {
                     as="textarea"
                     name="description"
                     id="description"
-                    value={this.state.projectDescription}
+                    value={this.state.description}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
               </Form.Row>
-              <Form.Row>
-                <Form.Group as={Col} md="4">
-                  <Form.Label htmlFor="elementType">Element Type:</Form.Label>
-                  <Form.Control
-                    as="select"
-                    name="elementType"
-                    id="elementType"
-                    onChange={this.handleChangeElement}
-                  >
-                  {
-                    this.state.elements.map( element => {
-                      return <option key={element._id} value={element._id}>{element.element}</option>
-                    })
-                  }
-                  </Form.Control>
-                </Form.Group>
-                <Form.Group as={Col} md="8">
-                  <Form.Label htmlFor="elementDescription">Description: </Form.Label>
-                  <Form.Control
-                    as="input"
-                    type="text"
-                    name="elementDescription"
-                    id="elementDescription"
-                    value={this.state.elementDescription}
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-              </Form.Row>
-              <Button className="mr-2" size="lg" variant="primary" type=""><i className="far fa-plus-square fa-lg fa-a"></i>Add new Element</Button>
-              <Button className="mr-2" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Template</Button>
+            
+              <Button className="mr-2" size="lg" variant="primary" type=""><i className="far fa-plus-square fa-lg fa-a"></i>Cancel</Button>
+              <Button className="mr-2" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Project</Button>
             </Form>
           </Card.Body>
         </Card>

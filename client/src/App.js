@@ -111,8 +111,9 @@ class App extends React.Component {
             }/>
 
             <Route exact path="/projects" render={this.projectsRoute}/>
-            <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
             <Route exact path="/projects/create" render={this.projectsCreateRoute}/>
+            <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
+            
 
             <Route exact path="/components" render={this.componentsRoute}/>
             <Route exact path="/components/:id" render={this.componentsDetailRoute}/>
