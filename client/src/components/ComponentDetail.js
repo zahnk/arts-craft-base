@@ -11,6 +11,36 @@ class ComponentDetail extends Component {
     showConfirm: false
   };
 
+  showConfirmDelete = () => {
+    this.setState({ showConfirm: true }); 
+  }
+
+  deleteComponentConfirmed = (confirmState) => {
+    console.log( "Delete Component Confirmed:", confirmState );
+    if( confirmState === true ){
+      this.handleDelete();
+    }
+    this.setState({ showConfirm: false }); 
+  }
+
+  handleDelete = () => {
+    const componentId = this.state.component._id;
+    console.log ("delete component", componentId);
+    this.deleteComponent(componentId);
+  }
+
+  deleteComponent = (componentId) => {
+    console.log("im delete.js gelandet", componentId);
+    const deletePath=`/api/components/${componentId}`;
+    axios.delete(deletePath)
+            .then(()=> {
+              this.props.history.push("/components")
+            })
+            .catch(err=>{
+              console.log (err);
+            })
+  };
+
   getData = () => {
     const componentId = this.props.match.params.id;
  
@@ -30,13 +60,12 @@ class ComponentDetail extends Component {
       });
   };
 
-  showConfirmDelete = () => {
-    this.setState({ showConfirm: true }); 
-  }
-
   deleteComponent = (confirmState) => {
-    console.log( "Delete Component:", confirmState );
-    this.setState({ showConfirm: false }); 
+    if( confirmState === true ) {
+      this.handleDelete();
+    } else {
+      this.setState({ showConfirm: false }); 
+    }
   }
 
   componentDidMount() {
@@ -65,7 +94,7 @@ class ComponentDetail extends Component {
           <Button className="ml-5" size="lg" onClick={this.showConfirmDelete}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
-        <ConfirmDelete show={this.state.showConfirm} close={this.deleteComponent} title="Component" />
+        <ConfirmDelete show={this.state.showConfirm} close={this.deleteComponentConfirmed} title="Component" />
       </div>
     );
   }
