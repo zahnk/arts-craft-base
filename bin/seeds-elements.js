@@ -23,17 +23,17 @@ components.push( {
     description: 'FORM-INPUT of type text',
     eltype:      'text',
 
-    fixedProps:    {
-      name:        { typ: 'String',  def: '' },
-      label:       { typ: 'String',  def: '' },
-      readonly:    { typ: 'Boolean', def: false },
-      placeholder: { typ: 'String',  def: '' },
-      required:    { typ: 'Boolean', def: false }
-    },
+    fixedProps:    [
+      { prop: 'name'        , typ: 'String',  def: '' },
+      { prop: 'label'       , typ: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'String',  def: '' },
+      { prop: 'required'    , typ: 'Boolean', def: false }
+    ],
 
-    variableProps: {
-      maxlength:   { typ: 'Number', def: 100 }
-    },
+    variableProps: [
+      { prop: 'maxlength'   , typ: 'Number', def: 100 }
+    ],
     status: false 
   }
 );
@@ -43,19 +43,19 @@ components.push( {
     description: 'FORM-INPUT of type number',
     eltype:      'number',
 
-    fixedProps:    {
-      name:        { typ: 'String',  def: '' },
-      label:       { typ: 'String',  def: '' },
-      readonly:    { typ: 'Boolean', def: false },
-      placeholder: { typ: 'String',  def: '' },
-      required:    { typ: 'Boolean', def: false }
-    },
+    fixedProps:    [
+      { prop: 'name'        , typ: 'String',  def: '' },
+      { prop: 'label'       , typ: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'String',  def: '' },
+      { prop: 'required'    , typ: 'Boolean', def: false }
+    ],
 
-    variableProps: {
-      min:         { typ: 'Number', def: 0 },
-      max:         { typ: 'Number', def: 100 },
-      step:        { typ: 'Number', def: 1 }
-    },
+    variableProps: [
+      { prop: 'min'         , typ: 'Number', def: 0 },
+      { prop: 'max'         , typ: 'Number', def: 100 },
+      { prop: 'step'        , typ: 'Number', def: 1 }
+    ],
     status: false 
   }
 );
@@ -65,17 +65,17 @@ components.push( {
     description: 'FORM-INPUT of type color',
     eltype:      'color',
 
-    fixedProps:    {
-      name:        { typ: 'String',  def: '' },
-      label:       { typ: 'String',  def: '' },
-      readonly:    { typ: 'Boolean', def: false },
-      placeholder: { typ: 'String',  def: '' },
-      required:    { typ: 'Boolean', def: false }
-    },
+    fixedProps:    [
+      { prop: 'name'        , typ: 'String',  def: '' },
+      { prop: 'label'       , typ: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'String',  def: '' },
+      { prop: 'required'    , typ: 'Boolean', def: false }
+    ],
 
-    variableProps: {
-      color:       { typ: 'String',  def: '#0000000' }
-    },
+    variableProps: [
+      { prop: 'color'       , typ: 'String',  def: '#0000000' }
+    ],
     status: false 
   }
 );
@@ -85,17 +85,17 @@ components.push( {
     description: 'FORM-INPUT of type checkbox',
     eltype:      'checkbox',
 
-    fixedProps:    {
-      name:        { typ: 'String',  def: '' },
-      label:       { typ: 'String',  def: '' },
-      readonly:    { typ: 'Boolean', def: false },
-      placeholder: { typ: 'String',  def: '' },
-      required:    { typ: 'Boolean', def: false }
-    },
+    fixedProps:    [
+      { prop: 'name'        , typ: 'String',  def: '' },
+      { prop: 'label'       , typ: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'String',  def: '' },
+      { prop: 'required'    , typ: 'Boolean', def: false }
+    ],
 
-    variableProps: {
-      checked:     { typ: 'Boolean', def: false }
-    },
+    variableProps: [
+      { prop: 'checked'     , typ: 'Boolean', def: false }
+    ],
     status: false 
   }
 );
@@ -105,18 +105,18 @@ components.push( {
     description: 'FORM-INPUT of type textarea',
     eltype:      'textarea',
 
-    fixedProps:    {
-      name:        { typ: 'String',  def: '' },
-      label:       { typ: 'String',  def: '' },
-      readonly:    { typ: 'Boolean', def: false },
-      placeholder: { typ: 'String',  def: '' },
-      required:    { typ: 'Boolean', def: false }
-    },
+    fixedProps:    [
+      { prop: 'name'        , typ: 'String',  def: '' },
+      { prop: 'label'       , typ: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'String',  def: '' },
+      { prop: 'required'    , typ: 'Boolean', def: false }
+    ],
 
-    variableProps: {
-      maxlength:   { typ: 'Number', def: 100 },
-      wrap:        { typ: 'String', def: 'soft' }
-    },
+    variableProps: [
+      { prop: 'maxlength'   , typ: 'Number', def: 100 },
+      { prop: 'wrap'        , typ: 'String', def: 'soft' }
+    ],
     status: false
   }
 );
