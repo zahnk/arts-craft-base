@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Button, ButtonToolbar } from "react-bootstrap";
+import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -7,7 +8,20 @@ class ComponentDetail extends Component {
   state = {
     component: null,
     error: "",
+    showConfirm: false
   };
+
+  showConfirmDelete = () => {
+    this.setState({ showConfirm: true }); 
+  }
+
+  deleteComponentConfirmed = (confirmState) => {
+    console.log( "Delete Component Confirmed:", confirmState );
+    if( confirmState === true ){
+      this.handleDelete();
+    }
+    this.setState({ showConfirm: false }); 
+  }
 
   handleDelete = () => {
     const componentId = this.state.component._id;
@@ -46,6 +60,14 @@ class ComponentDetail extends Component {
       });
   };
 
+  deleteComponent = (confirmState) => {
+    if( confirmState === true ) {
+      this.handleDelete();
+    } else {
+      this.setState({ showConfirm: false }); 
+    }
+  }
+
   componentDidMount() {
     this.getData();
   }
@@ -69,9 +91,10 @@ class ComponentDetail extends Component {
 
         <ButtonToolbar className="justify-content-center">
           <Button className="mr-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
-          <Button className="ml-5" size="lg" onClick={this.handleDelete}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
+          <Button className="ml-5" size="lg" onClick={this.showConfirmDelete}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete </Button>
         </ButtonToolbar>
         
+        <ConfirmDelete show={this.state.showConfirm} close={this.deleteComponentConfirmed} title="Component" />
       </div>
     );
   }
