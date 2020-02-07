@@ -72,11 +72,8 @@ export default class ComponentCreate extends Component {
     console.log(this.state);
     
     return (
-      <div>
-        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
-          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Components Create</Card.Header>
-        </Card>
-
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Create Component</h2>
         <Card style={{marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
             <Form onSubmit={this.handleSubmit}>
@@ -131,6 +128,7 @@ export default class ComponentCreate extends Component {
             </Form>
           </Card.Body>
         </Card>
+
         <Card style={{marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
           </Card.Body>
