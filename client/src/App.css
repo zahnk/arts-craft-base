@@ -24,12 +24,3 @@
 .AppFooterSpace { margin-bottom: 60px; }
 
 h1, h2, h3, h4, h5, h6 { margin: 0; }
-
-.projects-container {
-  display: flex;
-  padding: 5vh 5vw;
-}
-
-.projects-container > * {
-  flex: 1;
-}

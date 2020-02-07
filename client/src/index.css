@@ -35,9 +35,9 @@ code {
 }
 
 .xxx a::after{ border: none; }
-.xxx .dropdown-menu { transform: translate3d(-100px, 0px, 0px); }
+.xxx .dropdown-menu { transform: translate3d(-120px, 0px, 0px); }
 .show .xxx .dropdown-menu { transform: translate3d(0px, 0px, 0px); }
-.xxx .fa-stack { margin-left: -10px; }
+.xxx i { margin-left: +10px; }; 
 
 .col-form-label, .form-label { text-align: right; }
 .ControlRow { display: flex; padding: 0px; margin-bottom: 0px;}
@@ -51,6 +51,7 @@ code {
 .login-menue { background-color: rgba(255,255,255,0.20) !important; }
 .span { font-size: 1.0rem; }
 .span em, .abtSignedIn em { color: rgba(255,255,255,1) !important; }
+
 .icons img { 
   display: block;
   max-width:50px;
@@ -60,4 +61,74 @@ code {
   margin: auto 5px;
 }
 
+.sp {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.sp h1 {
+  text-shadow: 5px 5px 12px #000, 5px 5px 15px #000;
+  margin-bottom: 20px;
+}
+.sp .center {
+  box-shadow: 12px 12px 12px #000;
+}
+
+@media (max-width: 500px) {
+  .sp .center {
+    width: 95%;
+  }
+  .sp h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 501px) and (max-width: 800px) {
+  .sp .center {
+    width: 85%;
+  }
+  .sp h1 {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 801px) and (max-width: 1200px) {
+  .sp .center {
+    width: 75%;
+  }
+  .sp h1 {
+    font-size: 6rem;
+  }
+}
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .sp .center {
+    width: 60%;
+  }
+  .sp h1 {
+    font-size: 9rem;
+  }
+}
+@media (min-width: 1601px) {
+  .sp .center {
+    width: 50%;
+  }
+  .sp h1 {
+    font-size: 8em;
+  }
+}
+
 a.card-link, a.card-link:hover, a.card-link:active, a.card-link:focus, a.card-link:visited { text-decoration: none !important; color: inherit;}
+
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, 
+.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, 
+.col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, 
+.col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, 
+.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, 
+.col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, 
+.col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, 
+.col-xl, .col-xl-auto { padding-right: 5px !important; padding-left: 5px !important; }
+
+.form-group.row { margin-right: -5px !important; margin-left: -5px !important; }
+

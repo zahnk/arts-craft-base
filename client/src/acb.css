@@ -1,3 +1,4 @@
+
 .fa-a:after{
   content: "";
   margin-right: 20px;
@@ -15,6 +16,8 @@
 .fa-m-b:before{
   margin-left: 5px;
 }
+
+.fa-15x { font-size: 1.5em; }
 
 .card-img-overlay, .card-footer { padding: 0px; }
 
