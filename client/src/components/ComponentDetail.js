@@ -27,6 +27,7 @@ class ComponentDetail extends Component {
     const componentId = this.state.component._id;
     console.log ("delete component", componentId);
     this.deleteComponent(componentId);
+
   }
 
   deleteComponent = (componentId) => {
@@ -60,15 +61,7 @@ class ComponentDetail extends Component {
       });
   };
 
-  deleteComponent = (confirmState) => {
-    if( confirmState === true ) {
-      this.handleDelete();
-    } else {
-      this.setState({ showConfirm: false }); 
-    }
-  }
-
-  componentDidMount() {
+   componentDidMount() {
     this.getData();
   }
 

@@ -87,7 +87,7 @@ const index = require("./routes/index");
 app.use("/", index);
 
 const projectRoutes = require("./routes/project");
-app.use("/api/projects", projectRoutes);
+app.use("/api/projects", projectRoutes);//api/projects is the prefix, in route project.js for post only the /create is used!!!
 
 const componentRoutes = require("./routes/component");
 app.use("/api/components", componentRoutes);

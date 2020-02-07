@@ -55,4 +55,26 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+
+// POST /api/projects
+router.post("/create", (req, res) => {
+  // create 1 project
+  console.log(req.body);
+  Project.create({
+    name: req.body.name,
+    owner: req.user._id,
+    description: req.body.description,
+    notes: req.body.notes,
+    //to be inserted-->> components: []
+    status: req.body.status
+  })
+    .then(project => {
+      res.json(project);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
+
 module.exports = router;
