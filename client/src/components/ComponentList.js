@@ -14,7 +14,7 @@ export default class ComponentList extends Component {
       <CardColumns>
         {this.props.components.map( (component) => {
           return (
-            <ComponentCard key={component._id} component={component} />
+            <ComponentCard key={component._id} component={component} {...this.props}/>
           );
         })}
       </CardColumns>

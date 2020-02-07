@@ -21,6 +21,7 @@ export default class AppAbout extends Component {
         centered
         show={this.props.show}
         onHide={() => { this.closeConfirm( false ) }}
+        style={{color:"black"}}
       >
         <Modal.Header className="bg-danger text-light">
           <Modal.Title >Confirmation ...</Modal.Title>

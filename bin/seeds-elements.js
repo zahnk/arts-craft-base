@@ -24,15 +24,15 @@ components.push( {
     eltype:      'text',
 
     fixedProps:    [
-      { prop: 'name'        , typ: 'String',  def: '' },
-      { prop: 'label'       , typ: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'Boolean', def: false },
-      { prop: 'placeholder' , typ: 'String',  def: '' },
-      { prop: 'required'    , typ: 'Boolean', def: false }
+      { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
     variableProps: [
-      { prop: 'maxlength'   , typ: 'Number', def: 100 }
+      { prop: 'maxlength'   , typ: 'number', disp: 'Number', def: 100 }
     ],
     status: false 
   }
@@ -44,17 +44,17 @@ components.push( {
     eltype:      'number',
 
     fixedProps:    [
-      { prop: 'name'        , typ: 'String',  def: '' },
-      { prop: 'label'       , typ: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'Boolean', def: false },
-      { prop: 'placeholder' , typ: 'String',  def: '' },
-      { prop: 'required'    , typ: 'Boolean', def: false }
+      { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
     variableProps: [
-      { prop: 'min'         , typ: 'Number', def: 0 },
-      { prop: 'max'         , typ: 'Number', def: 100 },
-      { prop: 'step'        , typ: 'Number', def: 1 }
+      { prop: 'min'         , typ: 'number', disp: 'Number', def: 0 },
+      { prop: 'max'         , typ: 'number', disp: 'Number', def: 100 },
+      { prop: 'step'        , typ: 'number', disp: 'Number', def: 1 }
     ],
     status: false 
   }
@@ -66,15 +66,15 @@ components.push( {
     eltype:      'color',
 
     fixedProps:    [
-      { prop: 'name'        , typ: 'String',  def: '' },
-      { prop: 'label'       , typ: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'Boolean', def: false },
-      { prop: 'placeholder' , typ: 'String',  def: '' },
-      { prop: 'required'    , typ: 'Boolean', def: false }
+      { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
     variableProps: [
-      { prop: 'color'       , typ: 'String',  def: '#0000000' }
+      { prop: 'color'       , typ: 'color', disp: 'Color', def: '#0000000' }
     ],
     status: false 
   }
@@ -86,15 +86,15 @@ components.push( {
     eltype:      'checkbox',
 
     fixedProps:    [
-      { prop: 'name'        , typ: 'String',  def: '' },
-      { prop: 'label'       , typ: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'Boolean', def: false },
-      { prop: 'placeholder' , typ: 'String',  def: '' },
-      { prop: 'required'    , typ: 'Boolean', def: false }
+      { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
     variableProps: [
-      { prop: 'checked'     , typ: 'Boolean', def: false }
+      { prop: 'checked'     , typ: 'checkbox', def: false }
     ],
     status: false 
   }
@@ -106,16 +106,16 @@ components.push( {
     eltype:      'textarea',
 
     fixedProps:    [
-      { prop: 'name'        , typ: 'String',  def: '' },
-      { prop: 'label'       , typ: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'Boolean', def: false },
-      { prop: 'placeholder' , typ: 'String',  def: '' },
-      { prop: 'required'    , typ: 'Boolean', def: false }
+      { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
+      { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
     variableProps: [
-      { prop: 'maxlength'   , typ: 'Number', def: 100 },
-      { prop: 'wrap'        , typ: 'String', def: 'soft' }
+      { prop: 'maxlength'   , typ: 'number', disp: 'Number', def: 100 },
+      { prop: 'wrap'        , typ: 'text',   disp: 'String', def: 'soft' }
     ],
     status: false
   }

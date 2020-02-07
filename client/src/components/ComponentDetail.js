@@ -81,10 +81,8 @@ class ComponentDetail extends Component {
     }
 
     return (
-      <div>
-        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
-          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Component Detail</Card.Header>
-        </Card>
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Component Detail</h2>
 
         <h1>{this.state.component.name}</h1>
         <p>{this.state.component.description}</p>

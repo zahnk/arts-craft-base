@@ -21,6 +21,7 @@ export default class AppAbout extends Component {
         centered
         show={this.props.show}
         onHide={this.closeAbout}
+        style={{color:"black"}}
       >
         <Modal.Header className="bg-primary text-light">
           <Modal.Title >ARTS-CRAFT-BASE v.2.0</Modal.Title>
@@ -28,7 +29,8 @@ export default class AppAbout extends Component {
         <Modal.Body>
           <Row>
             <Col sm={4}>
-              <img src="../../arts_craft_base_logo.svg" width="50%" alt="logo" />
+              <img src="../../arts_craft_base_logo.svg" alt="logo" className="abt-logo"/>
+              <p></p>
             </Col>
             <Col sm={8}>
               <h4>Administration Tool</h4><br />

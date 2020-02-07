@@ -15,7 +15,7 @@ export default class ProjectList extends Component {
         {this.props.projects.map( (project,i) => {
           project.img = project.img || `def-p-${Math.floor(Math.random()*6)}.png`;
           return (
-            <ProjectCard key={project._id} project={project} />
+            <ProjectCard key={project._id} project={project} {...this.props}/>
           );
         })}
       </CardColumns>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Row, Col } from 'react-bootstrap';
 
-export default class InputText extends Component {
+export default class InputCheck extends Component {
   constructor(){
     super()
     this.state = {
@@ -17,6 +17,21 @@ export default class InputText extends Component {
     return (
       <div>
         <Form.Group as={Row}>
+          <Form.Label column sm="8">{labelText}:</Form.Label>
+          <Col sm="4">
+            <Form.Control 
+              as="input" 
+              type={this.props.eltype}
+              name={labelText}
+              id={`txb_${this.props.uniqueKey}`}
+              placeholder={`Enter ${labelText}`} 
+              value={this.props.value || '' }
+              onChange={this.handleChange}
+            />
+          </Col>
+        </Form.Group>
+{/*}
+        <Form.Group as={Row}>
           <Col sm="12">
             <Form.Check
               type="switch"
@@ -27,6 +42,7 @@ export default class InputText extends Component {
             />
           </Col>
         </Form.Group>
+*/}
       </div>
     )
   }
