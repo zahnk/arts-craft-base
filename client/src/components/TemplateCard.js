@@ -9,15 +9,16 @@ export default class TemplateCard extends Component {
     }
   };
 
+  backRoute = () => {
+    this.props.history.push(`/template/${this.props.template._id}`);
+  }
+
   render() {
     return (
-      <Card border="secondary">
+      <Card className="cardForDetail" border="dark" onClick={this.backRoute}>
         <Card.Img className="templateImage" src={this.props.template.img} alt="Template Image" />
         <Card.ImgOverlay>
           <Card.Header className="transparentCardHeader" as="h4">{this.props.template.name}</Card.Header>
-          <Card.Footer as="h5">
-            <Card.Link href={`/templates/${this.props.template._id}`}><i className="fas fa-book fa-m-a"></i>Detail</Card.Link>
-          </Card.Footer>
         </Card.ImgOverlay>
       </Card>
     )

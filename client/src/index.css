@@ -22,7 +22,8 @@ html, body {
 }
 
 body {
-  background-color: #e0e0e0;
+  background-color: #575757;
+  color: whitesmoke;
   background-image: url(/bkg-small-20.png);
   background-attachment: fixed;
   font-size: 1.2rem;
@@ -46,6 +47,7 @@ code {
 
 .ElementRow .form-group { margin-bottom: 0px; }
 .ElementRow .card-body { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
 .login-menue { background-color: rgba(255,255,255,0.20) !important; }
 .span { font-size: 1.0rem; }
 .span em, .abtSignedIn em { color: rgba(255,255,255,1) !important; }
@@ -57,7 +59,5 @@ code {
   height: auto;
   margin: auto 5px;
 }
-
-.abtSignedIn { }
 
 a.card-link, a.card-link:hover, a.card-link:active, a.card-link:focus, a.card-link:visited { text-decoration: none !important; color: inherit;}

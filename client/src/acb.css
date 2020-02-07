@@ -27,6 +27,7 @@
   text-overflow: ellipsis;
 }
 
+.cardForDetail * { cursor: pointer; }
 .card-footer {
   position: absolute;
   bottom: 0;
@@ -40,6 +41,15 @@
   text-shadow: -1px -1px 0px #fff, 2px 2px 2px black;
 }
 
+.card-columns { column-gap: 0.2rem; margin-bottom: 10px;}
+.card-columns .card{ margin-bottom: 0.2rem }
+.shw-lg { display: inline-block; }
+.shw-sm { display: none; }
+
+.abt-logo { width: 75%; }
+
+.sketch-picker { box-shadow: 0px 0px !important; border-radius: 0px !important;}
+
 @media (max-width: 500px) {
   .navbarCaption { font-size: x-large; }
   .card-columns { column-count: 1; }
@@ -48,6 +58,9 @@
     max-height:150px;
     object-fit: cover;
   }
+  .shw-lg { display: none; }
+  .shw-sm { display: inline-block; }
+  .abt-logo { width: 50%; }
 }
 @media (min-width: 501px) and (max-width: 800px) {
   .navbarCaption { font-size: x-large; }

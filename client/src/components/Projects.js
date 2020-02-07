@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProjectList from "./ProjectList";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
-
-class Projects extends Component {
-  state = {
-    projects: []
+export default class Projects extends Component {
+  constructor(){
+    super()
+    this.state = {
+      projects: [],
+    }
   };
 
   getData = () => {
@@ -29,15 +31,11 @@ class Projects extends Component {
   render() {
     console.log("Projects.render"+this.props.location.pathname);
     return (
-      <div>
-        <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
-          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Projects</Card.Header>
-        </Card>
-
-        <ProjectList projects={this.state.projects}/>
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Project Overview</h2>
+        <ProjectList projects={this.state.projects} {...this.props}/>   
+        <Button className="mr-2" size="lg" variant="primary" href={'/projects/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Project</Button>
       </div>
     );
   }
 }
-
-export default Projects;
