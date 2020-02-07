@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ComponentList from "./ComponentList";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class Components extends Component {
   constructor(){

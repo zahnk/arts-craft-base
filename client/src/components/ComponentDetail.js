@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, ButtonToolbar } from "react-bootstrap";
+import { Button, ButtonToolbar } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';

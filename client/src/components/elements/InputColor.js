@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Modal, Row, Col, Card } from "react-bootstrap";
-import { SketchPicker, SliderPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 export default class InputColor extends Component {
   constructor(props){
