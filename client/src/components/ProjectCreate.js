@@ -108,8 +108,8 @@ export default class ProjectCreate extends Component {
                   <Form.Label htmlFor="status">Status:</Form.Label>
                   <Form.Control
                     as="select"
-                    name="imageUrl"
-                    id="imageUrl"
+                    name="status"
+                    id="status"
                     onChange={this.handleChange}
                   >
                     <option>New</option>
