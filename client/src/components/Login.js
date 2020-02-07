@@ -46,7 +46,7 @@ class Login extends Component {
             <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
               <Card.Header as="h2"><i className="fas fa-sign-in-alt fa-a"></i>Login</Card.Header>
             </Card>
-            <Card style={{marginBottom: "10px"}}>
+            <Card style={{marginBottom: "10px"}} text="dark">
               <Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group>

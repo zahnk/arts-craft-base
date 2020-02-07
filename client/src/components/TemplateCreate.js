@@ -159,7 +159,7 @@ export default class TemplateCreate extends Component {
 
     return (
       <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Template Create</h2>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="far fa-square fa-a"></i>Template Create</h2>
         <Card text="dark" style={{marginBottom: "10px", textAlign:"left"}}>
           <Card.Body>       
             <Form>
@@ -297,13 +297,11 @@ export default class TemplateCreate extends Component {
           <Card body bg="danger" text="white">{this.state.error}</Card>                
         )}
 
-        { this.state.tc_add_elements[this.state.idxOfElementToDelete] ? 
-          (
-            <ConfirmDelete show={this.state.tc_showConfirm} close={this.deleteElementConfirmed} title={this.state.tc_add_elements[this.state.idxOfElementToDelete].element} />
-          ):(
-            <ConfirmDelete show={this.state.tc_showConfirm} close={this.deleteElementConfirmed} title={'Element'} />
-          )
-        }
+        <ConfirmDelete show={this.state.tc_showConfirm} 
+          close={this.deleteElementConfirmed} 
+          title={this.state.idxOfElementToDelete ? 
+                  ( this.state.tc_add_elements[this.state.idxOfElementToDelete].element):('Element')}/>
+
         <InputColor show={this.state.tc_showColorConfirm} close={this.handleColorChangeConfirmed} hex={this.state.background} />
       </div>
 

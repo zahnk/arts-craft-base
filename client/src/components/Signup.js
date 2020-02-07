@@ -43,7 +43,7 @@ class Signup extends Component {
             <Card bg="secondary" text="white" style={{marginBottom: "10px"}}>
               <Card.Header as="h2"><i className="fas fa-user-plus fa-a"></i>Signup</Card.Header>
             </Card>
-            <Card style={{marginBottom: "10px"}}>
+            <Card style={{marginBottom: "10px"}} text="dark">
               <Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group>
