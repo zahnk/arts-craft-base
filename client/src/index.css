@@ -79,7 +79,7 @@ code {
 
 @media (max-width: 500px) {
   .sp .center {
-    width: 95%;
+    width: 93%;
   }
   .sp h1 {
     font-size: 3rem;
@@ -87,7 +87,7 @@ code {
 }
 @media (min-width: 501px) and (max-width: 800px) {
   .sp .center {
-    width: 85%;
+    width: 83%;
   }
   .sp h1 {
     font-size: 4rem;
@@ -95,7 +95,7 @@ code {
 }
 @media (min-width: 801px) and (max-width: 1200px) {
   .sp .center {
-    width: 75%;
+    width: 73%;
   }
   .sp h1 {
     font-size: 6rem;
@@ -103,7 +103,7 @@ code {
 }
 @media (min-width: 1201px) and (max-width: 1600px) {
   .sp .center {
-    width: 60%;
+    width: 58%;
   }
   .sp h1 {
     font-size: 9rem;
@@ -111,7 +111,7 @@ code {
 }
 @media (min-width: 1601px) {
   .sp .center {
-    width: 50%;
+    width: 48%;
   }
   .sp h1 {
     font-size: 8em;

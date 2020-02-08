@@ -26,8 +26,8 @@ components.push( {
     fixedProps:    [
       { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
       { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
@@ -46,8 +46,8 @@ components.push( {
     fixedProps:    [
       { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
       { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
@@ -68,8 +68,8 @@ components.push( {
     fixedProps:    [
       { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
       { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
@@ -88,8 +88,8 @@ components.push( {
     fixedProps:    [
       { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
       { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 
@@ -108,8 +108,8 @@ components.push( {
     fixedProps:    [
       { prop: 'name'        , typ: 'text',     disp: 'String',  def: '' },
       { prop: 'label'       , typ: 'text',     disp: 'String',  def: '' },
-      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'placeholder' , typ: 'text',     disp: 'String',  def: '' },
+      { prop: 'readonly'    , typ: 'checkbox', disp: 'Boolean', def: false },
       { prop: 'required'    , typ: 'checkbox', disp: 'Boolean', def: false }
     ],
 

@@ -25,7 +25,7 @@ import Login from "./components/Login";
 
 class App extends React.Component {
   state = {
-    user: this.props.user
+    user: this.props.user,
   };
 
   setUser = user => {
@@ -109,7 +109,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AppMenue user={this.state.user} setUser={this.setUser} />
+        <AppMenue user={this.state.user} setUser={this.setUser}/>
         <div className="AppMenuSpace"></div>
         <div style={{margin: "0 10px"}}>
           <Switch>
@@ -120,7 +120,6 @@ class App extends React.Component {
             <Route exact path="/login" render={
               props => <Login {...props} setUser={this.setUser} />
             }/>
-
             <Route exact path="/projects" render={this.projectsRoute}/>
             <Route exact path="/projects/create" render={this.projectsCreateRoute}/>
             <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
