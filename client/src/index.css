@@ -61,7 +61,7 @@ code {
   margin: auto 5px;
 }
 
-.sp {
+.spx {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -69,52 +69,68 @@ code {
   height: 100%;
 }
 
-.sp h1 {
+.sp-c {
+  text-align: center;
+  padding: 0 2%;
+}
+
+.sp-r {
+  text-align: right;
+  padding-right: 2%;
+}
+
+.sp-l {
+  text-align: left;
+  padding-left: 2%;
+}
+
+.sp-c h1, .sp-r h1, .sp-l h1 {
   text-shadow: 5px 5px 12px #000, 5px 5px 15px #000;
   margin-bottom: 20px;
 }
-.sp .center {
-  box-shadow: 12px 12px 12px #000;
+.sp-c img.lg, .sp-r img.lg, .sp-l img.lg {
+  box-shadow: 12px 12px 15px #000;
+  width: 50%;
 }
 
 @media (max-width: 500px) {
-  .sp .center {
+  .sp-c img.lg {
     width: 93%;
   }
-  .sp h1 {
+  .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 3rem;
   }
 }
 @media (min-width: 501px) and (max-width: 800px) {
-  .sp .center {
+  .sp-c img.lg {
     width: 83%;
   }
-  .sp h1 {
+  .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 4rem;
   }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
-  .sp .center {
+  .sp-c img.lg {
     width: 73%;
   }
-  .sp h1 {
+  .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 6rem;
   }
 }
 @media (min-width: 1201px) and (max-width: 1600px) {
-  .sp .center {
+  .sp-c img.lg {
     width: 58%;
   }
-  .sp h1 {
-    font-size: 9rem;
+  .sp-c h1, .sp-r h1, .sp-l h1 {
+    font-size: 8rem;
   }
 }
 @media (min-width: 1601px) {
-  .sp .center {
+  .sp-c img.lg {
     width: 48%;
   }
-  .sp h1 {
-    font-size: 8em;
+  .sp-c h1, .sp-r h1, .sp-l h1 {
+    font-size: 8rem;
   }
 }
 

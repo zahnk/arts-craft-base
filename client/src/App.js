@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+
 import {Switch, Route, Redirect } from "react-router-dom";
 
 import AppMenue from "./components/AppMenu";
@@ -18,10 +19,6 @@ import ComponentDetail from "./components/ComponentDetail";
 import ComponentCreate from "./components/ComponentCreate";
 import TemplateCreate from "./components/TemplateCreate";
 import ProjectCreate from "./components/ProjectCreate";
-
-
-import Signup from "./components/Signup";
-import Login from "./components/Login";
 
 class App extends React.Component {
   state = {
@@ -113,12 +110,14 @@ class App extends React.Component {
         <div className="AppMenuSpace"></div>
         <div style={{margin: "0 10px"}}>
           <Switch>
-            <Route exact path="/" component={Startpage} />
+            <Route exact path="/" render={
+              props => <Startpage {...props} setUser={this.setUser}/>
+            }/>
             <Route exact path="/signup" render={
-              props => <Signup {...props} setUser={this.setUser} />
+              props => <Startpage {...props} setUser={this.setUser} showSignup={true}/>
             }/>
             <Route exact path="/login" render={
-              props => <Login {...props} setUser={this.setUser} />
+              props => <Startpage {...props} setUser={this.setUser} showLogin={true} />
             }/>
             <Route exact path="/projects" render={this.projectsRoute}/>
             <Route exact path="/projects/create" render={this.projectsCreateRoute}/>
