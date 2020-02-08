@@ -31,16 +31,21 @@
 }
 
 .cardForDetail * { cursor: pointer; }
-.card-footer {
+.cardForDetail:hover .card-footer {
+  display: block;
+}
+.cardForDetail .card-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba(128,128,128,0.25);
-  color: black;
+  background-color: rgba(128,128,128,0.5);
+  color: rgb(75, 75, 75);
+  text-align: center;
+  display: none;
 }
 
 .navbarCaption { 
-  padding-right: 20px;
+  padding-right: 50px;
   text-shadow: -1px -1px 0px #fff, 2px 2px 2px black;
 }
 
@@ -50,6 +55,7 @@
 .shw-sm { display: none; }
 
 .abt-logo { width: 75%; }
+.abt-cr em { font-weight: bold; }
 
 .sketch-picker { box-shadow: 0px 0px !important; border-radius: 0px !important;}
 

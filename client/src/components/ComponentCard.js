@@ -20,6 +20,9 @@ export default class ComponentCard extends Component {
         <Card.ImgOverlay>
           <Card.Header className="transparentCardHeader" as="h4">{this.props.component.name}</Card.Header>
         </Card.ImgOverlay>
+        <Card.Footer className="hoverFooter">
+          <Card.Text>Click for Detail</Card.Text>
+        </Card.Footer>
       </Card>
     )
   }

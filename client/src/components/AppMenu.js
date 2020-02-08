@@ -9,7 +9,7 @@ export default class AppMenu extends Component {
   constructor(){
     super()
     this.state = {
-      showAbout: false
+      showAbout: false,
     }
   };
 

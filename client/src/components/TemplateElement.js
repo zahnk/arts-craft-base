@@ -46,17 +46,17 @@ export default class TemplateElement extends Component {
                     label={this.props.curElement.fixedProps[1].prop} 
                     value={this.props.curElement.fixedProps[1].val || ''}
                     handleChange={this.handleFixedValueChange} />
-                  <InputElement idx={3} uniqueKey={`F3${this.props.idx}`}
-                    eltype={this.props.curElement.fixedProps[3].typ} 
-                    label={this.props.curElement.fixedProps[3].prop} 
-                    value={this.props.curElement.fixedProps[3].val || ''}
-                    handleChange={this.handleFixedValueChange} />
-                </Col>
-                <Col sm="2">
                   <InputElement idx={2} uniqueKey={`F2${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[2].typ} 
                     label={this.props.curElement.fixedProps[2].prop} 
-                    value={this.props.curElement.fixedProps[2].val || false}
+                    value={this.props.curElement.fixedProps[2].val || ''}
+                    handleChange={this.handleFixedValueChange} />
+                </Col>
+                <Col sm="2">
+                  <InputElement idx={3} uniqueKey={`F3${this.props.idx}`}
+                    eltype={this.props.curElement.fixedProps[3].typ} 
+                    label={this.props.curElement.fixedProps[3].prop} 
+                    value={this.props.curElement.fixedProps[3].val || false}
                     handleChange={this.handleFixedValueChange} />
                   <InputElement idx={4} uniqueKey={`F4${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[4].typ} 
