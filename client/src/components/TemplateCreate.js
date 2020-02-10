@@ -26,11 +26,12 @@ export default class TemplateCreate extends Component {
   cloneObject = (obj) => {
     if (obj === null || typeof (obj) !== 'object' || 'isActiveClone' in obj)
         return obj;
+    var temp;
 
     if (obj instanceof Date)
-        var temp = new obj.constructor(); //or new Date(obj);
+        temp = new obj.constructor(); //or new Date(obj);
     else
-        var temp = obj.constructor();
+        temp = obj.constructor();
 
     for (var key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -158,8 +159,7 @@ export default class TemplateCreate extends Component {
 
     return (
       <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Template Create</h2>
-        <h3>{this.state.background}</h3>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="far fa-square fa-a"></i>Template Create</h2>
         <Card text="dark" style={{marginBottom: "10px", textAlign:"left"}}>
           <Card.Body>       
             <Form>
@@ -194,9 +194,13 @@ export default class TemplateCreate extends Component {
                 </Col>
                 <Col sm="8">
                   <Form.Group as={Row}>
-                    <Form.Label column sm="12" style={{textAlign: "center"}}><h2>Element Overview</h2></Form.Label>
+                    <Col sm="1">
+                    </Col>
+                    <Form.Label column sm="11" style={{textAlign: "left"}}><h2>Element Overview</h2></Form.Label>
                   </Form.Group>
                   <Form.Group as={Row}>
+                    <Col sm="1">
+                    </Col>
                     <Form.Label column sm="2">Element Type:</Form.Label>
                     <Col sm="4">
                       <InputGroup>
@@ -221,7 +225,7 @@ export default class TemplateCreate extends Component {
                       </InputGroup>
                     </Col>
                     <Form.Label column sm="2">Fixed Props:</Form.Label>
-                    <Col sm="4">
+                    <Col sm="3">
                       <InputGroup>
                         <Form.Control
                           as="select"
@@ -246,10 +250,10 @@ export default class TemplateCreate extends Component {
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row}>
-                    <Col sm="6">
+                    <Col sm="7">
                     </Col>
                     <Form.Label column sm="2">Variable Props:</Form.Label>
-                    <Col sm="4">
+                    <Col sm="3">
                       <InputGroup>
                         <Form.Control
                           as="select"
@@ -280,7 +284,7 @@ export default class TemplateCreate extends Component {
                   <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Submit Template</Button>
                 </Col>
                 <Col sm="8">
-                  <Button size="lg" variant="success" onClick={this.addNewElement}><i className="fas fa-plus-square fa-lg fa-a"></i>Add Element</Button>
+                  <Button size="lg" variant="success" onClick={this.addNewElement}><i className="fas fa-plus-square fa-lg fa-a"></i>Add selected Element</Button>
                 </Col>
               </Row>
             </Form>
@@ -297,7 +301,11 @@ export default class TemplateCreate extends Component {
           <Card body bg="danger" text="white">{this.state.error}</Card>                
         )}
 
-        <ConfirmDelete show={this.state.tc_showConfirm} close={this.deleteElementConfirmed} title={'Element'} />
+        <ConfirmDelete show={this.state.tc_showConfirm} 
+          close={this.deleteElementConfirmed} 
+          title={this.state.idxOfElementToDelete ? 
+                  ( this.state.tc_add_elements[this.state.idxOfElementToDelete].element):('Element')}/>
+
         <InputColor show={this.state.tc_showColorConfirm} close={this.handleColorChangeConfirmed} hex={this.state.background} />
       </div>
 

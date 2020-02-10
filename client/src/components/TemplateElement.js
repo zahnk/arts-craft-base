@@ -30,39 +30,33 @@ export default class TemplateElement extends Component {
           <Card.Body>       
             <Form>
               <Row>            
-                <Col sm="2">
-                  <Form.Group as={Row}>
-                    <Col sm="3">
-                      <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="fas fa-times fa-lg"></i></Button>
-                    </Col>
-                    <Col sm="9">
-                      <Form.Label style={{textAlign: "left"}} column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
-                      <Form.Label style={{textAlign: "left"}} column sm="12">[{this.props.idx}]</Form.Label>
-                    </Col>
-                  </Form.Group>
+                <Col sm="1">
+                  <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="fas fa-times fa-lg"></i></Button>
+                  <Form.Label style={{textAlign: "left"}} column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
+                  <Form.Label style={{textAlign: "left"}} column sm="12">[{this.props.idx}]</Form.Label>
                 </Col>
-                <Col sm="2">
+                <Col sm="3">
                   <InputElement idx={0} uniqueKey={`F0${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[0].typ} 
                     label={this.props.curElement.fixedProps[0].prop} 
                     value={this.props.curElement.fixedProps[0].val || ''}
-                    handleChange={this.handleFixedValueChange} />
+                    handleChange={this.handleFixedValueChange} s/>
                   <InputElement idx={1} uniqueKey={`F1${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[1].typ} 
                     label={this.props.curElement.fixedProps[1].prop} 
                     value={this.props.curElement.fixedProps[1].val || ''}
                     handleChange={this.handleFixedValueChange} />
-                  <InputElement idx={3} uniqueKey={`F3${this.props.idx}`}
-                    eltype={this.props.curElement.fixedProps[3].typ} 
-                    label={this.props.curElement.fixedProps[3].prop} 
-                    value={this.props.curElement.fixedProps[3].val || ''}
-                    handleChange={this.handleFixedValueChange} />
-                </Col>
-                <Col sm="2">
                   <InputElement idx={2} uniqueKey={`F2${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[2].typ} 
                     label={this.props.curElement.fixedProps[2].prop} 
-                    value={this.props.curElement.fixedProps[2].val || false}
+                    value={this.props.curElement.fixedProps[2].val || ''}
+                    handleChange={this.handleFixedValueChange} />
+                </Col>
+                <Col sm="2">
+                  <InputElement idx={3} uniqueKey={`F3${this.props.idx}`}
+                    eltype={this.props.curElement.fixedProps[3].typ} 
+                    label={this.props.curElement.fixedProps[3].prop} 
+                    value={this.props.curElement.fixedProps[3].val || false}
                     handleChange={this.handleFixedValueChange} />
                   <InputElement idx={4} uniqueKey={`F4${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[4].typ} 

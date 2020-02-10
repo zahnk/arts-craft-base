@@ -9,7 +9,7 @@ export default class AppMenu extends Component {
   constructor(){
     super()
     this.state = {
-      showAbout: false
+      showAbout: false,
     }
   };
 
@@ -50,60 +50,54 @@ export default class AppMenu extends Component {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 
-                <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a"></i>Home</Nav.Link>
+                <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a fa-15x"></i>Home</Nav.Link>
 
-                <NavDropdown title={<span><i className="fas fa-sitemap fa-lg fa-m-a"></i>Project</span>} id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/projects"><i className="fas fa-list fa-lg fa-a"></i>All Projects</NavDropdown.Item>
+                <NavDropdown title={<span><i className="fas fa-sitemap fa-lg fa-m-a fa-15x"></i>Project</span>} id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="/projects"><i className="fas fa-list fa-lg fa-a fa-15x"></i>All Projects</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/projects/create"><i className="far fa-plus-square fa-lg fa-a"></i>Create new Project</NavDropdown.Item>
+                  <NavDropdown.Item href="/projects/create"><i className="far fa-plus-square fa-lg fa-a fa-15x"></i>Create new Project</NavDropdown.Item>
                 </NavDropdown>
 
-                <NavDropdown title={<span><i className="fas fa-square fa-lg fa-m-a"></i>Component</span>} id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/components"><i className="fas fa-list fa-lg fa-a"></i>All Components</NavDropdown.Item>
+                <NavDropdown title={<span><i className="fas fa-square fa-lg fa-m-a fa-15x"></i>Component</span>} id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="/components"><i className="fas fa-list fa-lg fa-a fa-15x"></i>All Components</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/components/create"><i className="far fa-plus-square fa-lg fa-a"></i>Create new Component</NavDropdown.Item>
+                  <NavDropdown.Item href="/components/create"><i className="far fa-plus-square fa-lg fa-a fa-15x"></i>Create new Component</NavDropdown.Item>
                 </NavDropdown>
 
 {/*
                 <Nav.Link href="/templates"><i className="far fa-square fa-lg fa-m-a"></i>Template</Nav.Link>
 */}
 
-                <NavDropdown title={<span><i className="far fa-square fa-lg fa-m-a"></i>Template</span>} id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/templates"><i className="fas fa-list fa-lg fa-a"></i>All Templates</NavDropdown.Item>
+                <NavDropdown title={<span><i className="far fa-square fa-lg fa-m-a fa-15x"></i>Template</span>} id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="/templates"><i className="fas fa-list fa-lg fa-a fa-15x"></i>All Templates</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/templates/create"><i className="far fa-plus-square fa-lg fa-a"></i>Create new Template</NavDropdown.Item>
+                  <NavDropdown.Item href="/templates/create"><i className="far fa-plus-square fa-lg fa-a fa-15x"></i>Create new Template</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
               <Navbar.Text style={{ padding: "0px", marginRight:"20px"}}><span className="abtSignedIn fa-m-a">Signed in as: <em>{this.props.user.username}</em></span></Navbar.Text>
               <Nav>
                 <NavDropdown className="xxx" title={
-                    <span className="fa-stack">
-                      <i className="far fa-square fa-stack-2x"></i>
-                      <i className="fas fa-ellipsis-h fa-stack-1x"></i>
-                    </span>
+                    <i className="fas fa-ellipsis-v fa-15x"></i>
                   } id="collasible-nav-dropdown">
-                  <NavDropdown.Item onClick={this.handleLogout}><i className="fas fa-sign-out-alt fa-lg fa-a"></i>Logout</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.handleLogout}><i className="fas fa-sign-out-alt fa-lg fa-a fa-15x"></i>Logout</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-a"></i>About</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-a fa-15x"></i>About</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
           ) : (
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a"></i>Home</Nav.Link>
+                <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a fa-15x"></i>Home</Nav.Link>
               </Nav>
               <Nav>
                 <NavDropdown className="xxx" title={
-                    <span className="fa-stack">
-                      <i className="far fa-square fa-stack-2x"></i>
-                      <i className="fas fa-ellipsis-h fa-stack-1x"></i>
-                    </span>
+                    <i className="fas fa-ellipsis-v fa-15x"></i>
                   } id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/login"><i className="fas fa-sign-in-alt fa-lg fa-a"></i>Login</NavDropdown.Item>
-                  <NavDropdown.Item href="/signup"><i className="fas fa-user-plus fa-lg fa-a"></i>Signup</NavDropdown.Item>
+                  <NavDropdown.Item href="/login"><i className="fas fa-sign-in-alt fa-lg fa-a fa-15x"></i>Login</NavDropdown.Item>
+                  <NavDropdown.Item href="/signup"><i className="fas fa-user-plus fa-lg fa-a fa-15x"></i>Signup</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-a"></i>About</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.showAbout}><i className="fas fa-info-circle fa-lg fa-a fa-15x"></i>About</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>

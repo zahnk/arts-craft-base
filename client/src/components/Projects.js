@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProjectList from "./ProjectList";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class Projects extends Component {
   constructor(){
