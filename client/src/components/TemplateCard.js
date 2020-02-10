@@ -10,7 +10,8 @@ export default class TemplateCard extends Component {
   };
 
   backRoute = () => {
-    this.props.history.push(`/template/${this.props.template._id}`);
+    console.log( "TCard", this.props.template._id );
+    this.props.history.push(`/templates/${this.props.template._id}`);
   }
 
   render() {
@@ -21,7 +22,7 @@ export default class TemplateCard extends Component {
           <Card.Header className="transparentCardHeader" as="h4">{this.props.template.name}</Card.Header>
         </Card.ImgOverlay>
         <Card.Footer className="hoverFooter">
-          <Card.Text>Click for Detail</Card.Text>
+          <Card.Text>Click for Edit</Card.Text>
         </Card.Footer>
       </Card>
     )

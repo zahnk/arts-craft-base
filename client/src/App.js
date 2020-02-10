@@ -104,6 +104,16 @@ class App extends React.Component {
     }
   }
 
+  templatesEditRoute = props => {
+    console.log( "templatesEditRoute", props );
+    if (this.state.user) {
+      return <TemplateCreate {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
+
   initElementSeeds = props => {
     console.log( "IES(C):", props.match.params, typeof( props.match.params ) );
     initElements( props.match.params.password );
@@ -136,6 +146,7 @@ class App extends React.Component {
 
             <Route exact path="/templates" render={this.templatesRoute}/>
             <Route exact path="/templates/create" render={this.templatesCreateRoute}/>
+            <Route exact path="/templates/:id" render={this.templatesEditRoute}/>
             
             <Route exact path="/initelements/:password" render={this.initElementSeeds}/>
 

@@ -6,22 +6,25 @@ import TemplateElement from "./TemplateElement";
 import InputColor from "./elements/InputColor";
 
 export default class TemplateCreate extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       tc_owner: this.props.user,
-
-      tc_showConfirm: false,
-      tc_showColorConfirm: false,
-      tc_all_elements: [{ description: '', variableProps: [{typ:'', disp:''}], fixedProps: [{typ:'', disp:''}] }],
-      tc_add_elements: [],
+      tc_curTemplateIdx: (this.props.match.params.id || undefined ),
 
       tc_name: '',
       tc_description: '',
+      tc_all_elements: [{ description: '', variableProps: [{typ:'', disp:''}], fixedProps: [{typ:'', disp:''}] }],
+      tc_add_elements: [],
 
       tc_sel_element_idx: 0,
       tc_sel_element_fp_idx: 0,
       tc_sel_element_vp_idx: 0,
+
+      tc_showConfirmDeleteElement: false,
+      tc_showConfirmDeleteTemplate: false,
+      tc_showColorConfirm: false,
+      tc_loading: true
     }
   }
 
@@ -49,22 +52,18 @@ export default class TemplateCreate extends Component {
     const foundIndex = this.state.tc_all_elements.findIndex( element => {
       return element._id === event.target.value
     });
-    console.log( `CHG idx from ${this.state.tc_sel_element_idx} to ${foundIndex}` );
     this.setState( { tc_sel_element_idx: foundIndex });
   }
 
   handleChangeFixedProperties = (event) => {
-    console.log( "CHG FIX idx", event.target.value );
     this.setState( { tc_sel_element_fp_idx: event.target.value });
   }
 
   handleChangeVariableProperties = (event) => {
-    console.log( "CHG VAR idx", event.target.value );
     this.setState( { tc_sel_element_vp_idx: event.target.value });
   }
 
   updateElement = (elIdx, propTyp, propIdx, propVal ) => {
-    console.log( "UPD ELE idx value", elIdx, propTyp, propIdx, propVal );
     const matchElement = this.state.tc_add_elements[elIdx];
 
     if( propTyp === 'fp' ) {
@@ -72,10 +71,7 @@ export default class TemplateCreate extends Component {
     } else {
       matchElement.variableProps[propIdx].val = propVal;        
     }
-
     const copyOfAddElements = this.state.tc_add_elements.slice();
-
-    console.log( "copyOfAddElements",  JSON.stringify( copyOfAddElements ) )
     this.setState( { tc_add_elements : copyOfAddElements });
   }
 
@@ -86,7 +82,6 @@ export default class TemplateCreate extends Component {
   }
 
   handleColorChangeConfirmed = (dec_confirmState, changedColor ) => {
-    console.log( "HCCC", dec_confirmState, changedColor );
     if( dec_confirmState === true ) {
       //this.setState({ tc_showColorConfirm: false, background: changedColor }); 
     } else {
@@ -98,7 +93,6 @@ export default class TemplateCreate extends Component {
 
   addNewElement = () => {
     const matchElement = this.state.tc_all_elements[this.state.tc_sel_element_idx];
-    console.log( "ADD N_ELEMENT", matchElement );
 
     const copyOfAddElements = this.state.tc_add_elements.slice();
     copyOfAddElements.push( this.cloneObject( matchElement ) );
@@ -108,112 +102,139 @@ export default class TemplateCreate extends Component {
 
   // --------------------------------------------------------
 
-  showConfirmDelete = ( idxOfElement ) => {
-    this.setState({ tc_showConfirm: true, idxOfElementToDelete: idxOfElement }); 
+  showConfirmDeleteElement = ( idxOfElement ) => {
+    this.setState({ tc_showConfirmDeleteElement: true, idxOfElementToDelete: idxOfElement }); 
   }
 
   deleteElementConfirmed = (dec_confirmState) => {
-    console.log( "Delete Element Confirmed:", dec_confirmState, this.state.idxOfElementToDelete );
-    const filteredAddElements = this.state.tc_add_elements.filter( (element, i) => {
-      return ((dec_confirmState === true) ? this.state.idxOfElementToDelete !== i : true);
-    }); 
-    this.setState({ tc_showConfirm: false, idxOfElementToDelete: undefined, tc_add_elements: filteredAddElements }); 
+    if( this.state.tc_showConfirmDeleteElement ) {
+      const filteredAddElements = this.state.tc_add_elements.filter( (element, i) => {
+          return ((dec_confirmState === true) ? this.state.idxOfElementToDelete !== i : true);
+        }); 
+      this.setState({ tc_showConfirmDeleteElement: false, idxOfElementToDelete: undefined, tc_add_elements: filteredAddElements }); 
+    }
+    if( this.state.tc_showConfirmDeleteTemplate ) {
+      if( dec_confirmState === true ) {
+        const deletePath = `/api/templates/${this.state.tc_curTemplateIdx}`;
+        axios.delete(deletePath)
+          .then(() => {
+            this.props.history.push("/templates")
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      } else {
+        this.setState({ tc_showConfirmDeleteTemplate: false }); 
+      }
+    }
   }
 
-  handleCreateTemplate = (event) => {
+  showConfirmDeleteTemplate = ( idxOfTemplate ) => {
+    this.setState({ tc_showConfirmDeleteTemplate: true }); 
+  }
+
+  // --------------------------------------------------------
+
+  handleSubmit = (event) => {
     if (event) { event.preventDefault(); }
 
-    axios
-      .post("/api/template/create", {
-        name: this.state.tc_name,
-        owner: this.state.tc_owner,
-        description: this.state.description,
-        
-        notes: this.state.notes,
-        status: this.state.status
-      })
-      .then(response => {
-        console.log("then after post");
-        //this.props.refreshData();
-        this.setState({
-          name: "",
-          description: "",
-          notes: "",
-          //components: false,
-          status: false
+    if( this.state.tc_curTemplateIdx ) {
+      console.log( "UPDATE", this.state.tc_curTemplateIdx  );
+      this.setState( null );
+    } else {
+      axios
+        .post("/api/templates/create", { 
+          info: "CreateTemplate",
+          data: {
+            name: this.state.tc_name,
+            owner: this.state.tc_owner,
+            description: this.state.tc_description,
+            elements: this.state.tc_add_elements          
+          }
+        })
+        .then(response => {
+          this.setState({
+            tc_add_elements: [],
+
+            tc_name: '',
+            tc_description: '',
+          });
+        })
+        .catch(err => {
+          console.log("POST-ERR", err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    // set a flag that the project got submitted
-    this.setState({
-      submitted: true
-    })
+    }
   };
-
-  // --------------------------------------------------------
-  // --------------------------------------------------------
-  // --------------------------------------------------------
-  // --------------------------------------------------------
-  // --------------------------------------------------------
-  // --------------------------------------------------------
-
-  // --------------------------------------------------------
 
   handleChange = (event) => {
     this.setState( { [event.target.name] : event.target.value });
   }
 
-
   // --------------------------------------------------------
 
-  xaddNewElement = () => {
-    const matchElement = this.state.tc_all_elements.find( element => {
-      return element._id === this.state.s_element._id;
+  getAllData = async () => {
+    console.log("TMPID", this.state.tc_curTemplateIdx );
+    let [allElements, currentTemplate] = await Promise.all([
+        axios.get("/api/templates/elements"),
+        axios.get(`/api/templates/${this.state.tc_curTemplateIdx}`)
+    ]);
+    this.setState({
+      tc_name: currentTemplate.data.name || '',
+      tc_description: currentTemplate.data.description || '',
+      tc_add_elements: currentTemplate.data.elements || [],
+      tc_all_elements: allElements.data || [],
+      tc_loading: false
     });
-    console.log( "ADD N_ELEMENT", matchElement );
-
-    const copyAddElements = this.state.tc_add_elements.slice();
-    copyAddElements.push( Object.assign( matchElement ) );
-
-    this.setState( { tc_add_elements : copyAddElements });
   }
 
-/*
-  updateElement = ( props_idx, val_typ, val_idx, value ) => {
-    console.log( "UPD U_ELEMEN", props_idx, val_typ, val_idx, value );
+  getElemData = async () => {
+    let [allElements] = await Promise.all([
+        axios.get("/api/templates/elements"),
+    ]);
+    console.log("ALL", allElements.data);
+
+    this.setState({
+      tc_name: '',
+      tc_description: '',
+      tc_add_elements: [],
+      tc_all_elements: allElements.data || [],
+      tc_loading: false
+    });
+
   }
-*/
-  getData = () => {
-    axios
-      .get("/api/templates/elements")
-      .then(response => {
-        console.log( "DB_ELEMENTS_0", response.data[0] );
-        this.setState({
-          tc_all_elements: response.data,
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   componentDidMount() {
-    this.getData();
+    if(  this.state.tc_curTemplateIdx )
+      this.getAllData();
+    else
+      this.getElemData();
   }
+
+  // --------------------------------------------------------
 
   render() {
     const etDescription = this.state.tc_all_elements[this.state.tc_sel_element_idx].description;
     const etFixTypDisp = this.state.tc_all_elements[this.state.tc_sel_element_idx].fixedProps[this.state.tc_sel_element_fp_idx].disp;
     const etVarTypDisp = this.state.tc_all_elements[this.state.tc_sel_element_idx].variableProps[this.state.tc_sel_element_vp_idx].disp;
 
+    if( this.state.tc_curTemplateIdx && this.state.tc_loading ) return (<div>Loading ...</div>); 
+    let delTitle = "";
+
+    if( this.state.tc_showConfirmDeleteElement ) {
+        delTitle = `Element: ${this.state.idxOfElementToDelete ? this.state.tc_add_elements[this.state.idxOfElementToDelete].element : ''}`;
+    }
+    if( this.state.tc_showConfirmDeleteTemplate ) {
+        delTitle = `Template: ${this.state.tc_name ? this.state.tc_name : ''}`;
+    }
+
     return (
       <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="far fa-square fa-a"></i>Template Create</h2>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}>
+          <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
+        </h2>
         <Card text="dark" style={{marginBottom: "10px", textAlign:"left"}}>
           <Card.Body>       
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <Row>
                 <Col sm="4">
                   <Form.Group as={Row}>
@@ -332,7 +353,16 @@ export default class TemplateCreate extends Component {
               </Row>
               <Row style={{textAlign: "right"}}>
                 <Col sm="4">
-                  <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Submit Template</Button>
+                  { this.state.tc_curTemplateIdx ? 
+                    ( 
+                      <div>
+                        <Button size="lg" variant="danger" className="mr-2" onClick={() => {this.showConfirmDeleteTemplate( this.state.tc_curTemplateIdx )}}><i className="fas fa-times fa-lg fa-a"></i>Delete Template</Button>
+                        <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Update Template</Button>
+                      </div>
+                    ):( 
+                      <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Submit Template</Button>
+                    )
+                  }  
                 </Col>
                 <Col sm="8">
                   <Button size="lg" variant="success" onClick={this.addNewElement}><i className="fas fa-plus-square fa-lg fa-a"></i>Add selected Element</Button>
@@ -352,10 +382,10 @@ export default class TemplateCreate extends Component {
           <Card body bg="danger" text="white">{this.state.error}</Card>                
         )}
 
-        <ConfirmDelete show={this.state.tc_showConfirm} 
+        <ConfirmDelete show={this.state.tc_showConfirmDeleteElement || this.state.tc_showConfirmDeleteTemplate } 
           close={this.deleteElementConfirmed} 
-          title={this.state.idxOfElementToDelete ? 
-                  ( this.state.tc_add_elements[this.state.idxOfElementToDelete].element):('Element')}/>
+          title={delTitle}
+        />
 
         <InputColor show={this.state.tc_showColorConfirm} close={this.handleColorChangeConfirmed} hex={this.state.background} />
       </div>
