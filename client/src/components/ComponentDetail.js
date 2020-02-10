@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Form, Card, Button, Col, ButtonToolbar } from "react-bootstrap";
-=======
-import { Button, ButtonToolbar } from "react-bootstrap";
->>>>>>> master
 import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -36,6 +32,12 @@ class ComponentDetail extends Component {
     this.deleteComponent(componentId);
 
   }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   deleteComponent = (componentId) => {
     //console.log("im delete.js gelandet", componentId);
@@ -81,15 +83,10 @@ class ComponentDetail extends Component {
     }
 
     return (
-<<<<<<< HEAD
       <div>
         <Card bg="secondary" text="white" style={{ marginBottom: "10px" }}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
         </Card>
-=======
-      <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Component Detail</h2>
->>>>>>> master
 
         <Card style={{ marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
