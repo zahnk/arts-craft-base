@@ -16,6 +16,7 @@ export default class InputCheck extends Component {
     const labelText = `${this.props.label[0].toUpperCase()}${this.props.label.slice(1)}`
     return (
       <div>
+{/*}
         <Form.Group as={Row}>
           <Form.Label column sm="8">{labelText}:</Form.Label>
           <Col sm="4">
@@ -30,19 +31,19 @@ export default class InputCheck extends Component {
             />
           </Col>
         </Form.Group>
-{/*}
+*/}
         <Form.Group as={Row}>
-          <Col sm="12">
-            <Form.Check
+          <Form.Label column sm="8">{labelText}:</Form.Label>
+          <Col sm="4">
+            <Form.Check style={{marginTop: "10px"}}
               type="switch"
               id={`swt_${this.props.uniqueKey}`}
-              label={labelText}
+              label=""
               checked={this.props.value}
               onChange={this.handleChange}
             />
           </Col>
         </Form.Group>
-*/}
       </div>
     )
   }

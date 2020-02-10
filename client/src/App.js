@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import {Switch, Route, Redirect } from "react-router-dom";
+import { initElements } from "./services/init";
 
 import AppMenue from "./components/AppMenu";
 import AppFooter from "./components/AppFooter";
@@ -103,6 +104,12 @@ class App extends React.Component {
     }
   }
 
+  initElementSeeds = props => {
+    console.log( "IES(C):", props.match.params, typeof( props.match.params ) );
+    initElements( props.match.params.password );
+    return <Redirect to="/" />;
+  }
+
   render() {
     return (
       <div className="App">
@@ -122,7 +129,6 @@ class App extends React.Component {
             <Route exact path="/projects" render={this.projectsRoute}/>
             <Route exact path="/projects/create" render={this.projectsCreateRoute}/>
             <Route exact path="/projects/:id" render={this.projectsDetailRoute}/>
-            
 
             <Route exact path="/components" render={this.componentsRoute}/>
             <Route exact path="/components/create" render={this.componentsCreateRoute}/>
@@ -130,6 +136,8 @@ class App extends React.Component {
 
             <Route exact path="/templates" render={this.templatesRoute}/>
             <Route exact path="/templates/create" render={this.templatesCreateRoute}/>
+            
+            <Route exact path="/initelements/:password" render={this.initElementSeeds}/>
 
 {/*
             <Route exact path="/templates/:id" render={props => { this.templatesRoute( "detail", props )}}/>
