@@ -1,5 +1,5 @@
 import React from "react";
-import { login } from "../services/auth";
+import { login, signup } from "../services/auth";
 import { Modal, Form, Button, Row, Col, Card } from "react-bootstrap";
 import '../acb.css';
 
@@ -43,7 +43,7 @@ class Startpage extends React.Component {
     handleSubmitSignup = event => {
         event.preventDefault();
 
-        login(this.state.username, this.state.password).then(data => {
+        signup(this.state.username, this.state.password).then(data => {
         if (data.message) {
             // handle errors
             this.setState({
@@ -105,8 +105,8 @@ class Startpage extends React.Component {
                     )}
                 </Modal.Body>
                 <Modal.Footer style={{justifyContent: "space-between"}}>
-                    <Button size="lg" variant="danger" onClick={this.closeModal}><i className="fas fa-times fa-m-a"></i>Close</Button>
-                    <Button size="lg" variant="primary" type="submit"><i className="fas fa-sign-in-alt fa-m-a"></i>Log in</Button>
+                    <Button size="lg" variant="danger" onClick={this.closeModal}><i className="far fa-window-close fa-lg fa-m-a"></i>Cancel</Button>
+                    <Button size="lg" variant="primary" type="submit"><i className="fas fa-sign-in-alt fa-lg fa-m-a"></i>Log in</Button>
                 </Modal.Footer>
                 </Form>
             </Modal>
@@ -150,8 +150,8 @@ class Startpage extends React.Component {
                     )}
                 </Modal.Body>
                 <Modal.Footer style={{justifyContent: "space-between"}}>
-                    <Button size="lg" variant="danger" onClick={this.closeModal}><i className="fas fa-times fa-m-a"></i>Close</Button>
-                    <Button size="lg" variant="primary" type="submit"><i className="fas fa-sign-in-alt fa-m-a"></i>Sign up</Button>
+                    <Button size="lg" variant="danger" onClick={this.closeModal}><i className="far fa-window-close fa-lg fa-m-a"></i>Cancel</Button>
+                    <Button size="lg" variant="primary" type="submit"><i className="fas fa-sign-in-alt fa-lg fa-m-a"></i>Sign up</Button>
                 </Modal.Footer>
                 </Form>
             </Modal>

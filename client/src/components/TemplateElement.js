@@ -32,7 +32,7 @@ export default class TemplateElement extends Component {
             <Form>
               <Row>            
                 <Col sm="1" style={{textAlign: "left"}}>
-                  <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="fas fa-times fa-lg"></i></Button>
+                  <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="far fa-trash-alt fa-lg"></i></Button>
                   <Form.Label column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
                 </Col>
                 <Col sm="3">
