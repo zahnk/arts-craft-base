@@ -63,8 +63,7 @@ class Startpage extends React.Component {
     render() {
         let startPage = (
             <div>
-                <Row><Col sm={12}><div className="sp-c"><h1>ARTS-CRAFT-BASE</h1></div></Col></Row>
-                <Row><Col sm={12}><div className="sp-c"><img className="lg" src="../sewing-m-bkg.png" alt="w" /></div></Col></Row>
+                <Row><Col sm={12}><div className="sp-c"><img className="lg" src="../baumwolle.png" alt="w" /></div></Col></Row>
             </div>
         );
         let loginPage = (
