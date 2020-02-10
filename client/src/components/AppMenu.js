@@ -56,7 +56,9 @@ export default class AppMenu extends Component {
 
           {this.props.user ? (
             <Navbar.Collapse id="responsive-navbar-nav">
+              <NavbarDivider />
               <Nav className="mr-auto">
+
                 
                 <Nav.Link href="/"><i className="fas fa-home fa-lg fa-m-a fa-15x fa-fw"></i>Home</Nav.Link>
 

@@ -130,7 +130,7 @@ class ProjectDetail extends Component {
 
     let form;
     if (this.state.editForm && canUpdate) {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form onSubmit={this.handleSubmit}>
             <Form.Row>

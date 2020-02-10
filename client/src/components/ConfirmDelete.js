@@ -38,8 +38,8 @@ export default class AppAbout extends Component {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button size="lg" variant="danger" onClick={() => {this.closeConfirm(false)}}><i className="fas fa-times fa-a"></i>No</Button>
-          <Button size="lg" variant="success" onClick={() => {this.closeConfirm(true)}}><i className="far fa-trash-alt fa-a"></i>Delete</Button>
+          <Button size="lg" variant="primary" onClick={() => {this.closeConfirm(false)}}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+          <Button size="lg" variant="danger" onClick={() => {this.closeConfirm(true)}}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
         </Modal.Footer>
       </Modal>
     )

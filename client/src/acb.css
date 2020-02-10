@@ -19,6 +19,10 @@
 
 .fa-15x { font-size: 1.5em; }
 
+.fa-fw {
+  text-align: center;
+  width: 1.5em !important;
+}
 .card-img-overlay, .card-footer { padding: 0px; }
 
 .transparentCardHeader.card-header {

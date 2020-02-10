@@ -71,12 +71,11 @@ export default class ProjectCreate extends Component {
   render() {
 
     return (
-      <div>
-        <Card bg="secondary" text="white" style={{ marginBottom: "10px" }}>
-          <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Projects Create</Card.Header>
-        </Card>
-
-        <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}>
+          <i className="fas fa-sitemap fa-a"></i>Project Create
+        </h2>
+        <Card text="dark" style={{marginBottom: "10px", textAlign:"left"}}>
           <Card.Body>
             <Form onSubmit={this.handleSubmit}>
               <Form.Row>
