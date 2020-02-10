@@ -48,7 +48,9 @@ export default class TemplateCreate extends Component {
     return temp;
   }
 
-  handleChangeElement = (event) => {
+  // --------------------------------------------------------
+
+  handleChangeElementOverview= (event) => {
     const foundIndex = this.state.tc_all_elements.findIndex( element => {
       return element._id === event.target.value
     });
@@ -63,7 +65,9 @@ export default class TemplateCreate extends Component {
     this.setState( { tc_sel_element_vp_idx: event.target.value });
   }
 
-  updateElement = (elIdx, propTyp, propIdx, propVal ) => {
+  // --------------------------------------------------------
+
+  handleUpdateElement = (elIdx, propTyp, propIdx, propVal ) => {
     const matchElement = this.state.tc_add_elements[elIdx];
 
     if( propTyp === 'fp' ) {
@@ -91,7 +95,7 @@ export default class TemplateCreate extends Component {
 
   // --------------------------------------------------------
 
-  addNewElement = () => {
+  handleAddNewElement = () => {
     const matchElement = this.state.tc_all_elements[this.state.tc_sel_element_idx];
 
     const copyOfAddElements = this.state.tc_add_elements.slice();
@@ -106,7 +110,11 @@ export default class TemplateCreate extends Component {
     this.setState({ tc_showConfirmDeleteElement: true, idxOfElementToDelete: idxOfElement }); 
   }
 
-  deleteElementConfirmed = (dec_confirmState) => {
+  showConfirmDeleteTemplate = ( idxOfTemplate ) => {
+    this.setState({ tc_showConfirmDeleteTemplate: true }); 
+  }
+
+  handleDeleteObjectConfirmed = (dec_confirmState) => {
     if( this.state.tc_showConfirmDeleteElement ) {
       const filteredAddElements = this.state.tc_add_elements.filter( (element, i) => {
           return ((dec_confirmState === true) ? this.state.idxOfElementToDelete !== i : true);
@@ -129,44 +137,65 @@ export default class TemplateCreate extends Component {
     }
   }
 
-  showConfirmDeleteTemplate = ( idxOfTemplate ) => {
-    this.setState({ tc_showConfirmDeleteTemplate: true }); 
+  // --------------------------------------------------------
+  handleCloneTemplate = () => {
+      console.log( "CREATE" );
+      const uid = this.state.tc_name.split('__')[0] + "__" + Date.now().valueOf()
+      this.handleCreateNewTemplate( `${uid}` );
   }
 
-  // --------------------------------------------------------
-
-  handleSubmit = (event) => {
+  handleSubmitTemplate = (event) => {
     if (event) { event.preventDefault(); }
 
     if( this.state.tc_curTemplateIdx ) {
       console.log( "UPDATE", this.state.tc_curTemplateIdx  );
-      this.setState( null );
+      this.handleUpdateCurrentTemplate();
     } else {
-      axios
-        .post("/api/templates/create", { 
-          info: "CreateTemplate",
-          data: {
-            name: this.state.tc_name,
-            owner: this.state.tc_owner,
-            description: this.state.tc_description,
-            elements: this.state.tc_add_elements          
-          }
-        })
-        .then(response => {
-          this.setState({
-            tc_add_elements: [],
-
-            tc_name: '',
-            tc_description: '',
-          });
-        })
-        .catch(err => {
-          console.log("POST-ERR", err);
-        });
+      console.log( "CREATE" );
+      this.handleCreateNewTemplate( this.state.tc_name );
     }
   };
 
-  handleChange = (event) => {
+  handleUpdateCurrentTemplate = () => {
+    axios
+      .put(`/api/templates/${this.state.tc_curTemplateIdx}`, { 
+        info: "UpdateTemplate",
+        data: {
+          name: this.state.tc_name,
+          owner: this.state.tc_owner,
+          description: this.state.tc_description,
+          elements: this.state.tc_add_elements          
+        }
+      })
+      .then(response => {
+        this.props.history.push("/templates")
+      })
+      .catch(err => {
+        console.log("PUT-ERR", err);
+      });
+  }
+
+  handleCreateNewTemplate = ( newName ) => {
+    axios
+      .post("/api/templates/create", { 
+        info: "CreateTemplate",
+        data: {
+          name: newName,
+          owner: this.state.tc_owner,
+          description: this.state.tc_description,
+          elements: this.state.tc_add_elements          
+        }
+      })
+      .then(response => {
+        this.props.history.push("/templates")
+      })
+      .catch(err => {
+        console.log("POST-ERR", err);
+      });
+  }
+
+
+  handleChangeTemplate = (event) => {
     this.setState( { [event.target.name] : event.target.value });
   }
 
@@ -232,9 +261,9 @@ export default class TemplateCreate extends Component {
         <h2 style={{textAlign: "left", marginBottom: "10px"}}>
           <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
         </h2>
-        <Card text="dark" style={{marginBottom: "10px", textAlign:"left"}}>
+        <Card text="dark" style={{marginBottom: "10px", textAlign:"right"}}>
           <Card.Body>       
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmitTemplate}>
               <Row>
                 <Col sm="4">
                   <Form.Group as={Row}>
@@ -246,7 +275,7 @@ export default class TemplateCreate extends Component {
                         name="tc_name"
                         placeholder="Enter Name" 
                         value={this.state.tc_name}
-                        onChange={this.handleChange}
+                        onChange={this.handleChangeTemplate}
                       />
                     </Col>
                   </Form.Group>
@@ -259,7 +288,7 @@ export default class TemplateCreate extends Component {
                         name="tc_description"
                         placeholder="Enter Description" 
                         value={this.state.tc_description}
-                        onChange={this.handleChange}
+                        onChange={this.handleChangeTemplate}
                       />
                     </Col>
                   </Form.Group>
@@ -279,7 +308,7 @@ export default class TemplateCreate extends Component {
                         <Form.Control style={{flexGrow:2}}
                           as="select"
                           name="tc_sel_element_type"
-                          onChange={this.handleChangeElement}
+                          onChange={this.handleChangeElementOverview}
                         >
                         {
                           this.state.tc_all_elements.map( (element,i) => {
@@ -351,21 +380,28 @@ export default class TemplateCreate extends Component {
                   </Form.Group>
                 </Col>
               </Row>
-              <Row style={{textAlign: "right"}}>
+              <Row style={{textAlign: "left"}}>
                 <Col sm="4">
                   { this.state.tc_curTemplateIdx ? 
                     ( 
                       <div>
-                        <Button size="lg" variant="danger" className="mr-2" onClick={() => {this.showConfirmDeleteTemplate( this.state.tc_curTemplateIdx )}}><i className="fas fa-times fa-lg fa-a"></i>Delete Template</Button>
-                        <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Update Template</Button>
+                        <Button size="lg" variant="primary" className="mr-2" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Update</Button>
+                        <Button size="lg" variant="success" className="mr-2" onClick={this.handleCloneTemplate}><i className="fas fa-clone fa-lg fa-a"></i>Clone</Button>
+                        <Button size="lg" variant="danger" className="mr-2" onClick={() => {this.showConfirmDeleteTemplate( this.state.tc_curTemplateIdx )}}><i className="fas fa-times fa-lg fa-a"></i>Delete</Button>
                       </div>
                     ):( 
-                      <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Submit Template</Button>
+                      <Button size="lg" variant="primary" type="submit"><i className="fas fa-save fa-lg fa-a"></i>Submit</Button>
                     )
                   }  
                 </Col>
                 <Col sm="8">
-                  <Button size="lg" variant="success" onClick={this.addNewElement}><i className="fas fa-plus-square fa-lg fa-a"></i>Add selected Element</Button>
+                  <Form.Group as={Row}>
+                    <Col sm="1">
+                    </Col>
+                    <Col sm="11">
+                      <Button size="lg" variant="success" onClick={this.handleAddNewElement}><i className="fas fa-plus-square fa-lg fa-a"></i>Add selected Element</Button>
+                    </Col>
+                  </Form.Group>
                 </Col>
               </Row>
             </Form>
@@ -374,7 +410,7 @@ export default class TemplateCreate extends Component {
 
         {
           this.state.tc_add_elements.map( (oneElement,i) => {
-            return <TemplateElement key={`AE_${i}`} idx={i} delete={this.showConfirmDelete} update={this.updateElement} curElement={oneElement}/>
+            return <TemplateElement key={`AE_${i}`} idx={i} delete={this.showConfirmDelete} update={this.handleUpdateElement} curElement={oneElement}/>
           })
         }
 
@@ -383,7 +419,7 @@ export default class TemplateCreate extends Component {
         )}
 
         <ConfirmDelete show={this.state.tc_showConfirmDeleteElement || this.state.tc_showConfirmDeleteTemplate } 
-          close={this.deleteElementConfirmed} 
+          close={this.handleDeleteObjectConfirmed} 
           title={delTitle}
         />
 

@@ -27,13 +27,13 @@ export default class TemplateElement extends Component {
 
     return (
       <div>
-        <Card style={{backgroundColor: "rgba(255, 255, 255, 0.125)", marginBottom: "5px", textAlign: "left"}} className="ElementRow">
+        <Card style={{backgroundColor: "rgba(255, 255, 255, 0.125)", marginBottom: "5px", textAlign: "right"}} className="ElementRow">
           <Card.Body>       
             <Form>
               <Row>            
-                <Col sm="1">
+                <Col sm="1" style={{textAlign: "left"}}>
                   <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="fas fa-times fa-lg"></i></Button>
-                  <Form.Label style={{textAlign: "left"}} column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
+                  <Form.Label column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
                 </Col>
                 <Col sm="3">
                   <InputElement idx={0} uniqueKey={`F0${this.props.idx}`}
@@ -67,26 +67,46 @@ export default class TemplateElement extends Component {
                 <Col sm="3">
                 {
                   propCont[0].map( (prop,i) => {
-                    return (
-                      <InputElement key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
-                        eltype={prop.prop.typ} 
-                        label={prop.prop.prop} 
-                        value={prop.prop.val || ( prop.prop.typ === 'checkbox' ? false : '' )}
-                        handleChange={this.handleVariableValueChange} />
-                    )
+                    if( prop.prop.typ === 'checkbox' ) {
+                      return (
+                        <InputCheck key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
+                          eltype={prop.prop.typ} 
+                          label={prop.prop.prop} 
+                          value={prop.prop.val || false}
+                          handleChange={this.handleVariableValueChange} />
+                      )
+                    } else {
+                      return (
+                        <InputElement key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
+                          eltype={prop.prop.typ} 
+                          label={prop.prop.prop} 
+                          value={prop.prop.val || '' }
+                          handleChange={this.handleVariableValueChange} />
+                      )
+                    }
                   })
                 }
                 </Col>
                 <Col sm="3">
                 {
                   propCont[1].map( (prop,i) => {
-                    return (
-                      <InputElement key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
-                        eltype={prop.prop.typ} 
-                        label={prop.prop.prop} 
-                        value={prop.prop.val || ( prop.prop.typ === 'checkbox' ? false : '' )}
-                        handleChange={this.handleVariableValueChange} />
-                    )
+                    if( prop.prop.typ === 'checkbox' ) {
+                      return (
+                        <InputCheck key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
+                          eltype={prop.prop.typ} 
+                          label={prop.prop.prop} 
+                          value={prop.prop.val || false}
+                          handleChange={this.handleVariableValueChange} />
+                      )
+                    } else {
+                      return (
+                        <InputElement key={`IE${prop.idx}${this.props.idx}`} idx={prop.idx} uniqueKey={`V${prop.idx}${this.props.idx}`}
+                          eltype={prop.prop.typ} 
+                          label={prop.prop.prop} 
+                          value={prop.prop.val || '' }
+                          handleChange={this.handleVariableValueChange} />
+                      )
+                    }
                   })
                 }
                 </Col>

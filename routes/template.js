@@ -48,20 +48,38 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-
 // POST api/templates
 router.post("/create", async (req, res) => {
   const { info, data } = req.body;
   console.log( "POST:" , info, "|", data );
-  data.elements.map( (el) => { console.log( "EL", el ); });
 
   try {
-    // return all templates and elements
+    // create all
     const result = await Template.create(data);    
     res.json( result );
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// put /api/templates/:id
+router.put("/:id", async (req, res) => {
+  const templateId = req.params.id;
+  console.log( "P", req.params );
+
+  const { info, data } = req.body;
+  console.log( "PUT:", templateId, " : ", info, "|", data );
+
+  try {
+    const template = await Template.findByIdAndUpdate(
+        templateId,
+        data
+      );    
+    res.json( template );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 });
 
 // DELETE /api/templates/:id
@@ -75,7 +93,7 @@ router.delete("/:id", async (req, res) => {
 
   try {
     // delete template by passed id
-    await Template.delete(templateId);    
+    await Template.findByIdAndDelete(templateId);    
     res.json( "OK" );
   } catch (err) {
     res.status(500).json(err);

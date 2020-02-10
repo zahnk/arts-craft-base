@@ -72,7 +72,7 @@ export default class AppMenu extends Component {
                   <NavDropdown.Item href="/components/create"><i className="far fa-plus-square fa-lg fa-a fa-15x fa-fw"></i>Create new Component</NavDropdown.Item>
                 </NavDropdown>
 
-                <NavDropdown className="shw-lg-only" title={<span><i className="far fa-square fa-lg fa-m-a fa-15x fa-fw"></i>Template</span>} id="collasible-nav-dropdown">
+                <NavDropdown title={<span><i className="far fa-square fa-lg fa-m-a fa-15x fa-fw"></i>Template</span>} id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/templates"><i className="fas fa-list fa-lg fa-a fa-15x fa-fw"></i>All Templates</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/templates/create"><i className="far fa-plus-square fa-lg fa-a fa-15x fa-fw"></i>Create new Template</NavDropdown.Item>
