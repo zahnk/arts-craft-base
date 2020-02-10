@@ -12,12 +12,10 @@ export default class TemplateElement extends Component {
   }
 
   handleFixedValueChange = (idx, value, uniqueKey ) => {
-    console.log( "T-ELE", this.props.idx, "fp", idx, value );
     this.props.update( this.props.idx, "fp", idx, value );
   }
 
   handleVariableValueChange = (idx, value, uniqueKey ) => {
-    console.log( "T-ELE", this.props.idx, "vp", idx, value );
     this.props.update( this.props.idx, "vp", idx, value );
   }
 
@@ -36,7 +34,6 @@ export default class TemplateElement extends Component {
                 <Col sm="1">
                   <Button size="md" variant="danger" onClick={() => {this.props.delete( this.props.idx )}}><i className="fas fa-times fa-lg"></i></Button>
                   <Form.Label style={{textAlign: "left"}} column sm="12"><b>{this.props.curElement.element}</b></Form.Label>
-                  <Form.Label style={{textAlign: "left"}} column sm="12">[{this.props.idx}]</Form.Label>
                 </Col>
                 <Col sm="3">
                   <InputElement idx={0} uniqueKey={`F0${this.props.idx}`}

@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 // GET /api/templates
 router.get("/", async (req, res, next) => {
   try {
-    // return all templates and elements
+    // return all templates
     const allTemplates = await Template.find({});
     
     res.json( allTemplates );
@@ -16,9 +16,10 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
 router.get("/elements", async (req, res, next) => {
   try {
-    // return all templates and elements
+    // return all elements
     const allElements = await Element.find({});
     
     res.json( allElements );
@@ -27,23 +28,59 @@ router.get("/elements", async (req, res, next) => {
   }
 });
 
+// GET /api/templates/:id
+router.get("/:id", async (req, res, next) => {
+  const templateId = req.params.id;
 
-// POST /api/projects
-router.post("/create", (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(templateId)) {
+    res.status(400).json({ message: "TemplateId is not valid" });
+    return;
+  }
 
-
-
-  Project.create({
-    title: req.body.title,
-    description: req.body.description,
-    owner: req.user._id
-  })
-    .then(project => {
-      res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
+  try {
+    // return one templates and elements
+    const foundTemplate = await Template.findById(templateId);
+    if (!foundTemplate) {
+      res.status(404).json({ message: "Template not found" });
+    } else res.json(foundTemplate);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
+// POST api/templates
+router.post("/create", async (req, res) => {
+  const { info, data } = req.body;
+  console.log( "POST:" , info, "|", data );
+  data.elements.map( (el) => { console.log( "EL", el ); });
+
+  try {
+    // return all templates and elements
+    const result = await Template.create(data);    
+    res.json( result );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// DELETE /api/templates/:id
+router.delete("/:id", async (req, res) => {
+  const templateId = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(templateId)) {
+    res.status(400).json({ message: "TemplateId is not valid" });
+    return;
+  }
+
+  try {
+    // delete template by passed id
+    await Template.delete(templateId);    
+    res.json( "OK" );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

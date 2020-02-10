@@ -10,11 +10,11 @@
 
 .fa-m-a:after{
   content: "";
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .fa-m-b:before{
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .fa-15x { font-size: 1.5em; }
@@ -53,11 +53,17 @@
 .card-columns .card{ margin-bottom: 0.2rem }
 .shw-lg { display: inline-block; }
 .shw-sm { display: none; }
+.shw-lg-only { display: none; }
 
 .abt-logo { width: 75%; }
 .abt-cr em { font-weight: bold; }
 
 .sketch-picker { box-shadow: 0px 0px !important; border-radius: 0px !important;}
+
+.menu-h-divider { 
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: block;
+}
 
 @media (max-width: 500px) {
   .navbarCaption { font-size: x-large; }
@@ -106,5 +112,11 @@
     max-height:250px;
     object-fit: cover;
   }
+}
+@media (min-width: 1200px) {
+  .menu-h-divider { display: none; }
+}
+@media (min-width: 1800px) {
+  .shw-lg-only { display: block; }
 }
 
