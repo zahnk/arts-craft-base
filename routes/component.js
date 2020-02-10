@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 // GET /api/components
 router.get("/", (req, res) => {
   // return all components
- console.log ("bis hierhin")
+  
   Component.find({})
  //   .populate("tasks")
     .then(components => {
@@ -56,13 +56,15 @@ router.delete("/:id", (req, res) => {
 // POST /api/templates
 router.post("/create", (req, res) => {
   // create 1 component
-  console.log("cmp create" , JSON.stringify(req.body));
+  console.log("cmp create owner" , JSON.stringify(req.user._id));
+  console.log("cmp create owner" , JSON.stringify(req.body));
   Component.create({
     name: req.body.name,
     owner: req.user._id,
     description: req.body.description,
     imageUrl: req.body.imageUrl,
-    //to be inserted-->> components: []
+    //template: req.body.template,
+    //to be inserted-->> projects: []
     projects: []
     //template: req.body.template
   })
@@ -70,8 +72,32 @@ router.post("/create", (req, res) => {
       res.json(component);
     })
     .catch(err => {
+      console.log("cmp create ERROR", err)
       res.status(500).json(err);
     });
 });
+
+// PUT /api/components/:id
+router.put("/:id", (req, res) => {
+  console.log("cmp findByIdAndUpdate" , JSON.stringify(req.body));
+  Component.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+      description: req.body.description,
+      owner: req.user._id,
+      imageUrl: req.body.imageUrl,
+      template: req.body.template
+    },
+    { new: true }
+  )
+    .then(component => {
+      res.json(component);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;
