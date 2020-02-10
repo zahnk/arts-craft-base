@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Row, Col, Card, Button } from 'react-bootstrap';
 import InputElement from "./elements/InputElement";
+import InputCheck from "./elements/InputCheck";
 //import CheckBox from '@react-native-community/checkbox';
 
 export default class TemplateElement extends Component {
@@ -11,10 +12,12 @@ export default class TemplateElement extends Component {
   }
 
   handleFixedValueChange = (idx, value, uniqueKey ) => {
+    console.log( "T-ELE", this.props.idx, "fp", idx, value );
     this.props.update( this.props.idx, "fp", idx, value );
   }
 
   handleVariableValueChange = (idx, value, uniqueKey ) => {
+    console.log( "T-ELE", this.props.idx, "vp", idx, value );
     this.props.update( this.props.idx, "vp", idx, value );
   }
 
@@ -53,12 +56,12 @@ export default class TemplateElement extends Component {
                     handleChange={this.handleFixedValueChange} />
                 </Col>
                 <Col sm="2">
-                  <InputElement idx={3} uniqueKey={`F3${this.props.idx}`}
+                  <InputCheck idx={3} uniqueKey={`F3${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[3].typ} 
                     label={this.props.curElement.fixedProps[3].prop} 
                     value={this.props.curElement.fixedProps[3].val || false}
                     handleChange={this.handleFixedValueChange} />
-                  <InputElement idx={4} uniqueKey={`F4${this.props.idx}`}
+                  <InputCheck idx={4} uniqueKey={`F4${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[4].typ} 
                     label={this.props.curElement.fixedProps[4].prop} 
                     value={this.props.curElement.fixedProps[4].val || false}

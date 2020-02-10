@@ -9,6 +9,8 @@ export default class TemplateCreate extends Component {
   constructor(){
     super();
     this.state = {
+      tc_owner: this.props.user,
+
       tc_showConfirm: false,
       tc_showColorConfirm: false,
       tc_all_elements: [{ description: '', variableProps: [{typ:'', disp:''}], fixedProps: [{typ:'', disp:''}] }],
@@ -52,13 +54,29 @@ export default class TemplateCreate extends Component {
   }
 
   handleChangeFixedProperties = (event) => {
-    console.log( "NEW FIX idx", event.target.value );
+    console.log( "CHG FIX idx", event.target.value );
     this.setState( { tc_sel_element_fp_idx: event.target.value });
   }
 
   handleChangeVariableProperties = (event) => {
-    console.log( "NEW VAR idx", event.target.value );
+    console.log( "CHG VAR idx", event.target.value );
     this.setState( { tc_sel_element_vp_idx: event.target.value });
+  }
+
+  updateElement = (elIdx, propTyp, propIdx, propVal ) => {
+    console.log( "UPD ELE idx value", elIdx, propTyp, propIdx, propVal );
+    const matchElement = this.state.tc_add_elements[elIdx];
+
+    if( propTyp === 'fp' ) {
+      matchElement.fixedProps[propIdx].val = propVal;
+    } else {
+      matchElement.variableProps[propIdx].val = propVal;        
+    }
+
+    const copyOfAddElements = this.state.tc_add_elements.slice();
+
+    console.log( "copyOfAddElements",  JSON.stringify( copyOfAddElements ) )
+    this.setState( { tc_add_elements : copyOfAddElements });
   }
 
   // --------------------------------------------------------
@@ -102,6 +120,38 @@ export default class TemplateCreate extends Component {
     this.setState({ tc_showConfirm: false, idxOfElementToDelete: undefined, tc_add_elements: filteredAddElements }); 
   }
 
+  handleCreateTemplate = (event) => {
+    if (event) { event.preventDefault(); }
+
+    axios
+      .post("/api/template/create", {
+        name: this.state.tc_name,
+        owner: this.state.tc_owner,
+        description: this.state.description,
+        
+        notes: this.state.notes,
+        status: this.state.status
+      })
+      .then(response => {
+        console.log("then after post");
+        //this.props.refreshData();
+        this.setState({
+          name: "",
+          description: "",
+          notes: "",
+          //components: false,
+          status: false
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // set a flag that the project got submitted
+    this.setState({
+      submitted: true
+    })
+  };
+
   // --------------------------------------------------------
   // --------------------------------------------------------
   // --------------------------------------------------------
@@ -130,10 +180,11 @@ export default class TemplateCreate extends Component {
     this.setState( { tc_add_elements : copyAddElements });
   }
 
+/*
   updateElement = ( props_idx, val_typ, val_idx, value ) => {
     console.log( "UPD U_ELEMEN", props_idx, val_typ, val_idx, value );
   }
-
+*/
   getData = () => {
     axios
       .get("/api/templates/elements")
