@@ -16,7 +16,7 @@ export default class ComponentCard extends Component {
   render() {
     return (
       <Card className="cardForDetail" border="dark" onClick={this.backRoute}>
-        <Card.Img className="componentImage" src={this.props.component.imageUrl} alt="Component Image" />
+        <Card.Img className="componentImage" src={this.props.component.img} alt="Component Image" />
         <Card.ImgOverlay>
           <Card.Header className="transparentCardHeader" as="h4">{this.props.component.name}</Card.Header>
         </Card.ImgOverlay>

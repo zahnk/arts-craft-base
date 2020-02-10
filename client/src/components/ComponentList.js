@@ -12,7 +12,7 @@ export default class ComponentList extends Component {
   render() {
     return (
       <CardColumns>
-        {this.props.components.map( (component) => {
+        {this.props.components.map( (component,i) => {
          component.img = component.img || `def-c-${Math.floor(Math.random()*4)}.png`;
 
           return (
