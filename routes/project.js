@@ -76,5 +76,26 @@ router.post("/create", (req, res) => {
     });
 });
 
+// PUT /api/projects/:id
+router.put("/:id", (req, res) => {
+  Project.findByIdAndUpdate(
+    req.params.id,
+    {
+      title: req.body.name,
+      description: req.body.description,
+      owner: req.user._id,
+      notes: req.body.notes,
+      status: req.body.status
+    },
+    { new: true }
+  )
+    .then(project => {
+      res.json(project);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;
