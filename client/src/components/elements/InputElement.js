@@ -16,7 +16,7 @@ export default class InputElement extends Component {
     const labelText = `${this.props.label[0].toUpperCase()}${this.props.label.slice(1)}`;
     const colSize = [5,7];
 
-    return (
+    return ( 
       <div>
         <Form.Group as={Row}>
           <Form.Label column sm={colSize[0]}>{labelText}:</Form.Label>

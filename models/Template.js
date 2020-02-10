@@ -3,9 +3,9 @@ const Schema   = mongoose.Schema;
 
 const templateSchema = new Schema({
   name:           { type: String },
+  owner:          { type: Schema.Types.ObjectId, ref: 'User'},
   description:    { type: String },
-
-  elements:       [ { type: Schema.Types.ObjectId, ref: 'Element'} ],
+  elements:       [ {} ],
 },{
   timestamps: {
     createdAt: "created_at",
