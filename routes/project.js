@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   //console.log("express delete project",req.params.id)
   const projectId = req.params.id;
- Project.findByIdAndDelete(projectId)
+  Project.findByIdAndDelete(projectId)
     .then( response => {
       res.json("ok");
       return;       
