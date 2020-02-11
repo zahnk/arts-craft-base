@@ -73,6 +73,7 @@ class Startpage extends React.Component {
                 centered
                 show={true}
                 onHide={this.closeAbout}
+                onEntered={()=>{document.getElementById('username').focus()}}
                 style={{color:"black"}}
             >
                 <Modal.Header className="bg-primary text-light">
@@ -118,6 +119,7 @@ class Startpage extends React.Component {
                 centered
                 show={true}
                 onHide={this.closeAbout}
+                onEntered={()=>{document.getElementById('username').focus()}}
                 style={{color:"black"}}
             >
                 <Modal.Header className="bg-primary text-light">
