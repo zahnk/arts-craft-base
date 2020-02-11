@@ -15,7 +15,8 @@ class ProjectDetail extends Component {
     },
     error: "",
     editForm: false,
-    showConfirm: false
+    showConfirm: false,
+    addComponentForm: false
 
   };
 
@@ -114,6 +115,12 @@ class ProjectDetail extends Component {
     this.getData();
   }
 
+  modifyComponents = () => {
+    this.setState({
+      addComponentForm: !this.state.addComponentForm
+    });
+  };
+
 
   render() {
     if (this.state.error) {
@@ -184,6 +191,7 @@ class ProjectDetail extends Component {
             <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
             <Button onClick={this.handleSave} className="mr-5 ml-5" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
             <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button onClick={this.modifyComponents} className="ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Change Component</Button>
           </Form>
         </Card.Body>
       </Card>;
