@@ -6,8 +6,8 @@ const mongoose = require("mongoose");
 // GET /api/components
 router.get("/", (req, res) => {
   // return all components
-  
-  Component.find({})
+  console.log( "UID", req.user._id );
+  Component.find({owner: req.user._id})
  //   .populate("tasks")
     .then(components => {
       res.json(components);

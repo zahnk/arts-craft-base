@@ -238,13 +238,18 @@ class ProjectDetail extends Component {
         </Card.Body>
       </Card>;
     }
-
-    return (
-
+/*
       <div>
         <Card bg="secondary" text="white" style={{ marginBottom: "10px" }}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
         </Card>
+*/
+    return (
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}>
+          <i className="fas fa-sitemap fa-a"></i>Project Detail
+        </h2>
+
         
       {form}
 
