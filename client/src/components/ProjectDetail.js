@@ -7,17 +7,11 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 class ProjectDetail extends Component {
   state = {
-    project: {
-      name: '',
-      description: '',
-      status: "",
-      notes: ''
-    },
+    project: null, 
     error: "",
     editForm: false,
     showConfirm: false,
     addComponentForm: false
-
   };
 
   showConfirmDelete = () => {
@@ -58,10 +52,10 @@ class ProjectDetail extends Component {
   };
 
   handleChange = event => {
-  console.log ("handleChange name", event.target.name);
-  console.log ("handleChange value", event.target.value)
+  const tempProject =  this.state.project;
+  tempProject[event.target.name] = event.target.value;
     this.setState({
-      [event.target.name]: event.target.value
+      project: tempProject
     });
   }
 
@@ -130,7 +124,6 @@ class ProjectDetail extends Component {
     }
     
     let canUpdate = false;
-
     if (this.state.project.owner === this.props.user._id) {
       canUpdate = true;
     }
@@ -157,7 +150,7 @@ class ProjectDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="description"
-                  value={this.state.description}
+                  value={this.state.project.description}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -169,7 +162,7 @@ class ProjectDetail extends Component {
                     as="select"
                     name="status"
                     id="status"
-                    value={this.state.status}
+                    value={this.state.project.status}
                     onChange={this.handleChange}
                   >
                     <option value="New" selected={this.state.project.status === "New"}>New</option>
@@ -183,7 +176,7 @@ class ProjectDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="notes"
-                  value={this.state.notes}
+                  value={this.state.project.notes}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -196,7 +189,7 @@ class ProjectDetail extends Component {
         </Card.Body>
       </Card>;
     } else {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>
