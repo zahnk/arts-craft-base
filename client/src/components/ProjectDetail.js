@@ -246,10 +246,6 @@ class ProjectDetail extends Component {
       </Card>;
     }
 
-
-
-
-
     return (
 
       <div>
