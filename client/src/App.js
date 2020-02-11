@@ -62,7 +62,7 @@ class App extends React.Component {
   componentsRoute = props => {
     console.log( "componentsRoute", props );
     if (this.state.user) {
-      return <Components {...props} />;
+      return <Components user={this.state.user} {...props} />;
     } else {
       return <Redirect to="/" />;
     }

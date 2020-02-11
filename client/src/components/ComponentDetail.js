@@ -180,7 +180,7 @@ class ComponentDetail extends Component {
         </Card.Body>
       </Card>;
     } else {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>

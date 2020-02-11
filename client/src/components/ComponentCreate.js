@@ -74,7 +74,7 @@ export default class ComponentCreate extends Component {
     return (
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Create Component</h2>
-        <Card style={{marginBottom: "10px", textAlign: "left" }}>
+        <Card text="dark" style={{marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
             <Form onSubmit={this.handleSubmit}>
               <Form.Row>
