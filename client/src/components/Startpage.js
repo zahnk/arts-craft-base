@@ -59,11 +59,74 @@ class Startpage extends React.Component {
         });
     };
 
-
     render() {
+        const acb_desc = (
+            <div className="sp-d">
+                <br />
+                <p>This tool can administrate all materials as components for your craft projects and the projects themselves.</p>
+                <p>Components can be created and configured by using generic templates, that also can be build by your own, to be more flexible!</p>
+            </div>
+        );
+
+//                        <div className="sp-t">ACB Administration&nbsp;Tool</div>
         let startPage = (
             <div>
-                <Row><Col sm={12}><div className="sp-c"><img className="lg" src="../baumwolle.png" alt="w" /></div></Col></Row>
+                <Row>
+                    <Col sm={7}>
+                        <div className="sp-shw-lg">{acb_desc}</div>
+                    </Col>
+                    <Col sm={5}>
+                        <div className="sp-c"><img className="lg" src="../acb.png" alt="w" /></div>
+                        <div className="sp-shw-sm">{acb_desc}</div>
+                    </Col>
+                </Row>
+                <Row className="sp-k">
+                    <Col sm={12} md={6} lg={4}>
+                        <Row>
+                            <Col sm={12}>
+                                <p className="sp-kt">PROJECT</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={4} lg={3}>
+                                <div className="sp-c"><img className="xlg" src="../sitemap-solid.png" alt="k" width="100%" /></div>
+                            </Col>
+                            <Col sm={11} lg={9}>
+                                <div className="sp-kd">A project defines a craft project and manages related components that are required for implementation.</div>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col sm={12} md={6} lg={4}>
+                        <Row>
+                            <Col sm={12}>
+                                <p className="sp-kt">COMPONENT</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={4} lg={3}>
+                                <div className="sp-c"><img className="xlg" src="../square-solid.png" alt="k" width="100%" /></div>
+                            </Col>
+                            <Col sm={11} lg={9}>
+                                <div className="sp-kd">A component defines a material, a tool or a description that can be used to implement the project.</div>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col sm={12} md={6} lg={4}>
+                        <Row>
+                            <Col sm={12}>
+                                <p className="sp-kt">TEMPLATE</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sm={4} lg={3}>
+                                <div className="sp-c"><img className="xlg" src="../square-regular.png" alt="k" width="100%" /></div>
+                            </Col>
+                            <Col sm={11} lg={9}>
+                                <div className="sp-kd">A template is used to define the properties of a component and can be created flexibly.</div>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             </div>
         );
         let loginPage = (

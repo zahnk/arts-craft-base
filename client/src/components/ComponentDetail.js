@@ -230,11 +230,15 @@ class ComponentDetail extends Component {
       </Card>;
     }
 
-    return (
+/*
       <div>
         <Card bg="secondary" text="white" style={{ marginBottom: "10px" }}>
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Component Detail</Card.Header>
         </Card>
+*/
+    return (
+      <div style={{textAlign: "left"}}>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Create Detail</h2>
 
         {form}
 
