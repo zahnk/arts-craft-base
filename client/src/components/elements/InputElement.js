@@ -16,6 +16,10 @@ export default class InputElement extends Component {
     const labelText = `${this.props.label[0].toUpperCase()}${this.props.label.slice(1)}`;
     const colSize = [5,7];
 
+    console.log( "TE", this.props );
+    const maxLength = this.props.maxlength ? `maxLength: ${this.props.maxlength}` : '';
+    const readOnly = this.props.readonly || false;
+
     return ( 
       <div>
         <Form.Group as={Row}>
@@ -25,6 +29,7 @@ export default class InputElement extends Component {
               as="input" 
               type={this.props.eltype}
               name={labelText}
+              readOnly={readOnly}
               id={`txb_${this.props.uniqueKey}`}
               placeholder={`Enter ${labelText}`} 
               value={this.props.value || '' }

@@ -40,7 +40,9 @@ export default class TemplateElement extends Component {
                     eltype={this.props.curElement.fixedProps[0].typ} 
                     label={this.props.curElement.fixedProps[0].prop} 
                     value={this.props.curElement.fixedProps[0].val || ''}
-                    handleChange={this.handleFixedValueChange} s/>
+                    handleChange={this.handleFixedValueChange} 
+                    readonly={true}
+                    />
                   <InputElement idx={1} uniqueKey={`F1${this.props.idx}`}
                     eltype={this.props.curElement.fixedProps[1].typ} 
                     label={this.props.curElement.fixedProps[1].prop} 
