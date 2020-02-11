@@ -71,7 +71,7 @@ code {
 
 .sp-c {
   text-align: center;
-  padding: 0 2%;
+  padding: 0 0;
 }
 
 .sp-r {
@@ -93,45 +93,101 @@ code {
   margin-top:20px;
 }
 
+.sp-c img.lg { margin-bottom: 10px; }
+
+.sp-shw-lg { display: inline-block; }
+.sp-shw-sm { display: none; }
+
+.sp-d, .sp-k, .sp-kd { text-align: left; margin: 0 5%;}
+
+.sp-k div { margin-top: 10px; }
+.sp-t, .sp-kt { text-shadow: -1px -1px 0px #fff, 3px 3px 3px black; } 
+
 @media (max-width: 500px) {
   .sp-c img.lg {
     width: 80%;
   }
+  .sp-c img.xlg {
+    width: 50%;
+  }
+
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 3rem;
   }
+  .sp-t { font-size: 2.5rem; }
+  .sp-d { font-size: 1.5rem; }
+  .sp-kt { font-size: 2.0rem; }
+  .sp-kd { font-size: 1.5rem; }
 }
+
+@media (max-width: 570px) {
+  .sp-shw-sm { display: inline-block; }
+  .sp-shw-lg { display: none; }
+}
+
 @media (min-width: 501px) and (max-width: 800px) {
   .sp-c img.lg {
-    width: 75%;
+    width: 90%;
   }
+  .sp-c img.xlg {
+    width: 50%;
+  }
+
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 4rem;
   }
+  .sp-t { font-size: 2.5rem; }
+  .sp-d { font-size: 1.5rem; }
+  .sp-kt { font-size: 2.25rem; }
+  .sp-kd { font-size: 1.5rem; }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
   .sp-c img.lg {
-    width: 70%;
+    width: 55%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 6rem;
   }
+  .sp-t { font-size: 3.5rem; }
+  .sp-d { font-size: 1.75rem; }
+  .sp-kt { font-size: 3.0rem; }
+  .sp-kd { font-size: 1.2rem; }
 }
 @media (min-width: 1201px) and (max-width: 1600px) {
-  .sp-c img.lg {
-    width: 65%;
-  }
-  .sp-c h1, .sp-r h1, .sp-l h1 {
-    font-size: 8rem;
-  }
-}
-@media (min-width: 1601px) {
   .sp-c img.lg {
     width: 60%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 8rem;
   }
+  .sp-t { font-size: 4rem; }
+  .sp-d { font-size: 2rem; }
+  .sp-kt { font-size: 3.25rem; }
+  .sp-kd { font-size: 1.33rem; }
+}
+@media (min-width: 1601px) and (max-width: 1800px) {
+  .sp-c img.lg {
+    width: 65%;
+  }
+  .sp-c h1, .sp-r h1, .sp-l h1 {
+    font-size: 8rem;
+  }
+  .sp-t { font-size: 5rem; }
+  .sp-d { font-size: 2.5rem; }
+  .sp-kt { font-size: 3.5rem; }
+  .sp-kd { font-size: 1.66rem; }
+}
+@media (min-width: 1801px) {
+  .sp-c img.lg {
+    width: 65%;
+  }
+  .sp-c h1, .sp-r h1, .sp-l h1 {
+    font-size: 8rem;
+  }
+  .sp-t { font-size: 6rem; }
+  .sp-d { font-size: 3rem; }
+  .sp-kt { font-size: 3.75rem; }
+  .sp-kd { font-size: 2rem; }
 }
 
 a.card-link, a.card-link:hover, a.card-link:active, a.card-link:focus, a.card-link:visited { text-decoration: none !important; color: inherit;}
