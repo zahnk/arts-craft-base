@@ -58,9 +58,10 @@ class ComponentDetail extends Component {
 
   handleChange = event => {
     //console.log ("handleChange name", event.target.name);
-    //console.log("handleChange value", event.target.value)
+    const tempComponent = this.state.component;
+    tempComponent[event.target.name] = event.target.value;
     this.setState({
-      [event.target.name]: event.target.value
+      component: tempComponent
     });
   };
 
@@ -85,16 +86,11 @@ class ComponentDetail extends Component {
 
   handleSave = event => {
     const id = this.props.match.params.id;
-    console.log("HandleSAVE name", this.state.name);
-    console.log("HandleSAVE description", this.state.description);
-    console.log("HandleSAVE imageUrl", this.state.imageUrl);
+    console.log("PUT: ", this.state.component);
     axios
-      .put(`/api/components/${id}`, {
-        name: this.state.name,
-        description: this.state.description,
-        imageUrl: this.state.imageUrl,
-        owner: this.state.owner
-      })
+      .put(`/api/components/${id}`, 
+        this.state.component
+        )
       .then(response => {
         this.setState({
           component: response.data,
@@ -130,7 +126,7 @@ class ComponentDetail extends Component {
 
     let form;
     if (this.state.editForm && canUpdate) {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>
@@ -150,7 +146,7 @@ class ComponentDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="description"
-                  value={this.state.description}
+                  value={this.state.component.description || '' }
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -162,7 +158,7 @@ class ComponentDetail extends Component {
                   as="input"
                   type="text"
                   name="imageUrl"
-                  value={this.state.imageUrl}
+                  value={this.state.component.imageUrl}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -172,7 +168,7 @@ class ComponentDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="template"
-                  value={this.state.template}
+                  value={this.state.component.template || '' }
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -184,7 +180,7 @@ class ComponentDetail extends Component {
         </Card.Body>
       </Card>;
     } else {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>
@@ -203,7 +199,7 @@ class ComponentDetail extends Component {
                   readOnly
                   rows="5"
                   as="textarea"
-                  value={this.state.component.description}
+                  value={this.state.component.description || '' }
                 />
               </Form.Group>
             </Form.Row>
@@ -222,7 +218,7 @@ class ComponentDetail extends Component {
                   readOnly
                   rows="5"
                   as="textarea"
-                  value={this.state.component.template}
+                  value={this.state.component.template || '' }
                 />
               </Form.Group>
             </Form.Row>
