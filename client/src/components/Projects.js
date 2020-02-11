@@ -29,11 +29,10 @@ export default class Projects extends Component {
   }
 
   render() {
-    console.log("Projects.render"+this.props.location.pathname);
     return (
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Project Overview</h2>
-        <ProjectList projects={this.state.projects} {...this.props}/>   
+        <ProjectList projects={this.state.projects} user={this.props.user} {...this.props}/>   
         <Button className="mr-2" size="lg" variant="primary" href={'/projects/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Project</Button>
       </div>
     );

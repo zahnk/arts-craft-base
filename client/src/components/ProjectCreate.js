@@ -31,7 +31,6 @@ export default class ProjectCreate extends Component {
     if (event) {
       event.preventDefault();
     }
-    console.log("SUBMIT", this.state);
     // check if the image is already uploaded to the cloud or no image was selected
 
     // axios.post('http://localhost:5555/api/projects')
@@ -44,7 +43,6 @@ export default class ProjectCreate extends Component {
         status: this.state.status
       })
       .then(response => {
-        console.log("then after post");
         //this.props.refreshData();
         this.setState({
           name: "",
@@ -117,7 +115,7 @@ export default class ProjectCreate extends Component {
                   </Form.Control>
                 </Form.Group>
                 <Form.Group as={Col} md="8">
-                  <Form.Label htmlFor="componentNotes">Template: </Form.Label>
+                  <Form.Label htmlFor="componentNotes">Notes: </Form.Label>
                   <Form.Control
                     rows="5"
                     as="textarea"

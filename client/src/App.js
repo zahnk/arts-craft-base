@@ -35,7 +35,7 @@ class App extends React.Component {
   projectsRoute = props => {
     console.log( "projectsRoute", props );
     if (this.state.user) {
-      return <Projects {...props} />;
+      return <Projects user={this.state.user} {...props} />;
     } else {
       return <Redirect to="/" />;
     }
