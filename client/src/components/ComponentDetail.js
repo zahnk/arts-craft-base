@@ -126,7 +126,7 @@ class ComponentDetail extends Component {
 
     let form;
     if (this.state.editForm && canUpdate) {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>
@@ -180,7 +180,7 @@ class ComponentDetail extends Component {
         </Card.Body>
       </Card>;
     } else {
-      form = <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+      form = <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
         <Card.Body>
           <Form>
             <Form.Row>
