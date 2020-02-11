@@ -10,7 +10,6 @@ export default class ProjectList extends Component {
   };
 
   render() {
-    console.log("project list" +this.props.user._id);
     return (
       <CardColumns>
         {this.props.projects.map( (project,i) => {
