@@ -419,7 +419,7 @@ export default class TemplateCreate extends Component {
 
         {
           this.state.tc_add_elements.map( (oneElement,i) => {
-            return <TemplateElement key={`AE_${i}`} idx={i} delete={this.showConfirmDelete} update={this.handleUpdateElement} curElement={oneElement}/>
+            return <TemplateElement key={`AE_${i}`} idx={i} delete={this.showConfirmDeleteElement} update={this.handleUpdateElement} curElement={oneElement}/>
           })
         }
 
