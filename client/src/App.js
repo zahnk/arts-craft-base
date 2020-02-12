@@ -18,7 +18,6 @@ import ComponentDetail from "./components/ComponentDetail";
 
 import ProjectCreate from "./components/ProjectCreate";
 import ComponentCreate from "./components/ComponentCreate";
-import ComponentCreateWithTemplate from "./components/ComponentCreateWithTemplate";
 import TemplateCreate from "./components/TemplateCreate";
 
 import ComponentAssign from "./components/ComponentAssign";
@@ -92,15 +91,6 @@ class App extends React.Component {
     console.log( "componentsCreateRoute", props );
     if (this.state.user) {
       return <ComponentCreate user={this.state.user} {...props} />;
-    } else {
-      return <Redirect to="/" />;
-    }
-  }
-
-  componentsCreateWTRoute = props => {
-    console.log( "componentsCreateWTRoute", props );
-    if (this.state.user) {
-      return <ComponentCreateWithTemplate user={this.state.user} {...props} />;
     } else {
       return <Redirect to="/" />;
     }

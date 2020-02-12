@@ -35,7 +35,6 @@ export default class Components extends Component {
         <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Component Overview</h2>
         <ComponentList components={this.state.components} user={this.props.user} {...this.props}/>   
         <Button className="mr-2" size="lg" variant="primary" href={'/components/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Component</Button>
-        <Button className="mr-2" size="lg" variant="primary" href={'/components/createwt'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Component with Template</Button>
       </div>
     );
   }
