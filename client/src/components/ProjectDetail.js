@@ -88,13 +88,13 @@ class ProjectDetail extends Component {
     console.log("notes",this.state.notes);
     axios
       .put(`/api/projects/${id}`, {
-        name: this.state.name,
-        description: this.state.description,
-        notes: this.state.notes,
-        imageUrl: this.state.imageUrl,
-        owner: this.state.owner,
-        status: this.state.status,
-        components: []
+        name: this.state.project.name,
+        description: this.state.project.description,
+        notes: this.state.project.notes,
+        imageUrl: this.state.project.imageUrl,
+        owner: this.state.project.owner,
+        status: this.state.project.status,
+        components: this.state.project.components
       })
       .then(response => {
         this.setState({
