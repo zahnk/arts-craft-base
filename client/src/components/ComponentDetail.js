@@ -165,17 +165,16 @@ class ComponentDetail extends Component {
               <Form.Group as={Col} md="8">
                 <Form.Label>Template: </Form.Label>
                 <Form.Control
-                  rows="5"
-                  as="textarea"
-                  name="template"
-                  value={this.state.component.template || '' }
-                  onChange={this.handleChange}
+                  readOnly
+                  as="input"
+                  type="text"
+                  value={"TEMP"}
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.handleSave} className="mr-5 ml-5" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
-            <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.handleSave} className="mr-2" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -216,15 +215,15 @@ class ComponentDetail extends Component {
                 <Form.Label>Template: </Form.Label>
                 <Form.Control
                   readOnly
-                  rows="5"
-                  as="textarea"
-                  value={this.state.component.template || '' }
+                  as="input"
+                  type="text"
+                  value={"TEMP"}
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.toggleEdit} className="mr-5 ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
-            <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.toggleEdit} className="mr-2" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -238,7 +237,7 @@ class ComponentDetail extends Component {
 */
     return (
       <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Create Detail</h2>
+        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Component Detail</h2>
 
         {form}
 

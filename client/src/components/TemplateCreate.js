@@ -273,7 +273,7 @@ export default class TemplateCreate extends Component {
           {isLoading ? (
               <div style={{textAlign: "left"}}>
                 <h2 style={{textAlign: "left", marginBottom: "10px"}}>
-                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
+                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Edit" : "Create" }
                 </h2>
                 <Row className="justify-content-md-center">
                   <Col sm={2}>
@@ -288,7 +288,7 @@ export default class TemplateCreate extends Component {
             ):(
               <div>
                 <h2 style={{textAlign: "left", marginBottom: "10px"}}>
-                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
+                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Edit" : "Create" }
                 </h2>
 
                 <Card text="dark" style={{marginBottom: "10px", textAlign:"right"}}>

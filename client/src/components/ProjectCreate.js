@@ -10,6 +10,7 @@ export default class ProjectCreate extends Component {
       name: "",
       owner: this.props.user,
       description: "",
+      imageUrl: "",
       notes: "",
       components: [],
       status: 'New'
@@ -28,29 +29,19 @@ export default class ProjectCreate extends Component {
 
 
   handleSubmit = event => {
-    if (event) {
-      event.preventDefault();
-    }
-    // check if the image is already uploaded to the cloud or no image was selected
+    if (event) { event.preventDefault(); }
 
-    // axios.post('http://localhost:5555/api/projects')
     axios
       .post("/api/projects/create", {
         name: this.state.name,
         owner: this.state.owner,
         description: this.state.description,
+        imageUrl: this.state.imageUrl,
         notes: this.state.notes,
         status: this.state.status
       })
       .then(response => {
-        //this.props.refreshData();
-        this.setState({
-          name: "",
-          description: "",
-          notes: "",
-          //components: false,
-          status: false
-        });
+        this.props.history.push("/projects");
       })
       .catch(err => {
         console.log(err);
@@ -85,6 +76,14 @@ export default class ProjectCreate extends Component {
                     name="name"
                     id="name"
                     value={this.state.name}
+                    onChange={this.handleChange}
+                  />
+                  <Form.Label htmlFor="imageUrl">Image Url:</Form.Label>
+                  <Form.Control 
+                    as="input"
+                    type="text"
+                    name="imageUrl"
+                    value={this.state.imageUrl}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
