@@ -35,6 +35,12 @@
   text-overflow: ellipsis;
 }
 
+.trunkText {
+  width: 100%;                   
+  overflow: hidden;              /* "overflow"-Wert darf nicht "visible" sein */ 
+  text-overflow: ellipsis;
+}
+
 .cardForDetail * { cursor: pointer; }
 .cardForDetail:hover .card-footer {
   display: block;
@@ -43,8 +49,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba(128,128,128,0.5);
-  color: rgb(75, 75, 75);
+  background-color: rgba(128,128,128,0.75);
+  color: white;
   text-align: center;
   display: none;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import { cloneObject } from "../services/init";
+
 import ConfirmDelete from "./ConfirmDelete";
 import { Form, Button, Col, Row, Card, InputGroup } from "react-bootstrap";
 import TemplateElement from "./TemplateElement";
@@ -14,6 +16,7 @@ export default class TemplateCreate extends Component {
 
       tc_name: '',
       tc_description: '',
+      tc_imageUrl: '',
       tc_all_elements: [{ description: '', variableProps: [{typ:'', disp:''}], fixedProps: [{typ:'', disp:''}] }],
       tc_add_elements: [],
 
@@ -28,7 +31,7 @@ export default class TemplateCreate extends Component {
     }
   }
 
-  cloneObject = (obj) => {
+  xcloneObject = (obj) => {
     if (obj === null || typeof (obj) !== 'object' || 'isActiveClone' in obj)
         return obj;
     var temp;
@@ -41,7 +44,7 @@ export default class TemplateCreate extends Component {
     for (var key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
             obj['isActiveClone'] = null;
-            temp[key] = this.cloneObject(obj[key]);
+            temp[key] = this.xcloneObject(obj[key]);
             delete obj['isActiveClone'];
         }
     }
@@ -99,7 +102,7 @@ export default class TemplateCreate extends Component {
     const matchElement = this.state.tc_all_elements[this.state.tc_sel_element_idx];
 
     const copyOfAddElements = this.state.tc_add_elements.slice();
-    copyOfAddElements.push( this.cloneObject( matchElement ) );
+    copyOfAddElements.push( cloneObject( matchElement ) );
 
     this.setState( { tc_add_elements : copyOfAddElements });
   }
@@ -169,6 +172,7 @@ export default class TemplateCreate extends Component {
           name: this.state.tc_name,
           owner: this.state.tc_owner,
           description: this.state.tc_description,
+          imageUrl: this.state.tc_imageUrl,
           elements: this.state.tc_add_elements          
         }
       })
@@ -188,6 +192,7 @@ export default class TemplateCreate extends Component {
           name: newName,
           owner: this.state.tc_owner,
           description: this.state.tc_description,
+          imageUrl: this.state.tc_imageUrl,
           elements: this.state.tc_add_elements          
         }
       })
@@ -215,6 +220,7 @@ export default class TemplateCreate extends Component {
     this.setState({
       tc_name: currentTemplate.data.name || '',
       tc_description: currentTemplate.data.description || '',
+      tc_imageUrl: currentTemplate.data.imageUrl || '',
       tc_add_elements: currentTemplate.data.elements || [],
       tc_all_elements: allElements.data || [],
       tc_loading: false
@@ -230,6 +236,7 @@ export default class TemplateCreate extends Component {
     this.setState({
       tc_name: '',
       tc_description: '',
+      tc_imageUrl: '',
       tc_add_elements: [],
       tc_all_elements: allElements.data || [],
       tc_loading: false
@@ -266,10 +273,10 @@ export default class TemplateCreate extends Component {
           {isLoading ? (
               <div style={{textAlign: "left"}}>
                 <h2 style={{textAlign: "left", marginBottom: "10px"}}>
-                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
+                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Edit" : "Create" }
                 </h2>
-                <Row>
-                  <Col sm={4}>
+                <Row className="justify-content-md-center">
+                  <Col sm={2}>
                     <Card text="dark" style={{marginBottom: "10px", textAlign:"center"}}>
                       <Card.Body>   
                         <Card.Text>Loading ...</Card.Text>    
@@ -281,7 +288,7 @@ export default class TemplateCreate extends Component {
             ):(
               <div>
                 <h2 style={{textAlign: "left", marginBottom: "10px"}}>
-                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Update" : "Create" }
+                  <i className="far fa-square fa-a"></i>Template {this.state.tc_curTemplateIdx ? "Edit" : "Create" }
                 </h2>
 
                 <Card text="dark" style={{marginBottom: "10px", textAlign:"right"}}>
@@ -311,6 +318,19 @@ export default class TemplateCreate extends Component {
                                 name="tc_description"
                                 placeholder="Enter Description" 
                                 value={this.state.tc_description}
+                                onChange={this.handleChangeTemplate}
+                              />
+                            </Col>
+                          </Form.Group>
+                          <Form.Group as={Row}>
+                            <Form.Label column sm="3">Image Url:</Form.Label>
+                            <Col sm="9">
+                              <Form.Control 
+                                as="input"
+                                type="text"
+                                name="tc_imageUrl"
+                                placeholder="Enter Image Url" 
+                                value={this.state.tc_imageUrl}
                                 onChange={this.handleChangeTemplate}
                               />
                             </Col>

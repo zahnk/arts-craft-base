@@ -33,7 +33,7 @@ export default class AppAbout extends Component {
             </Col>
             <Col sm={8}>
               <h4>Do you want to delete</h4>
-              <h2>{this.props.title}</h2>
+              <h2 className="trunkText">{this.props.title}</h2>
             </Col>
           </Row>
         </Modal.Body>

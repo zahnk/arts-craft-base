@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import ComponentListAssign from "./ComponentListAssign";
 import { Button } from "react-bootstrap";
-import {Link} from "react-router-dom";
 
 export default class ComponentAssign extends Component {
   constructor(){
@@ -87,7 +86,7 @@ export default class ComponentAssign extends Component {
       .catch(err => {
         console.log(err);
       });
-  
+   this.props.history.push(`/projects/${id}`)
   }
 
   handleCancel = event => {

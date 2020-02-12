@@ -99,7 +99,7 @@ const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
 const initSeeds = require("./routes/seeds");
-app.use("/api/initelements", initSeeds);
+app.use("/api/init", initSeeds);
 
 app.use((req, res) => {
   res.sendFile(__dirname + "/client/build/index.html");

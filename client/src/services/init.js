@@ -1,12 +1,9 @@
 import axios from "axios";
 
-const initElements = (password) => {
-  console.log( "IES(A):", password );
-
+const initCollection = (collection, password) => {
   return axios
-    .get(`/api/initelements/${password}`)
+    .get(`/api/init/${collection}/${password}`)
     .then(response => {
-      console.log( "OK",response.data);
       return response.data;
     })
     .catch(err => {
@@ -14,6 +11,26 @@ const initElements = (password) => {
       return err.response.data;
     });
 };
+ 
+const cloneObject = (obj) => {
+  if (obj === null || typeof (obj) !== 'object' || 'isActiveClone' in obj)
+      return obj;
+  var temp;
+
+  if (obj instanceof Date)
+      temp = new obj.constructor(); //or new Date(obj);
+  else
+      temp = obj.constructor();
+
+  for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          obj['isActiveClone'] = null;
+          temp[key] = cloneObject(obj[key]);
+          delete obj['isActiveClone'];
+      }
+  }
+  return temp;
+};
 
 
-export { initElements };
+export { initCollection, cloneObject };

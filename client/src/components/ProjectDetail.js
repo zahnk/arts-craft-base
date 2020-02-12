@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Form, Card, Button, Col, ButtonToolbar } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
-import {Link} from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.css';
 
 
@@ -89,6 +88,7 @@ class ProjectDetail extends Component {
         name: this.state.name,
         description: this.state.description,
         notes: this.state.notes,
+        imageUrl: this.state.imageUrl,
         owner: this.state.owner,
         status: this.state.status,
         components: []
@@ -115,6 +115,7 @@ class ProjectDetail extends Component {
     this.setState({
       addComponentForm: !this.state.addComponentForm
     });
+    this.props.history.push(`/projects/assign/${this.state.project._id}`)
   };
 
 
@@ -143,6 +144,14 @@ class ProjectDetail extends Component {
                   type="text"
                   name="name"
                   value={this.state.project.name || ''}
+                  onChange={this.handleChange}
+                />
+                <Form.Label>Image Url:</Form.Label>
+                <Form.Control 
+                  as="input"
+                  type="text"
+                  name="imageUrl"
+                  value={this.state.project.imageUrl || ''}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -183,10 +192,10 @@ class ProjectDetail extends Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.handleSave} className="mr-5 ml-5" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
-            <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
-            <Link to={`/projects/assign/${this.state.project._id}`} {...this.props} className="btn btn-lg btn-primary ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Assign Component</Link>
+            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.handleSave} className="mr-2" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button onClick={this.modifyComponents} variant="success" className="mr-2" size="lg"><i className="fas fa-retweet fa-lg fa-a"></i>Assign/Remove Component</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -202,6 +211,13 @@ class ProjectDetail extends Component {
                   as="input"
                   type="text"
                   value={this.state.project.name}
+                />
+                <Form.Label>Image Url:</Form.Label>
+                <Form.Control 
+                  readOnly
+                  as="input"
+                  type="text"
+                  value={this.state.project.imageUrl}
                 />
               </Form.Group>
               <Form.Group as={Col} md="8">
@@ -233,9 +249,9 @@ class ProjectDetail extends Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.toggleEdit} className="mr-5 ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
-            <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.toggleEdit} className="mr-2" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger"  className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -246,6 +262,7 @@ class ProjectDetail extends Component {
           <Card.Header as="h2"><i className="fas fa-sitemap fa-a"></i>Project Detail</Card.Header>
         </Card>
 */
+    const delProject = `Project: ${this.state.project.name ? this.state.project.name : ''}`;
     return (
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}>
@@ -259,7 +276,7 @@ class ProjectDetail extends Component {
           <Card.Body>
           </Card.Body>
         </Card>
-        <ConfirmDelete show={this.state.showConfirm} close={this.deleteProjectConfirmed} title={this.state.project.name} />
+        <ConfirmDelete show={this.state.showConfirm} close={this.deleteProjectConfirmed} title={delProject} />
 
 
       </div>

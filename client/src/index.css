@@ -143,7 +143,7 @@ code {
 }
 @media (min-width: 801px) and (max-width: 1200px) {
   .sp-c img.lg {
-    width: 55%;
+    width: 50%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 6rem;
@@ -155,7 +155,7 @@ code {
 }
 @media (min-width: 1201px) and (max-width: 1600px) {
   .sp-c img.lg {
-    width: 60%;
+    width: 55%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 8rem;
@@ -167,7 +167,7 @@ code {
 }
 @media (min-width: 1601px) and (max-width: 1800px) {
   .sp-c img.lg {
-    width: 65%;
+    width: 60%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 8rem;
@@ -179,7 +179,7 @@ code {
 }
 @media (min-width: 1801px) {
   .sp-c img.lg {
-    width: 65%;
+    width: 60%;
   }
   .sp-c h1, .sp-r h1, .sp-l h1 {
     font-size: 8rem;
