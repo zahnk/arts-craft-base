@@ -289,13 +289,13 @@ class ProjectDetail extends Component {
         {form}
         {!this.state.showAccordion && (
           <CardColumns>
-              <ProjectCard key={this.state.project._id} project={this.state.project} showFooter={false} {...this.props}/>
+              <ProjectCard key={this.state.project._id} project={this.state.project} hideFooter={true} {...this.props}/>
               {
                 this.state.project.components.map( (component,i) => {
                   component.imageUrl = component.imageUrl || `def-c-${Math.floor(Math.random()*4)}.png`;
                   if (component.owner === this.props.user._id)  {
                     return (
-                      <ComponentCard key={component._id} component={component} showFooter={false} {...this.props}/>
+                      <ComponentCard key={component._id} component={component} hideFooter={true} {...this.props}/>
                     );
                   }
                 })
