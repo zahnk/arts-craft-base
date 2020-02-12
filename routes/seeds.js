@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const Project = require("../models/Project");
+const Component = require("../models/Component");
+const Template = require("../models/Template");
 const Element = require("../models/Element");
 const mongoose = require("mongoose");
 
@@ -123,95 +126,58 @@ let readItems = new Promise((resolve, reject) => {
 });
 */
 
-// GET /api/initelements/:password
-router.get("/:password", async (req, res, next) => {
+// GET /api/init/:collection/:password
+router.get("/:collection/:password", async (req, res, next) => {
   let readItems = [];
+	const pwd = req.params.password;
+	const collection = req.params.collection;
+  const authorized = ( pwd === 'TraVogZahBie' );
 
-  const authorized = ( req.params.password === 'TraVogZahBie' );
-  console.log( "IES(E)", req.params.password, "Auth:", authorized ); 
-  console.log( "TRY");
-  try {
-    console.log( "IES(E)", "readItems:", readItems );
-    if( authorized ) {
-      await Element.deleteMany();
-      await Element.create( initSeeds );
-    };
-    res.json({message: "Elements file were imported"});
-  } catch (err) {
-    res.status(500).json(err);
-  }
+	if( authorized ) {
+		switch(collection) {
+			case "elements":
+				try {
+					await Element.deleteMany();
+					await Element.create( initSeeds );
+					res.json({message: "Elements file were imported"});
+				} catch (err) {
+					res.status(500).json(err);
+				}
+				break;
+
+			case "projects":
+				try {
+					await Project.deleteMany();
+					res.json({message: "Projects were removed"});
+				} catch (err) {
+					res.status(500).json(err);
+				}
+				break;
+
+			case "components":
+				try {
+					await Component.deleteMany();
+					res.json({message: "Components were removed"});
+				} catch (err) {
+					res.status(500).json(err);
+				}
+				break;
+
+			case "templates":
+				try {
+					await Template.deleteMany();
+					res.json({message: "Templates were removed"});
+				} catch (err) {
+					res.status(500).json(err);
+				}
+				break;
+
+			default:
+      	res.json("failure");
+		} 
+	} else {
+		res.json("failure");
+	}
 });
 
-/*
-// GET /api/projects/:id
-router.get("/:id", (req, res) => {
-  // return 1 project w/ a given id
-  const projectId = req.params.id;
-
-  if (!mongoose.Types.ObjectId.isValid(projectId)) {
-    res.status(400).json({ message: "ProjectId is not valid" });
-    return;
-  }
-
-  Project.findById(projectId)
-    .then(project => {
-      if (!project) {
-        res.status(404).json({ message: "Project not found" });
-      } else res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-
-/*
-// POST /api/projects
-router.post("/", (req, res) => {
-  // create 1 project
-
-  Project.create({
-    title: req.body.title,
-    description: req.body.description,
-    owner: req.user._id
-  })
-    .then(project => {
-      res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-
-// PUT /api/projects/:id
-router.put("/:id", (req, res) => {
-  Project.findByIdAndUpdate(
-    req.params.id,
-    {
-      title: req.body.title,
-      description: req.body.description
-    },
-    { new: true }
-  )
-    .then(project => {
-      res.json(project);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-
-// DELETE /api/projects/:id
-router.delete("/:id", (req, res) => {
-  Project.findByIdAndDelete(req.params.id)
-    .then(project => {
-      // Deletes all the documents in the Task collection where the value for the `_id` field is present in the `project.tasks` array
-      return Task.deleteMany({ _id: { $in: project.tasks } }).then(() =>
-        res.json({ message: "ok" })
-      );
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
-*/
 module.exports = router;

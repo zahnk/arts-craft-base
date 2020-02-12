@@ -6,6 +6,7 @@ const projectSchema = new Schema({
   owner:          { type: Schema.Types.ObjectId, ref: 'User'},
   description:    { type: String, required: false},
   notes:          { type: String},
+  imageUrl:       { type: String, default: ""},
   components:     [ { type: Schema.Types.ObjectId, ref: 'Component'} ],
   status:         { type: String, enum: ['New', 'Planned','Completed']}
 },{

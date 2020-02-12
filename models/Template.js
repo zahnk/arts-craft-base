@@ -5,6 +5,7 @@ const templateSchema = new Schema({
   name:           { type: String },
   owner:          { type: Schema.Types.ObjectId, ref: 'User'},
   description:    { type: String },
+  imageUrl:       { type: String, default: ""},
   elements:       [ {} ],
 },{
   timestamps: {
