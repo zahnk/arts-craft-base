@@ -45,6 +45,7 @@
   text-overflow: ellipsis;
 }
 
+.cardForDetailView * { cursor: default; }
 .cardForDetail * { cursor: pointer; }
 .cardForDetail:hover .card-footer {
   display: block;

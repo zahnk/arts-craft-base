@@ -93,7 +93,8 @@ class ProjectDetail extends Component {
         notes: this.state.notes,
         imageUrl: this.state.imageUrl,
         owner: this.state.owner,
-        status: this.state.status
+        status: this.state.status,
+        components: []
       })
       .then(response => {
         this.setState({
@@ -117,12 +118,16 @@ class ProjectDetail extends Component {
     this.setState({
       addComponentForm: !this.state.addComponentForm
     });
+    this.props.history.push(`/projects/assign/${this.state.project._id}`)
   };
 
   handleToggleAccordion = () => {
     console.log( "A-Toggle" );
     const newShowAccordion = !this.state.showAccordion;
     this.setState({ showAccordion: newShowAccordion });
+  }
+
+  redirectCallback = () => {
   }
 
   render() {
@@ -167,7 +172,7 @@ class ProjectDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="description"
-                  value={this.state.project.description}
+                  value={this.state.project.description|| ''}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -284,13 +289,13 @@ class ProjectDetail extends Component {
         {form}
         {!this.state.showAccordion && (
           <CardColumns>
-              <ProjectCard key={this.state.project._id} project={this.state.project} {...this.props}/>
+              <ProjectCard key={this.state.project._id} project={this.state.project} showFooter={false} {...this.props}/>
               {
                 this.state.project.components.map( (component,i) => {
                   component.imageUrl = component.imageUrl || `def-c-${Math.floor(Math.random()*4)}.png`;
                   if (component.owner === this.props.user._id)  {
                     return (
-                      <ComponentCard key={component._id} component={component} {...this.props}/>
+                      <ComponentCard key={component._id} component={component} showFooter={false} {...this.props}/>
                     );
                   }
                 })
