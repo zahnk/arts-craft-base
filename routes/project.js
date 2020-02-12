@@ -78,14 +78,16 @@ router.post("/create", (req, res) => {
 
 // PUT /api/projects/:id
 router.put("/:id", (req, res) => {
+  console.log (req.body)
   Project.findByIdAndUpdate(
     req.params.id,
     {
-      title: req.body.name,
+      name: req.body.name,
       description: req.body.description,
       owner: req.user._id,
       notes: req.body.notes,
-      status: req.body.status
+      status: req.body.status,
+      components: req.body.components
     },
     { new: true }
   )
@@ -97,5 +99,5 @@ router.put("/:id", (req, res) => {
     });
 });
 
-
+router.post
 module.exports = router;

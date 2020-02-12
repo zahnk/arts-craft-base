@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Card, Button, Col, ButtonToolbar } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
 import axios from "axios";
+import {Link} from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.css';
 
 
@@ -89,7 +90,8 @@ class ProjectDetail extends Component {
         description: this.state.description,
         notes: this.state.notes,
         owner: this.state.owner,
-        status: this.state.status
+        status: this.state.status,
+        components: []
       })
       .then(response => {
         this.setState({
@@ -150,7 +152,7 @@ class ProjectDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="description"
-                  value={this.state.project.description}
+                  value={this.state.project.description|| ''}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -184,7 +186,7 @@ class ProjectDetail extends Component {
             <Button className="mr-5" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
             <Button onClick={this.handleSave} className="mr-5 ml-5" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
             <Button onClick={this.showConfirmDelete} className="ml-5" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
-            <Button onClick={this.modifyComponents} className="ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Change Component</Button>
+            <Link to={`/projects/assign/${this.state.project._id}`} {...this.props} className="btn btn-lg btn-primary ml-5" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Assign Component</Link>
           </Form>
         </Card.Body>
       </Card>;
@@ -208,7 +210,7 @@ class ProjectDetail extends Component {
                   readOnly
                   rows="5"
                   as="textarea"
-                  value={this.state.project.description}
+                  value={this.state.project.description || ''}
                 />
               </Form.Group>
             </Form.Row>
