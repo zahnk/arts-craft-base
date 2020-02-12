@@ -25,15 +25,19 @@
 }
 .card-img-overlay, .card-footer { padding: 0px; }
 
-.transparentCardHeader.card-header {
+.transparentCardHeader.card-header,
+.opaqueCardHeader.card-header {
   background-color: rgba(128,128,128,0.75);
   color: white;
-  text-shadow: 1px 1px 1px black;
   white-space: nowrap;
   width: 100%;                   
   overflow: hidden;              /* "overflow"-Wert darf nicht "visible" sein */ 
   text-overflow: ellipsis;
 }
+.transparentCardHeader.card-header {
+  text-shadow: 1px 1px 1px black;
+}
+
 
 .trunkText {
   width: 100%;                   
@@ -41,6 +45,7 @@
   text-overflow: ellipsis;
 }
 
+.cardForDetailView * { cursor: default; }
 .cardForDetail * { cursor: pointer; }
 .cardForDetail:hover .card-footer {
   display: block;
