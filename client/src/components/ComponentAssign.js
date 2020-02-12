@@ -9,7 +9,9 @@ export default class ComponentAssign extends Component {
     this.state = {
       components: [],
       cardstatus: [],
-      project:{}
+      project:{},
+      isProjectLoading : true,
+      isComponentLoading : true
     }
   };
 
@@ -17,8 +19,11 @@ export default class ComponentAssign extends Component {
     axios
       .get("/api/components")
       .then(response => {
+        let cStat = this.handleInitCardStatus( false, this.state.isProjectLoading || true )
         this.setState({
-          components: response.data
+          components: response.data,
+          isComponentLoading: false,
+          cardstatus: cStat 
         });
       })
       .catch(err => {
@@ -33,8 +38,12 @@ export default class ComponentAssign extends Component {
     axios
       .get(`/api/projects/${projectId}`)
       .then(response => {
+        let cStat = this.handleInitCardStatus( this.state.isComponentLoading || true, false )
+
         this.setState({
           project: response.data,
+          isProjectLoading: false,
+          cardstatus: cStat 
         });
       })
       .catch(err => {
@@ -99,14 +108,34 @@ export default class ComponentAssign extends Component {
     this.getProject();
   }
 
+  handleInitCardStatus = ( isLC, isLP ) => {
+    if( ( isLP || isLC ) === false ) {
+      const curCardStatus = [];
+
+      this.state.components.forEach( (component, i) => {
+        if( this.state.project.components.includes( component ) ) { curCardStatus[i] = true; } else { curCardStatus[i] = true; }
+      });
+      return( curCardStatus );
+    } 
+    return [];  
+  }
+
   render() {
     console.log("projid", this.props.proj);
+
     return (
-      <div style={{textAlign: "left"}}>
-        <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Component Assignment</h2>
-        <ComponentListAssign onStatusChange={this.handleStatusChange} components={this.state.components} cardstatus={this.state.cardstatus} user={this.props.user} {...this.props}/>   
-        <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-        <Button className="mr-2" size="lg" variant="primary" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
+
+      <div>
+        { this.state.isProjectLoading || this.state.isComponentLoading ? ( 
+          <div> </div>
+          ) : (
+            <div style={{textAlign: "left"}}>
+              <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Component Assignment</h2>
+              <ComponentListAssign onStatusChange={this.handleStatusChange} components={this.state.components} cardstatus={this.state.cardstatus} user={this.props.user} {...this.props}/>   
+              <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+              <Button className="mr-2" size="lg" variant="primary" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
+            </div> )
+        }
       </div>
     );
   }
