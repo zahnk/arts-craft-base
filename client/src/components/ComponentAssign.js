@@ -80,8 +80,6 @@ export default class ComponentAssign extends Component {
       .then(response => {
         this.setState({
           project: response.data,
-          // title: response.data.title,
-          // description: response.data.description,
           editForm: false
         });
         //console.log(response);
