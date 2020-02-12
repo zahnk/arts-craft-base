@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import {Switch, Route, Redirect } from "react-router-dom";
-import { initElements } from "./services/init";
+import { initCollection } from "./services/init";
 
 import AppMenue from "./components/AppMenu";
 import AppFooter from "./components/AppFooter";
@@ -15,11 +15,11 @@ import Templates from "./components/Templates";
 
 import ProjectDetail from "./components/ProjectDetail";
 import ComponentDetail from "./components/ComponentDetail";
-// import TemplateDetail from "./components/TemplateDetail";
 
-import ComponentCreate from "./components/ComponentCreate";
-import TemplateCreate from "./components/TemplateCreate";
 import ProjectCreate from "./components/ProjectCreate";
+import ComponentCreate from "./components/ComponentCreate";
+import ComponentCreateWithTemplate from "./components/ComponentCreateWithTemplate";
+import TemplateCreate from "./components/TemplateCreate";
 
 import ComponentAssign from "./components/ComponentAssign";
 
@@ -97,6 +97,15 @@ class App extends React.Component {
     }
   }
 
+  componentsCreateWTRoute = props => {
+    console.log( "componentsCreateWTRoute", props );
+    if (this.state.user) {
+      return <ComponentCreateWithTemplate user={this.state.user} {...props} />;
+    } else {
+      return <Redirect to="/" />;
+    }
+  }
+
   templatesRoute = props => {
     console.log( "templatesRoute", props );
     if (this.state.user) {
@@ -125,9 +134,8 @@ class App extends React.Component {
   }
 
 
-  initElementSeeds = props => {
-    console.log( "IES(C):", props.match.params, typeof( props.match.params ) );
-    initElements( props.match.params.password );
+  initCollectionSeeds = props => {
+    initCollection( props.match.params.collection, props.match.params.password );
     return <Redirect to="/" />;
   }
 
@@ -154,13 +162,14 @@ class App extends React.Component {
 
             <Route exact path="/components" render={this.componentsRoute}/>
             <Route exact path="/components/create" render={this.componentsCreateRoute}/>
+            <Route exact path="/components/createwt" render={this.componentsCreateWTRoute}/>
             <Route exact path="/components/:id" render={this.componentsDetailRoute}/>
 
             <Route exact path="/templates" render={this.templatesRoute}/>
             <Route exact path="/templates/create" render={this.templatesCreateRoute}/>
             <Route exact path="/templates/:id" render={this.templatesEditRoute}/>
             
-            <Route exact path="/initelements/:password" render={this.initElementSeeds}/>
+            <Route exact path="/init/:collection/:password" render={this.initCollectionSeeds}/>
 
 {/*
             <Route exact path="/templates/:id" render={props => { this.templatesRoute( "detail", props )}}/>

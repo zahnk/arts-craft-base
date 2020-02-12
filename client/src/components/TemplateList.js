@@ -13,7 +13,7 @@ export default class TemplateList extends Component {
     return (
       <CardColumns>
         {this.props.templates.map( (template,i) => {
-          template.img = `def-t-0.png`;
+         template.imageUrl = template.imageUrl || `def-t-0.png`;
           return (
             <TemplateCard key={template._id} template={template} {...this.props}/>
           );

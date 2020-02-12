@@ -63,6 +63,7 @@ router.post("/create", (req, res) => {
   Project.create({
     name: req.body.name,
     owner: req.user._id,
+    imageUrl: req.body.imageUrl,
     description: req.body.description,
     notes: req.body.notes,
     //to be inserted-->> components: []
