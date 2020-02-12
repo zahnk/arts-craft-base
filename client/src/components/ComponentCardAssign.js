@@ -14,13 +14,15 @@ export default class ComponentCardAssign extends Component {
   }
 
   render() {
-    console.log( "CARD-A", this.props.cardassigned );
-    console.log( "CARD-P", this.props.match.params.id );
+    //console.log( "CARD-A", this.props.cardassigned );
+    //console.log( "CARD-P", this.props.match.params.id );
+    let trueVar = <i class="far fa-check-square"></i>;
+    let falseVar = <i class="far fa-square"></i>;
     return (
       <Card className="cardForDetail" border="dark" onClick={()=>{this.props.onStatusChange(this.props.cardId, this.props.component._id)}}>
         <Card.Img className="componentImage" src={this.props.component.imageUrl} alt="Component Image" />
         <Card.ImgOverlay>
-          <Card.Header className="transparentCardHeader" as="h4">{this.props.component.name} - {this.props.cardassigned?'TRUE':'FALSE'} </Card.Header>
+          <Card.Header className="transparentCardHeader" as="h4">{this.props.cardassigned? trueVar : falseVar} {this.props.component.name}</Card.Header>
         </Card.ImgOverlay>
         <Card.Footer className="hoverFooter">
           <Card.Text>Click for Detail</Card.Text>
