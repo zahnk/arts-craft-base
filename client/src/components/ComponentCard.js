@@ -10,19 +10,24 @@ export default class ComponentCard extends Component {
   };
 
   backRoute = () => {
-    this.props.history.push(`/components/${this.props.component._id}`);
+    if ( typeof( this.props.hideFooter ) === 'undefined' ) {
+      this.props.history.push(`/components/${this.props.component._id}`);
+    }
   }
 
   render() {
+    let isLink = typeof( this.props.hideFooter ) === 'undefined' ? true : false;
     return (
-      <Card className="cardForDetail" border="dark" onClick={this.backRoute}>
+      <Card className={ isLink === true ? 'cardForDetail' : 'cardForDetailView' } border="dark" onClick={this.backRoute}>
         <Card.Img className="componentImage" src={this.props.component.imageUrl} alt="Component Image" />
         <Card.ImgOverlay>
           <Card.Header className="transparentCardHeader" as="h4">{this.props.component.name}</Card.Header>
         </Card.ImgOverlay>
-        <Card.Footer className="hoverFooter">
-          <Card.Text>Click for Detail</Card.Text>
-        </Card.Footer>
+        { isLink === true && (
+          <Card.Footer className="hoverFooter">
+            <Card.Text>Click for Detail</Card.Text>
+          </Card.Footer>
+        )}
       </Card>
     )
   }
