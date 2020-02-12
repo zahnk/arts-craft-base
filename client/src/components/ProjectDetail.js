@@ -90,7 +90,8 @@ class ProjectDetail extends Component {
         notes: this.state.notes,
         imageUrl: this.state.imageUrl,
         owner: this.state.owner,
-        status: this.state.status
+        status: this.state.status,
+        components: []
       })
       .then(response => {
         this.setState({
@@ -114,6 +115,7 @@ class ProjectDetail extends Component {
     this.setState({
       addComponentForm: !this.state.addComponentForm
     });
+    this.props.history.push(`/projects/assign/${this.state.project._id}`)
   };
 
 
@@ -159,7 +161,7 @@ class ProjectDetail extends Component {
                   rows="5"
                   as="textarea"
                   name="description"
-                  value={this.state.project.description}
+                  value={this.state.project.description|| ''}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -224,7 +226,7 @@ class ProjectDetail extends Component {
                   readOnly
                   rows="5"
                   as="textarea"
-                  value={this.state.project.description}
+                  value={this.state.project.description || ''}
                 />
               </Form.Group>
             </Form.Row>
