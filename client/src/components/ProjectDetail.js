@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Form, Card, CardColumns, Button, Col } from "react-bootstrap";
+import { Accordion, Form, Card, Button, Col } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
 import MoodBoard from "./MoodBoard";
 import axios from "axios";
