@@ -25,16 +25,33 @@ export default class InputElement extends Component {
         <Form.Group as={Row}>
           <Form.Label column sm={colSize[0]}>{labelText}:</Form.Label>
           <Col sm={colSize[1]}>
-            <Form.Control 
-              as="input" 
-              type={this.props.eltype}
-              name={labelText}
-              readOnly={readOnly}
-              id={`txb_${this.props.uniqueKey}`}
-              placeholder={`Enter ${labelText}`} 
-              value={this.props.value || '' }
-              onChange={this.handleChange}
-            />
+            { this.props.eltype === 'textarea' ?
+              (
+                <Form.Control style={{minHeight: "50px"}}
+                  rows="3"
+                  as="textarea"
+                  name={labelText}
+                  readOnly={readOnly}
+                  id={`txb_${this.props.uniqueKey}`}
+                  placeholder={`Enter ${labelText}`}
+                  value={this.props.value || '' }
+                  onChange={this.handleChange}
+                />
+              ):(
+                <Form.Control 
+                  as="input" 
+                  type={this.props.eltype}
+                  name={labelText}
+                  readOnly={readOnly}
+                  id={`txb_${this.props.uniqueKey}`}
+                  placeholder={`Enter ${labelText}`} 
+                  value={this.props.value || '' }
+                  onChange={this.handleChange}
+                />
+              )
+            }
+
+
           </Col>
         </Form.Group>
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Card, Button, Col } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
+import ComponentInputElement from "./ComponentInputElement";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -17,7 +18,6 @@ class ComponentDetail extends Component {
     editForm: false,
     showConfirm: false,
     templates: [],
-    sel_template: {}
   };
 
   showConfirmDelete = () => {
@@ -238,7 +238,15 @@ class ComponentDetail extends Component {
       </Card>;
     }
 
-    
+    // ------------------------------
+    let elem = [<span key={`cie_0`}>none</span>];
+    if( this.state.sel_template ) {
+      this.state.sel_template.elements.map( (element, i) => {
+        elem[i] = <ComponentInputElement key={`cie_${i+1}`} inpElement={element} readOnly={this.state.editForm?false:true} {...this.props} />;
+      });
+    }
+    // ------------------------------
+
     return (
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-square fa-a"></i>Component Detail</h2>
@@ -246,8 +254,9 @@ class ComponentDetail extends Component {
         {form}
 
 
-        <Card style={{ marginBottom: "10px", textAlign: "left" }}>
+        <Card text="dark" style={{ marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
+            {elem}
           </Card.Body>
         </Card>
 
