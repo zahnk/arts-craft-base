@@ -106,6 +106,7 @@ router.put("/:id", (req, res) => {
       name: req.body.name,
       description: req.body.description,
       owner: req.user._id,
+      imageUrl: req.body.imageUrl,
       notes: req.body.notes,
       status: req.body.status,
       components: req.body.components
