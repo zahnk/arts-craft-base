@@ -15,8 +15,9 @@ class ComponentDetail extends Component {
     },
     error: "",
     editForm: false,
-    showConfirm: false
-
+    showConfirm: false,
+    templates: [],
+    sel_template: {}
   };
 
   showConfirmDelete = () => {
@@ -65,24 +66,28 @@ class ComponentDetail extends Component {
     });
   };
 
-  getData = () => {
+  getAllData = async () => {
     const componentId = this.props.match.params.id;
 
-    axios
-      .get(`/api/components/${componentId}`)
-      .then(response => {
-        this.setState({
-          component: response.data,
-        });
-      })
-      .catch(err => {
-        if (err.response.status === 404) {
-          this.setState({
-            error: err.response.data.message
-          });
-        }
-      });
-  };
+    let [componentData, templatesData] = await Promise.all([
+        axios.get(`/api/components/${componentId}`),
+        axios.get("/api/templates" )
+    ]);
+ 
+    const selTemplate = templatesData.data.filter( (template) => {
+      return (template._id).toString() === componentData.data.template;
+    });
+
+    console.log( "CAS: component", componentData.data );
+    console.log( "CAS: templates", templatesData.data );
+    console.log( "CAS: seltemp", selTemplate );
+
+    this.setState({
+      component: componentData.data,
+      templates: templatesData.data,
+      sel_template: selTemplate[0]
+    });
+  }
 
   handleSave = event => {
     const id = this.props.match.params.id;
@@ -106,7 +111,7 @@ class ComponentDetail extends Component {
   };
 
   componentDidMount() {
-    this.getData();
+    this.getAllData();
   }
 
   render() {
@@ -117,12 +122,16 @@ class ComponentDetail extends Component {
       return <div></div>;
     }
 
-
     let canUpdate = false;
 
     if (this.state.component.owner === this.props.user._id) {
       canUpdate = true;
     } 
+
+    let curTemp = '<unknown>';
+    if( this.state.sel_template ) {
+      curTemp = this.state.sel_template.name;
+    }
 
     let form;
     if (this.state.editForm && canUpdate) {
@@ -168,7 +177,7 @@ class ComponentDetail extends Component {
                   readOnly
                   as="input"
                   type="text"
-                  value={this.state.component.template}
+                  value={curTemp || '<unknown>'}
                 />
               </Form.Group>
             </Form.Row>
@@ -217,7 +226,7 @@ class ComponentDetail extends Component {
                   readOnly
                   as="input"
                   type="text"
-                  value={this.state.component.template}
+                  value={curTemp || '<unknown>'}
                 />
               </Form.Group>
             </Form.Row>
@@ -236,10 +245,12 @@ class ComponentDetail extends Component {
 
         {form}
 
+
         <Card style={{ marginBottom: "10px", textAlign: "left" }}>
           <Card.Body>
           </Card.Body>
         </Card>
+
         <ConfirmDelete show={this.state.showConfirm} close={this.deleteComponentConfirmed} title="Component" />
       </div>
     );
