@@ -13,7 +13,7 @@ export default class ComponentCreate extends Component {
         description:  "",
         imageUrl:     "",
         owner:        this.props.user,
-        template:     ""
+        template:     {}
       },
       continueCreate: true,
       templates:    [],
@@ -54,14 +54,14 @@ export default class ComponentCreate extends Component {
   handleSubmit = event => {
     if (event) { event.preventDefault(); }
 
-    console.log("SUBMIT", this.state);
+    console.log("SUBMIT COMP", JSON.stringify( this.state ));
     axios
       .post("/api/components/create", {
           name: this.state.component.name,
           owner: this.state.component.owner,
           description: this.state.component.description,
           imageUrl: this.state.component.imageUrl,
-          template: this.state.component.template
+          template: this.state.sel_template
           //projects: this.state.projects 
         })
         .then(response => {
@@ -75,7 +75,7 @@ export default class ComponentCreate extends Component {
               description:  "",
               owner:        this.props.user,
               imageUrl:     "",
-              template:     ""
+              template:     {}
             }
             this.setState({
               component: resetComponent
@@ -115,6 +115,7 @@ export default class ComponentCreate extends Component {
   render() {
     console.log("CCWT.comp", this.state.component);
     console.log("CCWT.temp", this.state.templates);
+    
     const sel_template_desc = this.state.sel_template.description || '';
     let isChecked = this.state.continueCreate
 

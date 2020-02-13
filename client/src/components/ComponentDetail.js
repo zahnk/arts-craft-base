@@ -168,7 +168,7 @@ class ComponentDetail extends Component {
                   readOnly
                   as="input"
                   type="text"
-                  value={"TEMP"}
+                  value={this.state.component.template}
                 />
               </Form.Group>
             </Form.Row>
@@ -217,7 +217,7 @@ class ComponentDetail extends Component {
                   readOnly
                   as="input"
                   type="text"
-                  value={"TEMP"}
+                  value={this.state.component.template}
                 />
               </Form.Group>
             </Form.Row>
