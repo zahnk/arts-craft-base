@@ -408,15 +408,15 @@ export default class TemplateCreate extends Component {
                           { this.state.tc_curTemplateIdx ? 
                             ( 
                               <div>
-                                <Button size="lg" variant="primary" className="mr-2" onClick={this.handleCancelCreate}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-                                <Button size="lg" variant="primary" className="mr-2" type="submit"><i className="far fa-save fa-lg fa-a"></i>Update</Button>
-                                <Button size="lg" variant="success" className="mr-2" onClick={this.handleCloneTemplate}><i className="far fa-clone fa-lg fa-a"></i>Clone</Button>
-                                <Button size="lg" variant="danger" className="mr-2" onClick={() => {this.showConfirmDeleteTemplate( this.state.tc_curTemplateIdx )}}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+                                <Button size="lg" variant="primary" className="mr-2 mb-1" onClick={this.handleCancelCreate}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+                                <Button size="lg" variant="primary" className="mr-2 mb-1" type="submit"><i className="far fa-save fa-lg fa-a"></i>Update</Button>
+                                <Button size="lg" variant="success" className="mr-2 mb-1" onClick={this.handleCloneTemplate}><i className="far fa-clone fa-lg fa-a"></i>Clone</Button>
+                                <Button size="lg" variant="danger" className="mr-2 mb-1" onClick={() => {this.showConfirmDeleteTemplate( this.state.tc_curTemplateIdx )}}><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
                               </div>
                             ):( 
                               <div>
-                                <Button size="lg" variant="primary" className="mr-2" onClick={this.handleCancelCreate}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-                                <Button size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit</Button>
+                                <Button size="lg" variant="primary" className="mr-2 mb-1" onClick={this.handleCancelCreate}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+                                <Button size="lg" variant="primary" className="mr-2 mb-1" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit</Button>
                               </div>
                             )
                           }  

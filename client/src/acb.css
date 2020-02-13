@@ -38,7 +38,6 @@
   text-shadow: 1px 1px 1px black;
 }
 
-
 .trunkText {
   width: 100%;                   
   overflow: hidden;              /* "overflow"-Wert darf nicht "visible" sein */ 
@@ -65,7 +64,7 @@
   text-shadow: -1px -1px 0px #fff, 2px 2px 2px black;
 }
 
-.card-columns { column-gap: 0.2rem; margin-bottom: 10px;}
+.card-columns { column-gap: 0.1rem; margin-bottom: 10px;}
 .card-columns .card{ margin-bottom: 0.2rem }
 .shw-lg { display: inline-block; }
 .shw-sm { display: none; }
@@ -81,9 +80,14 @@
   display: block;
 }
 
+.card-columns .card {
+  display: inline-block;
+  width: 100%;
+}
+
 @media (max-width: 500px) {
-  .navbarCaption { font-size: x-large; }
-  .card-columns { column-count: 1; }
+  .navbarCaption { font-size: large; }
+  .card-columns { column-count: 2; }
   .projectImage, .componentImage, .templateImage {
     min-height:150px;
     max-height:150px;

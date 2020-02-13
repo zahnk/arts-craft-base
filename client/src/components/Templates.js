@@ -34,7 +34,7 @@ export default class Templates extends Component {
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Template Overview</h2>
         <TemplateList templates={this.state.templates} {...this.props}/>   
-        <Button className="mr-2" size="lg" variant="primary" href={'/templates/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Template</Button>
+        <Button className="mr-2 mb-1" size="lg" variant="primary" href={'/templates/create'}><i className="far fa-plus-square fa-lg fa-a"></i>Create new Template</Button>
       </div>
     );
   }

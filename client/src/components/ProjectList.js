@@ -9,11 +9,18 @@ export default class ProjectList extends Component {
     }
   };
 
+  mapImageUrl = ( url ) => {
+    if( url ){
+      if( url.length > 0 ) return url;
+    }
+    return `/def-p-${Math.floor(Math.random()*6)}.png`;
+  }
+
   render() {
     return (
       <CardColumns>
         {this.props.projects.map( (project,i) => {
-          project.imageUrl = project.imageUrl || `def-p-${Math.floor(Math.random()*6)}.png`;
+          project.imageUrl = this.mapImageUrl( project.imageUrl );
           console.log( project.imageUrl );
           if (project.owner === this.props.user._id) {
             return (

@@ -53,20 +53,18 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-// POST /api/templates
+// POST /api/components
 router.post("/create", (req, res) => {
   // create 1 component
   console.log("cmp create owner" , JSON.stringify(req.user._id));
-  console.log("cmp create owner" , JSON.stringify(req.body));
+  console.log("cmp create owner" , JSON.stringify(req.body.template));
   Component.create({
     name: req.body.name,
     owner: req.user._id,
     description: req.body.description,
     imageUrl: req.body.imageUrl,
-    //template: req.body.template,
-    //to be inserted-->> projects: []
+    template: req.body.template,
     projects: []
-    //template: req.body.template
   })
     .then(component => {
       res.json(component);

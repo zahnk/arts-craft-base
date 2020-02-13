@@ -127,8 +127,8 @@ export default class ProjectCreate extends Component {
                 </Form.Group>
               </Form.Row>
 
-              <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-              <Button className="mr-2" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Project</Button>
+              <Button className="mr-2 mb-1" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+              <Button className="mr-2 mb-1" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Project</Button>
             </Form>
           </Card.Body>
         </Card>

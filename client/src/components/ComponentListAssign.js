@@ -9,12 +9,18 @@ export default class ComponentListAssign extends Component {
     }
   };
 
+  mapImageUrl = ( url ) => {
+    if( url ){
+      if( url.length > 0 ) return url;
+    }
+    return `/def-c-${Math.floor(Math.random()*4)}.png`;
+  }
+
   render() {
     return (
       <CardColumns>
         {this.props.components.map( (component,i) => {
-          console.log( "COL", component.imageUrl ) ;
-          component.imageUrl = component.imageUrl || `def-c-${Math.floor(Math.random()*4)}.png`;
+          component.imageUrl = this.mapImageUrl( component.imageUrl );
           if (component.owner === this.props.user._id) {
             return (
               <ComponentCardAssign key={component._id} component={component} cardId={i} cardassigned={this.props.cardstatus[i]} {...this.props}/>
