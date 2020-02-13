@@ -13,7 +13,7 @@ export default class ProjectList extends Component {
     if( url ){
       if( url.length > 0 ) return url;
     }
-    return `def-p-${Math.floor(Math.random()*6)}.png`;
+    return `/def-p-${Math.floor(Math.random()*6)}.png`;
   }
 
   render() {

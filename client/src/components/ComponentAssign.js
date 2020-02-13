@@ -90,8 +90,8 @@ export default class ComponentAssign extends Component {
             <div style={{textAlign: "left"}}>
               <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Component Assignment</h2>
               <ComponentListAssign onStatusChange={this.handleStatusChange} components={this.state.components} cardstatus={this.state.cardstatus} user={this.props.user} {...this.props}/>   
-              <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-              <Button className="mr-2" size="lg" variant="success" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
+              <Button className="mr-2 mb-1" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+              <Button className="mr-2 mb-1" size="lg" variant="success" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
             </div> )
         }
       </div>

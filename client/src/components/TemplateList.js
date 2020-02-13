@@ -13,7 +13,7 @@ export default class TemplateList extends Component {
     if( url ){
       if( url.length > 0 ) return url;
     }
-    return `def-t-0.png`;
+    return `/def-t-0.png`;
   }
 
   render() {

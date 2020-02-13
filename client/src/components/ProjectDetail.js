@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Accordion, Form, Card, CardColumns, Button, Col } from "react-bootstrap";
 import ConfirmDelete from "./ConfirmDelete";
-import ProjectCard from "./ProjectCard";
-import ComponentCard from "./ComponentCard";
+import MoodBoard from "./MoodBoard";
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -127,7 +126,6 @@ class ProjectDetail extends Component {
       showAccordion: false
     });
   }
-
   render() {
     if (this.state.error) {
       return <p>{this.state.error}</p>;
@@ -203,11 +201,11 @@ class ProjectDetail extends Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.handleBackToDetailView() }}><i className="far fa-window-close fa-lg fa-a"></i>Details</Button>
-            <Button onClick={this.handleSave} className="mr-2" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
-            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
-            <Button onClick={this.modifyComponents} variant="success" className="mr-2" size="lg"><i className="fas fa-retweet fa-lg fa-a"></i>Assign/Remove Component</Button>
+            <Button className="mr-2 mb-1" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button className="mr-2 mb-1" size="lg" variant="primary" onClick={() => { this.handleBackToDetailView() }}><i className="far fa-window-close fa-lg fa-a"></i>Details</Button>
+            <Button onClick={this.handleSave} className="mr-2 mb-1" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2 mb-1" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button onClick={this.modifyComponents} variant="success" className="mr-2 mb-1" size="lg"><i className="fas fa-retweet fa-lg fa-a"></i>Assign/Remove Component</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -274,9 +272,9 @@ class ProjectDetail extends Component {
                       />
                     </Form.Group>
                   </Form.Row>
-                  <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-                  <Button onClick={this.toggleEdit} className="mr-2" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
-                  <Button onClick={this.showConfirmDelete} variant="danger"  className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+                  <Button className="mr-2 mb-1" size="lg" variant="primary" onClick={() => { this.props.history.push("/projects") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+                  <Button onClick={this.toggleEdit} className="mr-2 mb-1" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+                  <Button onClick={this.showConfirmDelete} variant="danger"  className="mr-2 mb-1" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
                 </Form>
               </Card.Body>
             </Accordion.Collapse>
@@ -285,27 +283,14 @@ class ProjectDetail extends Component {
     }
 
     const delProject = `Project: ${this.state.project.name ? this.state.project.name : ''}`;
+
     return (
       <div style={{textAlign: "left"}}>
         <h2 style={{textAlign: "left", marginBottom: "10px"}}>{form_cap}</h2>
         {form}
 
         {!this.state.showAccordion && (
-            <CardColumns>
-                <ProjectCard key={this.state.project._id} project={this.state.project} hideFooter={true} {...this.props}/>
-                {
-                  this.state.project.components.map( (component,i) => {
-                    component.imageUrl = component.imageUrl || `def-c-${Math.floor(Math.random()*4)}.png`;
-                    if (component.owner === this.props.user._id)  {
-                      return (
-                        <ComponentCard key={component._id} component={component} hideFooter={true} {...this.props}/>
-                      );
-                    }
-                    return( <div></div> );
-                  })
-                }
-
-            </CardColumns>
+            <MoodBoard project={this.state.project} components={this.state.project.components} {...this.props} />
           )
         }
 

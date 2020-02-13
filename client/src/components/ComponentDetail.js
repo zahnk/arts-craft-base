@@ -172,9 +172,9 @@ class ComponentDetail extends Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.handleSave} className="mr-2" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
-            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button className="mr-2 mb-1" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.handleSave} className="mr-2 mb-1" size="lg"><i className="far fa-save fa-lg fa-a"></i>Save</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2 mb-1" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
           </Form>
         </Card.Body>
       </Card>;
@@ -221,9 +221,9 @@ class ComponentDetail extends Component {
                 />
               </Form.Group>
             </Form.Row>
-            <Button className="mr-2" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-            <Button onClick={this.toggleEdit} className="mr-2" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
-            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
+            <Button className="mr-2 mb-1" size="lg" variant="primary" onClick={() => { this.props.history.push("/components") }}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
+            <Button onClick={this.toggleEdit} className="mr-2 mb-1" size="lg"><i className="far fa-edit fa-lg fa-a"></i>Edit</Button>
+            <Button onClick={this.showConfirmDelete} variant="danger" className="mr-2 mb-1" size="lg"><i className="far fa-trash-alt fa-lg fa-a"></i>Delete</Button>
           </Form>
         </Card.Body>
       </Card>;

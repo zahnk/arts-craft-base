@@ -189,8 +189,8 @@ export default class ComponentCreate extends Component {
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>            
-                <Button className="mr-2" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Component</Button>
+                <Button className="mr-2 mb-1" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>            
+                <Button className="mr-2 mb-1" size="lg" variant="primary" type="submit"><i className="far fa-save fa-lg fa-a"></i>Submit new Component</Button>
                 <Form.Check style={{marginTop: "10px"}}
                   type="switch"
                   name="continueCreate"

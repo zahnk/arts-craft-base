@@ -13,7 +13,7 @@ export default class ComponentList extends Component {
     if( url ){
       if( url.length > 0 ) return url;
     }
-    return `def-c-${Math.floor(Math.random()*4)}.png`;
+    return `/def-c-${Math.floor(Math.random()*4)}.png`;
   }
 
   render() {
