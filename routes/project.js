@@ -100,7 +100,6 @@ router.post("/create", (req, res) => {
 
 // PUT /api/projects/:id
 router.put("/:id", (req, res) => {
-  console.log ("PRJ-PUT", req.body)
   Project.findByIdAndUpdate(
     req.params.id,
     {

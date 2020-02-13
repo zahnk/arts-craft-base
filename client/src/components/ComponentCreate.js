@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import { cloneObject } from "../services/init";
-import { Form, Button, InputGroup, Row, Col, Card } from "react-bootstrap";
+import { Form, Button, InputGroup, Col, Card } from "react-bootstrap";
 import '@fortawesome/fontawesome-free/css/all.css';
 
 export default class ComponentCreate extends Component {
@@ -181,7 +181,6 @@ export default class ComponentCreate extends Component {
                       as="input"
                       type="text"
                       id="template"
-                      readOnly={true}
                       name="c_sel_template_desc"
                       value={sel_template_desc || ''}
                     />

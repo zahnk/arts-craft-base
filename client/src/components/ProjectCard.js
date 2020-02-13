@@ -21,7 +21,7 @@ export default class ProjectCard extends Component {
       <Card className={ isLink === true ? 'cardForDetail' : 'cardForDetailView' } border="dark" onClick={this.backRoute}>
         <Card.Img className="projectImage" src={this.props.project.imageUrl} alt="Project Image" />
         <Card.ImgOverlay>
-          <Card.Header className="transparentCardHeader" as="h4">{this.props.project.name}</Card.Header>
+          <Card.Header className="transparentCardHeader" as="h4">{this.props.project.name || '<unknown>'}</Card.Header>
         </Card.ImgOverlay>
         { isLink === true && (
           <Card.Footer className="hoverFooter">
