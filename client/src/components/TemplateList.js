@@ -9,11 +9,18 @@ export default class TemplateList extends Component {
     }
   };
 
+  mapImageUrl = ( url ) => {
+    if( url ){
+      if( url.length > 0 ) return url;
+    }
+    return `def-t-0.png`;
+  }
+
   render() {
     return (
       <CardColumns>
         {this.props.templates.map( (template,i) => {
-         template.imageUrl = template.imageUrl || `def-t-0.png`;
+         template.imageUrl = this.mapImageUrl( template.imageUrl );
           return (
             <TemplateCard key={template._id} template={template} {...this.props}/>
           );
