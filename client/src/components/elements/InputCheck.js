@@ -14,6 +14,8 @@ export default class InputCheck extends Component {
 
   render() {
     const labelText = `${this.props.label[0].toUpperCase()}${this.props.label.slice(1)}`
+    const readOnly = this.props.readonly || false;
+
     return (
       <div>
 {/*}
@@ -37,7 +39,7 @@ export default class InputCheck extends Component {
           <Col sm="4">
             <Form.Check style={{marginTop: "10px"}}
               type="switch"
-              id={`swt_${this.props.uniqueKey}`}
+              readOnly={readOnly}
               label=""
               checked={this.props.value}
               onChange={this.handleChange}
