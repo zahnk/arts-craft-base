@@ -63,7 +63,7 @@ class Startpage extends React.Component {
         const acb_desc = (
             <div className="sp-d">
                 <br />
-                <p>This tool can administrate all materials as components for your craft projects and the projects themselves.</p>
+                <p>This tool can administrate all materials as components for your craft projects and also projects themselves.</p>
                 <p>Components can be created and configured by using generic templates, that also can be build by your own, to be more flexible!</p>
             </div>
         );

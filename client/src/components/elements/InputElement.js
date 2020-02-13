@@ -17,7 +17,7 @@ export default class InputElement extends Component {
     const colSize = [5,7];
 
     console.log( "TE", this.props );
-    const maxLength = this.props.maxlength ? `maxLength: ${this.props.maxlength}` : '';
+    //const maxLength = this.props.maxlength ? `maxLength: ${this.props.maxlength}` : '';
     const readOnly = this.props.readonly || false;
 
     return ( 
@@ -42,10 +42,3 @@ export default class InputElement extends Component {
     )
   }
 }
-/*
-    const colSize = this.props.eltype !== 'checkbox' ? [5,7,0] : [5,4,3];
-    
-    let outputCol = null;
-    if( colSize[2] > 0 ) { outputCol = ( <Col sm={colSize[2]}> </Col> ) };
-
-*/

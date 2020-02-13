@@ -116,7 +116,7 @@ code {
   }
   .sp-t { font-size: 2.5rem; }
   .sp-d { font-size: 1.5rem; }
-  .sp-kt { font-size: 2.0rem; }
+  .sp-kt { font-size: 1.75rem; }
   .sp-kd { font-size: 1.5rem; }
 }
 
@@ -138,7 +138,7 @@ code {
   }
   .sp-t { font-size: 2.5rem; }
   .sp-d { font-size: 1.5rem; }
-  .sp-kt { font-size: 2.25rem; }
+  .sp-kt { font-size: 2.0rem; }
   .sp-kd { font-size: 1.5rem; }
 }
 @media (min-width: 801px) and (max-width: 1200px) {
@@ -150,7 +150,7 @@ code {
   }
   .sp-t { font-size: 3.5rem; }
   .sp-d { font-size: 1.75rem; }
-  .sp-kt { font-size: 3.0rem; }
+  .sp-kt { font-size: 2.75rem; }
   .sp-kd { font-size: 1.2rem; }
 }
 @media (min-width: 1201px) and (max-width: 1600px) {
@@ -162,7 +162,7 @@ code {
   }
   .sp-t { font-size: 4rem; }
   .sp-d { font-size: 2rem; }
-  .sp-kt { font-size: 3.25rem; }
+  .sp-kt { font-size: 3.0rem; }
   .sp-kd { font-size: 1.33rem; }
 }
 @media (min-width: 1601px) and (max-width: 1800px) {
@@ -174,7 +174,7 @@ code {
   }
   .sp-t { font-size: 5rem; }
   .sp-d { font-size: 2.5rem; }
-  .sp-kt { font-size: 3.5rem; }
+  .sp-kt { font-size: 3.25rem; }
   .sp-kd { font-size: 1.66rem; }
 }
 @media (min-width: 1801px) {
@@ -186,7 +186,7 @@ code {
   }
   .sp-t { font-size: 6rem; }
   .sp-d { font-size: 3rem; }
-  .sp-kt { font-size: 3.75rem; }
+  .sp-kt { font-size: 3.5rem; }
   .sp-kd { font-size: 2rem; }
 }
 

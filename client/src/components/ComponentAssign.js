@@ -9,75 +9,54 @@ export default class ComponentAssign extends Component {
     this.state = {
       components: [],
       cardstatus: [],
-      project:{},
-      isProjectLoading : true,
-      isComponentLoading : true
+      project: {},
+      isLoading : true
     }
   };
 
-  getData = () => {
-    axios
-      .get("/api/components")
-      .then(response => {
-        let cStat = this.handleInitCardStatus( false, this.state.isProjectLoading || true )
-        this.setState({
-          components: response.data,
-          isComponentLoading: false,
-          cardstatus: cStat 
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
-
-  getProject = () => {
+  getAllData = async () => {
     const projectId = this.props.match.params.id;
 
-    axios
-      .get(`/api/projects/${projectId}`)
-      .then(response => {
-        let cStat = this.handleInitCardStatus( this.state.isComponentLoading || true, false )
+    let [projectData, componentsData] = await Promise.all([
+        axios.get(`/api/projects/${projectId}`),
+        axios.get("/api/components")
+    ]);
 
-        this.setState({
-          project: response.data,
-          isProjectLoading: false,
-          cardstatus: cStat 
-        });
-      })
-      .catch(err => {
-        if (err.response.status === 404) {
-          this.setState({
-            error: err.response.data.message
-          });
-        }
-      });
-  };
+    const curCardStatus = [];
+    componentsData.data.forEach( (component, i) => {
+        curCardStatus[i] = projectData.data.components.includes( (component._id).toString() );
+    });
+
+    console.log( "CAS: project.name", projectData.data );
+    console.log( "CAS: component.name", componentsData.data );
+
+    this.setState({
+      components: componentsData.data,
+      project: projectData.data,
+      cardstatus: curCardStatus,
+      isLoading: false
+    });
+  }
 
   handleStatusChange = (idx) => {
     let tempCardstatus = this.state.cardstatus.slice();
     tempCardstatus[idx] = (tempCardstatus[idx] === true) ? false : true;
-    console.log( "IDX", idx );
-    console.log("CS", this.state.cardstatus);
     this.setState( { cardstatus: tempCardstatus } );
   }
 
-
-
   handleAssignSubmit = () => {
-    //console.log( "Assign Status", this.state.cardstatus );
-    //console.log("State Project: ", this.state.project);
     let assignedComponents = [];
     this.state.cardstatus.forEach((status, index)=>{
       if (status) {
         assignedComponents.push(this.state.components[index]._id);
       }
     })
-    console.log("AssComponenents", assignedComponents);
     const id = this.props.match.params.id;
+
+    console.log( "CAS: project.name", this.state.project )
    axios
-   .put(`/api/projects/${id}`, {
+    .put(`/api/projects/${id}`, {
       name: this.state.project.name,
       description: this.state.project.description,
       notes: this.state.project.notes,
@@ -86,16 +65,11 @@ export default class ComponentAssign extends Component {
       components: assignedComponents
       })
       .then(response => {
-        this.setState({
-          project: response.data,
-          editForm: false
-        });
-        //console.log(response);
+        this.props.history.push(`/projects/${id}`)
       })
       .catch(err => {
         console.log(err);
       });
-   this.props.history.push(`/projects/${id}`)
   }
 
   handleCancel = event => {
@@ -104,36 +78,20 @@ export default class ComponentAssign extends Component {
   }
 
   componentDidMount() {
-    this.getData();
-    this.getProject();
-  }
-
-  handleInitCardStatus = ( isLC, isLP ) => {
-    if( ( isLP || isLC ) === false ) {
-      const curCardStatus = [];
-
-      this.state.components.forEach( (component, i) => {
-        if( this.state.project.components.includes( component ) ) { curCardStatus[i] = true; } else { curCardStatus[i] = true; }
-      });
-      return( curCardStatus );
-    } 
-    return [];  
+    this.getAllData();
   }
 
   render() {
-    console.log("projid", this.props.proj);
-
     return (
-
       <div>
-        { this.state.isProjectLoading || this.state.isComponentLoading ? ( 
+        { this.state.isLoading === true ? ( 
           <div> </div>
           ) : (
             <div style={{textAlign: "left"}}>
               <h2 style={{textAlign: "left", marginBottom: "10px"}}><i className="fas fa-list fa-a"></i>Component Assignment</h2>
               <ComponentListAssign onStatusChange={this.handleStatusChange} components={this.state.components} cardstatus={this.state.cardstatus} user={this.props.user} {...this.props}/>   
               <Button className="mr-2" size="lg" variant="primary" type="submit" onClick={this.handleCancel}><i className="far fa-window-close fa-lg fa-a"></i>Cancel</Button>
-              <Button className="mr-2" size="lg" variant="primary" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
+              <Button className="mr-2" size="lg" variant="success" onClick={this.handleAssignSubmit}><i className="far fa-plus-square fa-lg fa-a"></i>Assign selected Component(s)</Button>
             </div> )
         }
       </div>
